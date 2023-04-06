@@ -1,0 +1,92 @@
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 78vh;
+}
+
+.contact-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 78vh;
+  background-image: url("../assets/images/kontakt.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.contact-image a {
+  font-family: "Cinzel";
+  font-size: 1.5rem;
+  line-height: 0rem;
+  margin-bottom: 20px;
+  color: #fff;
+  padding: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.contact-image a:hover {
+  color: #dadada;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translate(0, 100%);
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 6vh;
+  min-height: 25px;
+}
+
+.title h2 {
+  font-family: "Cinzel";
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+@media (max-width: 1500px) {
+  .title h2 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .contact-image a {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .contact-container {
+    width: 100%;
+  }
+  .title h2 {
+    font-size: 1.2rem;
+  }
+  .contact-image {
+    width: 90%;
+  }
+  .contact-image a {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+  }
+}
+
+@media (min-aspect-ratio: 2/1) {
+  .info {
+    transform: translate(0, 0);
+  }
+}

@@ -1,0 +1,93 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  width: 80%;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* ROW 1 */
+/* VERTICAL */
+.grid > img:nth-child(1) {
+  grid-column: span 1;
+  grid-row: span 2;
+  background-color: azure;
+}
+
+.grid > img:nth-child(2) {
+  grid-column: span 2;
+  grid-row: span 2;
+  background-color: beige;
+}
+
+.grid > img:nth-child(3) {
+  background-color: burlywood;
+}
+/* VERTICAL */
+.grid > img:nth-child(4) {
+  grid-row: span 2;
+  background-color: cornflowerblue;
+}
+
+.grid > img:nth-child(5) {
+  background-color: darkblue;
+}
+
+/* Second row */
+.grid > img:nth-child(6) {
+  background-color: darkgoldenrod;
+}
+
+.grid > img:nth-child(7) {
+  grid-row: span 2;
+  background-color: darkgreen;
+}
+
+.grid > img:nth-child(8) {
+  grid-column: span 2;
+  grid-row: span 2;
+  background-color: darkorange;
+}
+
+.grid > img:nth-child(9) {
+  background-color: darkviolet;
+}
+
+.grid > img:nth-child(10) {
+  background-color: azure;
+}
+
+.grid > img:nth-child(11) {
+  background-color: beige;
+}
+
+/* Third row */
+.grid > img:nth-child(12) {
+  grid-column: span 2;
+  grid-row: span 2;
+  background-color: burlywood;
+}
+
+.grid > img:nth-child(13) {
+  grid-row: span 2;
+  background-color: darkorange;
+}
+
+.grid > img:nth-child(14) {
+  grid-column: span 2;
+  grid-row: span 2;
+  background-color: darkviolet;
+}
+
+.grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
