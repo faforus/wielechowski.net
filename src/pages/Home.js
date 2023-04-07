@@ -1,70 +1,77 @@
 import React, { useEffect, useState } from "react";
 import classes from "./HomeGrid.module.css";
+
+const gridLayout = [0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1];
+
+const importAll = (r) => {
+  return r.keys().map(r);
+};
+
 function Home() {
-  const [mappedImgs, setMappedImgs] = useState([]);
   const [sortedImages, setSortedImages] = useState([]);
-  const [images, setImages] = useState([]);
+  const [mappedImgs, setMappedImgs] = useState([]);
+  const [unsortedImages, setUnsortedImages] = useState([]);
+  const [mappedUnsortedImgs, setMappedUnsortedImgs] = useState([]);
+  const [loadedImages, setLoadedImages] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [
+    indexWithoutAppropriateProportionState,
+    setIndexWithoutAppropriateProportionState,
+  ] = useState(undefined);
 
   useEffect(() => {
-    const importAll = (r) => {
-      return r.keys().map(r);
-    };
+    const loadImages = async () => {
+      const images = importAll(
+        require.context("../assets/images/grid", false, /\.(jpe?g)$/)
+      );
 
-    const images = importAll(
-      require.context("../assets/images/grid", false, /\.(jpe?g)$/)
-    );
+      const horizontalImages = [];
+      const verticalImages = [];
+      const data = await Promise.all(
+        images.map((img, index) => {
+          const imgObj = new Image();
+          imgObj.src = img;
 
-    setImages(images);
+          // Create a Promise that resolves when the image has loaded
+          const imgLoaded = new Promise((resolve) => {
+            imgObj.onload = () => {
+              resolve(imgObj);
+              setLoadedImages((prevCount) => prevCount + 0.5);
+            };
+          });
 
-    const horizontalImages = [];
-    const verticalImages = [];
+          // Wait for the Promise to resolve
+          const getImage = async () => {
+            await imgLoaded;
+            const isHorizontal = imgObj.width > imgObj.height;
+            const item = {
+              id: index + 1,
+              imgSrc: img,
+              isHorizontal: isHorizontal,
+            };
 
-    const data = images.reduce((acc, img, index) => {
-      const imgObj = new Image();
-      imgObj.src = img;
+            if (isHorizontal) {
+              horizontalImages.push(item);
+            } else {
+              verticalImages.push(item);
+            }
 
-      // Create a Promise that resolves when the image has loaded
-      const imgLoaded = new Promise((resolve) => {
-        imgObj.onload = () => resolve(imgObj);
-      });
+            return item;
+          };
 
-      // Wait for the Promise to resolve
-      async function getImage() {
-        await imgLoaded;
-        const isHorizontal = imgObj.width > imgObj.height;
-        const item = {
-          id: index + 1,
-          imgSrc: img,
-          isHorizontal: isHorizontal,
-        };
-
-        if (isHorizontal) {
-          horizontalImages.push(item);
-        } else {
-          verticalImages.push(item);
-        }
-
-        return item;
-      }
-
-      horizontalImages.sort(() => Math.random() - 0.5);
-      verticalImages.sort(() => Math.random() - 0.5);
-
-      return acc.concat(getImage());
-    }, []);
-
-    Promise.all(data).then((images) => {
-      const gridLayout = [0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1];
+          return getImage();
+        })
+      );
 
       const sortedImages = [];
       let horizontalIndex = 0;
       let verticalIndex = 0;
       let indexWithoutAppropriateProportion;
 
-      while (sortedImages.length < images.length) {
+      while (sortedImages.length < data.length) {
         for (
           let i = 0;
-          i < gridLayout.length && sortedImages.length < images.length;
+          i < gridLayout.length && sortedImages.length < data.length;
           i++
         ) {
           const isHorizontal = gridLayout[i] === 1;
@@ -76,6 +83,7 @@ function Home() {
             } else {
               if (indexWithoutAppropriateProportion === undefined) {
                 indexWithoutAppropriateProportion = sortedImages.length;
+                setIndexWithoutAppropriateProportionState(sortedImages.length);
               }
             }
           } else {
@@ -84,6 +92,7 @@ function Home() {
             } else {
               if (indexWithoutAppropriateProportion === undefined) {
                 indexWithoutAppropriateProportion = sortedImages.length;
+                setIndexWithoutAppropriateProportionState(sortedImages.length);
               }
             }
           }
@@ -96,50 +105,97 @@ function Home() {
           }
         }
       }
-      console.log(indexWithoutAppropriateProportion);
       setSortedImages(sortedImages);
-    });
+    };
+
+    loadImages();
   }, []);
 
   useEffect(() => {
     let doesNotFitCount = 0;
     let gridImgs = [];
+    let unsortedGridImgs = [];
     let mappedImgs = [];
+    let mappedUnsortedImgs = [];
 
-    sortedImages.forEach((item, index) => {
-      if (item.doesNotFit) {
-        doesNotFitCount++;
-        gridImgs.push(
-          <img
-            src={item.imgSrc}
-            style={{ gridRow: "span 1", gridColumn: "span 1" }}
-            alt="gallery"
-            key={index}
-          />
-        );
-      } else {
-        gridImgs.push(<img src={item.imgSrc} alt="gallery" key={index} />);
+    if (indexWithoutAppropriateProportionState !== undefined) {
+      const sliceIndex =
+        Math.ceil(indexWithoutAppropriateProportionState / 14) * 14;
+
+      const unsortedImages = sortedImages.splice(sliceIndex);
+
+      let isHorizontal = false;
+      if (unsortedImages.length > 0 && unsortedImages[0].isHorizontal) {
+        isHorizontal = true;
       }
+
+      const gridClass = isHorizontal
+        ? classes["horizontal-image-proportions"]
+        : classes["vertical-image-proportions"];
+
+      unsortedImages.forEach((item, index) => {
+        unsortedGridImgs.push(
+          <div key={index} className={[gridClass]}>
+            <img src={item.imgSrc} alt="gallery" />
+          </div>
+        );
+        if ((index + 1) % 12 === 0 || index === unsortedImages.length - 1) {
+          const isLastGrid = index === unsortedImages.length - 1;
+          const numOfImgsInGrid = isLastGrid ? unsortedGridImgs.length : 12;
+          const gridClass = isHorizontal
+            ? classes["grid-horizontal"]
+            : classes["grid-vertical"];
+
+          mappedUnsortedImgs.push(
+            <div className={gridClass} key={`grid-${index}`}>
+              {unsortedGridImgs.slice(0, numOfImgsInGrid)}
+            </div>
+          );
+          unsortedGridImgs = [];
+        }
+      });
+    }
+    console.log(indexWithoutAppropriateProportionState);
+    sortedImages.forEach((item, index) => {
+      gridImgs.push(
+        <div key={index} className={classes["horizontal-image-proportions"]}>
+          <img src={item.imgSrc} alt="gallery" />
+        </div>
+      );
 
       if (
         ((index + 1) % 14 === 0 && doesNotFitCount === 0) ||
-        index === images.length - 1
+        index === sortedImages.length - 1
       ) {
-        // create a new grid div for every 14 elements or if it's the last element
+        const isLastGrid = index === sortedImages.length - 1;
+        const numOfImgsInGrid = isLastGrid ? gridImgs.length : 14;
+
         mappedImgs.push(
           <div className={classes.grid} key={`grid-${index}`}>
-            {gridImgs}
+            {gridImgs.slice(0, numOfImgsInGrid)}
           </div>
         );
-        gridImgs = []; // reset the gridImgs array
+        gridImgs = [];
+        doesNotFitCount = 0;
       }
     });
 
+    if (loadedImages !== 0 && loadedImages === sortedImages.length) {
+      setIsLoading(false);
+    }
+
+    setMappedUnsortedImgs(mappedUnsortedImgs);
     setMappedImgs(mappedImgs);
-    console.log(sortedImages);
   }, [sortedImages]);
 
-  return <div className={classes.container}>{mappedImgs}</div>;
+  return (
+    <div className={classes.container}>
+      {/* {isLoading ? <p> llala </p> : <p> dick</p>} */}
+      {mappedImgs}
+      <p>sliced</p>
+      {mappedUnsortedImgs}
+    </div>
+  );
 }
 
 export default Home;

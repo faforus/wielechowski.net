@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import Spinner from "../../components/Spinner";
 import classes from "./Gallery.module.css";
-// IMPORTANT isSafari remove or replace
+
 const Gallery = (props) => {
   return (
     <Fragment>
@@ -65,9 +65,6 @@ const Gallery = (props) => {
           return (
             <div
               className={classes.pics}
-              // style={
-              //   props.isSafari ? { marginTop: "7px", marginBottom: "7px" } : {}
-              // }
               key={index}
               onClick={() => {
                 props.largeImageHandler();
