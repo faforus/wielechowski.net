@@ -8,7 +8,7 @@ const GRID_LAYOUT = [0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1];
 const SERVER_COUNT = 0.5;
 
 const importAll = (r) => {
-  return r.keys().map(r);
+  return r.keys().map((key) => ({ fileName: key, src: r(key) }));
 };
 
 const ArrowButton = React.memo(({ direction, onClick }) => {
@@ -33,8 +33,8 @@ const CloseButton = React.memo(({ onClick }) => {
 });
 
 function Home() {
-  const navigate = useNavigate();
   const [LOADER, setLOADER] = useState(false);
+  const navigate = useNavigate();
   const [modal, setModal] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [tempImgSrc, setTempImgSrc] = useState("");
@@ -95,26 +95,33 @@ function Home() {
     if (LOADER) return;
     console.log("loading images");
     (async () => {
-      const images = importAll(
-        require.context(
-          "../assets/images/galleries/studio-images",
-          false,
-          /\.(jpe?g)$/
-        )
-      );
-
       const thumbnailImages = importAll(
         require.context(
           "../assets/images/galleries/studio-images-thumbnails",
           false,
           /\.(jpe?g)$/
         )
-      );
+      ).reduce((acc, item) => {
+        acc[item.fileName] = item.src;
+        return acc;
+      }, {});
+
+      const images = importAll(
+        require.context(
+          "../assets/images/galleries/studio-images",
+          false,
+          /\.(jpe?g)$/
+        )
+      ).reduce((acc, item) => {
+        acc[item.fileName] = item.src;
+        return acc;
+      }, {});
 
       const horizontalImages = [];
       const verticalImages = [];
       const data = await Promise.all(
-        thumbnailImages.map((img, index) => {
+        Object.keys(thumbnailImages).map((fileName, index) => {
+          const img = thumbnailImages[fileName];
           const imgObj = new Image();
           imgObj.src = img;
 
@@ -375,7 +382,7 @@ function Home() {
         />
       </div>
       <div className={classes.title}>
-        <h2>Studio</h2>
+        <h2>Plener</h2>
       </div>
       {isLoading && <Spinner />}
       <div

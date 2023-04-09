@@ -7,9 +7,9 @@ import Home from "./pages/Home";
 import MainGallery from "./pages/MainGallery";
 import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
-import Studio from "./pages/gallery/Studio";
-import Reportage from "./pages/gallery/Reportage";
-import Outdoors from "./pages/gallery/Outdoors";
+// import Studio from "./pages/gallery/Studio";
+// import Reportage from "./pages/gallery/Reportage";
+// import Outdoors from "./pages/gallery/Outdoors";
 import Animals from "./pages/gallery/Animals";
 import welcomeImg from "./assets/images/logo.jpg";
 import top from "./assets/images/top.jpg";
@@ -24,10 +24,10 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "/galeria", element: <MainGallery /> },
       { path: "/kontakt", element: <Contact /> },
-      { path: "/studio", element: <Studio /> },
-      { path: "/reportaz", element: <Reportage /> },
-      { path: "/plener", element: <Outdoors /> },
-      { path: "/zwierzeta", element: <Animals /> },
+      // { path: "/studio", element: <Studio /> },
+      // { path: "/reportaz", element: <Reportage /> },
+      // { path: "/plener", element: <Outdoors /> },
+      // { path: "/zwierzeta", element: <Animals /> },
     ],
   },
 ]);

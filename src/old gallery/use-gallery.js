@@ -11,6 +11,10 @@ const useGallery = (data) => {
   const [isLoading, setIsLoading] = useState(true);
   const [largeImgIsLoading, setLargeImgIsLoading] = useState(false);
 
+  const isSafari =
+    navigator.userAgent.indexOf("Safari") !== -1 &&
+    navigator.userAgent.indexOf("Chrome") === -1;
+
   const handleImageLoad = () => {
     setLoadedImages((prevCount) => prevCount + 1);
   };
@@ -86,6 +90,7 @@ const useGallery = (data) => {
     handleImageLoad,
     largeImageHandler,
     handleLargeImageLoad,
+    isSafari,
   };
 };
 

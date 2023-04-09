@@ -13,7 +13,7 @@
   width: 4rem;
   height: 4rem;
   animation: spin 1s linear infinite;
-  z-index: 999;
+  z-index: 500;
 }
 
 @keyframes spin {
