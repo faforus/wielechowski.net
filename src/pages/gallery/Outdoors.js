@@ -15,7 +15,7 @@ const Animals = () => {
     mappedUnsortedImgs,
     handlePrevClick,
     handleNextClick,
-  } = useGallery("animals");
+  } = useGallery("outdoors");
 
   return (
     <Gallery

@@ -13,13 +13,20 @@
   align-items: center;
   width: 80%;
   height: 78vh;
-  background-image: url("../assets/images/kontakt.jpg");
   background-size: cover;
   background-position: center;
+  background-image: url("../assets/images/kontakt.jpg");
+}
+
+@supports (background-image: url("../assets/webpimages/kontakt.webp")) {
+  .contact-image {
+    background-image: url("../assets/webpimages/kontakt.webp");
+  }
 }
 
 .contact-image a {
-  font-family: "Cinzel";
+  font-family: "Cinzel", serif;
+  font-display: swap;
   font-size: 1.5rem;
   line-height: 0rem;
   margin-bottom: 20px;
@@ -46,17 +53,18 @@
   justify-content: center;
   align-items: center;
   width: 80%;
-  height: 6vh;
+  height: 2rem;
   min-height: 25px;
 }
 
 .title h2 {
-  font-family: "Cinzel";
+  font-family: "Cinzel", serif;
+  font-display: swap;
   font-weight: 400;
   font-size: 2rem;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1488px) {
   .title h2 {
     font-size: 1.2rem;
   }
@@ -68,7 +76,7 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 800px) {
   .contact-container {
     width: 100%;
   }

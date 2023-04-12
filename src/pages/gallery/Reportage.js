@@ -15,11 +15,11 @@ const Animals = () => {
     mappedUnsortedImgs,
     handlePrevClick,
     handleNextClick,
-  } = useGallery("animals");
+  } = useGallery("reportage");
 
   return (
     <Gallery
-      category={"Plener"}
+      category={"Reportaż"}
       modal={modal}
       closeModal={closeModal}
       largeImgIsLoading={largeImgIsLoading}
