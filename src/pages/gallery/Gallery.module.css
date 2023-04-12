@@ -332,22 +332,6 @@ img,
   -ms-user-select: none;
 }
 
-.title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 80%;
-  height: 2rem;
-  min-height: 3rem;
-}
-
-.title h2 {
-  font-family: "Cinzel", serif;
-  font-display: swap;
-  font-weight: 400;
-  font-size: 2rem;
-}
-
 .button-container {
   display: flex;
   align-items: center;
@@ -375,15 +359,6 @@ img,
   opacity: 0.7;
 }
 
-@media (max-width: 1488px) {
-  .title {
-    min-height: 2rem;
-  }
-  .title h2 {
-    font-size: 1.2rem;
-  }
-}
-
 @media (max-width: 800px) {
   .container {
     width: 90%;
@@ -402,9 +377,6 @@ img,
   .grid-vertical {
     grid-gap: 3px;
     margin-bottom: 3px;
-  }
-  .title h2 {
-    font-size: 1.2rem;
   }
   .prev-button {
     left: 0px;

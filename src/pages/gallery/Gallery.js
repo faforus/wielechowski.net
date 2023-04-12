@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import classes from "./Gallery.module.css";
 import Spinner from "../../components/Spinner";
+import Title from "../../components/Title";
 
 const ArrowButton = React.memo(({ direction, onClick }) => {
   return (
@@ -57,7 +58,7 @@ function Gallery(props) {
         <ArrowButton direction="next" onClick={props.handleNextClick} />
       </div>
       <div className={classes.title}>
-        <h2>{props.category}</h2>
+        <Title title={props.category} />
       </div>
       {props.isLoading && <Spinner />}
       <div

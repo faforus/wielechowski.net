@@ -1,0 +1,22 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 80%;
+}
+
+.main-left {
+  padding: 20px 40px 20px 40px;
+  width: 30%;
+  background-color: lavenderblush;
+}
+
+.main-right {
+  width: 30%;
+  background-color: lightblue;
+  height: 40vh;
+}
+
+.additional-info {
+  width: 80%;
+}
