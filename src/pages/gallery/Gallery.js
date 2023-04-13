@@ -11,6 +11,7 @@ function Gallery(props) {
       <Modal
         modal={props.modal}
         setModal={props.setModal}
+        closeModal={props.closeModal}
         tempImgSrc={props.tempImgSrc}
         setTempImgSrc={props.setTempImgSrc}
         largeImgIsLoading={props.largeImgIsLoading}
@@ -18,9 +19,7 @@ function Gallery(props) {
         handlePrevClick={props.handlePrevClick}
         handleNextClick={props.handleNextClick}
       />
-      <div className={classes.title}>
-        <Title title={props.category} />
-      </div>
+      <Title title={props.category} />
       {props.isLoading && <Spinner />}
       <div
         style={{ display: props.isLoading ? "none" : "block" }}

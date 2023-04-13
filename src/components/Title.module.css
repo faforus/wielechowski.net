@@ -26,6 +26,7 @@
 
 @media (max-width: 800px) {
   .title h2 {
-    font-size: 1.2rem;
+    font-size: 0.9rem;
+    line-height: 1.2rem;
   }
 }

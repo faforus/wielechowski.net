@@ -3,27 +3,27 @@ import Title from "../../components/Title";
 import classes from "./Offer.module.css";
 import webpSupported from "../../helpers/webpSupport";
 
-import img1 from "../../assets/images/galleries/studio-images-thumbnails/amadred.jpg";
-import img2 from "../../assets/images/galleries/studio-images-thumbnails/aniares.jpg";
-import img3 from "../../assets/images/galleries/studio-images-thumbnails/asdasd.jpg";
-import img4 from "../../assets/images/galleries/studio-images-thumbnails/asiablue.jpg";
-import img5 from "../../assets/images/galleries/studio-images-thumbnails/d1.jpg";
-import img6 from "../../assets/images/galleries/studio-images-thumbnails/g1.jpg";
-import img7 from "../../assets/images/galleries/studio-images-thumbnails/asiasmall.jpg";
-import img8 from "../../assets/images/galleries/studio-images-thumbnails/nadia.jpg";
-import img9 from "../../assets/images/galleries/studio-images-thumbnails/parasmini.jpg";
-import img10 from "../../assets/images/galleries/studio-images-thumbnails/pat.jpg";
+import img1 from "../../assets/images/galleries/studio-images/amadred.jpg";
+import img2 from "../../assets/images/galleries/studio-images/aniares.jpg";
+import img3 from "../../assets/images/galleries/studio-images/asdasd.jpg";
+import img4 from "../../assets/images/galleries/studio-images/asiablue.jpg";
+import img5 from "../../assets/images/galleries/studio-images/d1.jpg";
+import img6 from "../../assets/images/galleries/studio-images/g1.jpg";
+import img7 from "../../assets/images/galleries/studio-images/asiasmall.jpg";
+import img8 from "../../assets/images/galleries/studio-images/nadia.jpg";
+import img9 from "../../assets/images/galleries/studio-images/parasmini.jpg";
+import img10 from "../../assets/images/galleries/studio-images/pat.jpg";
 
-import webpImg1 from "../../assets/webpimages/galleries/studio-images-thumbnails/amadred.webp";
-import webpImg2 from "../../assets/webpimages/galleries/studio-images-thumbnails/aniares.webp";
-import webpImg3 from "../../assets/webpimages/galleries/studio-images-thumbnails/asdasd.webp";
-import webpImg4 from "../../assets/webpimages/galleries/studio-images-thumbnails/asiablue.webp";
-import webpImg5 from "../../assets/webpimages/galleries/studio-images-thumbnails/d1.webp";
-import webpImg6 from "../../assets/webpimages/galleries/studio-images-thumbnails/g1.webp";
-import webpImg7 from "../../assets/webpimages/galleries/studio-images-thumbnails/asiasmall.webp";
-import webpImg8 from "../../assets/webpimages/galleries/studio-images-thumbnails/nadia.webp";
-import webpImg9 from "../../assets/webpimages/galleries/studio-images-thumbnails/parasmini.webp";
-import webpImg10 from "../../assets/webpimages/galleries/studio-images-thumbnails/pat.webp";
+import webpImg1 from "../../assets/webpimages/galleries/studio-images/amadred.webp";
+import webpImg2 from "../../assets/webpimages/galleries/studio-images/aniares.webp";
+import webpImg3 from "../../assets/webpimages/galleries/studio-images/asdasd.webp";
+import webpImg4 from "../../assets/webpimages/galleries/studio-images/asiablue.webp";
+import webpImg5 from "../../assets/webpimages/galleries/studio-images/d1.webp";
+import webpImg6 from "../../assets/webpimages/galleries/studio-images/g1.webp";
+import webpImg7 from "../../assets/webpimages/galleries/studio-images/asiasmall.webp";
+import webpImg8 from "../../assets/webpimages/galleries/studio-images/nadia.webp";
+import webpImg9 from "../../assets/webpimages/galleries/studio-images/parasmini.webp";
+import webpImg10 from "../../assets/webpimages/galleries/studio-images/pat.webp";
 
 const Image = () => {
   const [currentImage, setCurrentImage] = useState([]);
@@ -102,7 +102,8 @@ const Image = () => {
         </div>
         <div className={classes.square}>
           <p>8+ zdjęć</p>
-          <p>do uzgodnienia</p>
+          <p>do</p>
+          <p>uzgodnienia</p>
         </div>
       </div>
       <div className={classes["additional-info"]}>

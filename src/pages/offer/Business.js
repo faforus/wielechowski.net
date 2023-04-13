@@ -3,45 +3,45 @@ import Title from "../../components/Title";
 import classes from "./Offer.module.css";
 import webpSupported from "../../helpers/webpSupport";
 
-import img1 from "../../assets/images/galleries/studio-images-thumbnails/w1-s.jpg";
-import img2 from "../../assets/images/galleries/studio-images-thumbnails/dorotasmall.jpg";
-import img4 from "../../assets/images/galleries/studio-images-thumbnails/ewa.jpg";
-import img5 from "../../assets/images/galleries/studio-images-thumbnails/Fatimah Adebimpe Salami.jpg";
-import img6 from "../../assets/images/galleries/studio-images-thumbnails/gosiasmall.jpg";
-import img7 from "../../assets/images/galleries/studio-images-thumbnails/Isabela Pereira Carvalho.jpg";
-import img8 from "../../assets/images/galleries/studio-images-thumbnails/justyna.jpg";
-import img9 from "../../assets/images/galleries/studio-images-thumbnails/Kasjana.jpg";
-import img10 from "../../assets/images/galleries/studio-images-thumbnails/ł1-s.jpg";
-import img11 from "../../assets/images/galleries/studio-images-thumbnails/łukasz.jpg";
-import img12 from "../../assets/images/galleries/studio-images-thumbnails/marcin1-3x2.jpg";
-import img13 from "../../assets/images/galleries/studio-images-thumbnails/marta.jpg";
-import img14 from "../../assets/images/galleries/studio-images-thumbnails/michalek.jpg";
-import img15 from "../../assets/images/galleries/studio-images-thumbnails/p1-3x2.jpg";
-import img16 from "../../assets/images/galleries/studio-images-thumbnails/patrycja1-3x2.jpg";
-import img17 from "../../assets/images/galleries/studio-images-thumbnails/Radosław.jpg";
-import img18 from "../../assets/images/galleries/studio-images-thumbnails/Seher.jpg";
-import img19 from "../../assets/images/galleries/studio-images-thumbnails/Azeezah Aina.jpg";
-import img20 from "../../assets/images/galleries/studio-images-thumbnails/ama1.jpg";
+import img1 from "../../assets/images/galleries/studio-images/w1-s.jpg";
+import img2 from "../../assets/images/galleries/studio-images/dorotasmall.jpg";
+import img4 from "../../assets/images/galleries/studio-images/ewa.jpg";
+import img5 from "../../assets/images/galleries/studio-images/Fatimah Adebimpe Salami.jpg";
+import img6 from "../../assets/images/galleries/studio-images/gosiasmall.jpg";
+import img7 from "../../assets/images/galleries/studio-images/Isabela Pereira Carvalho.jpg";
+import img8 from "../../assets/images/galleries/studio-images/justyna.jpg";
+import img9 from "../../assets/images/galleries/studio-images/Kasjana.jpg";
+import img10 from "../../assets/images/galleries/studio-images/ł1-s.jpg";
+import img11 from "../../assets/images/galleries/studio-images/łukasz.jpg";
+import img12 from "../../assets/images/galleries/studio-images/marcin1-3x2.jpg";
+import img13 from "../../assets/images/galleries/studio-images/marta.jpg";
+import img14 from "../../assets/images/galleries/studio-images/michalek.jpg";
+import img15 from "../../assets/images/galleries/studio-images/p1-3x2.jpg";
+import img16 from "../../assets/images/galleries/studio-images/patrycja1-3x2.jpg";
+import img17 from "../../assets/images/galleries/studio-images/Radosław.jpg";
+import img18 from "../../assets/images/galleries/studio-images/Seher.jpg";
+import img19 from "../../assets/images/galleries/studio-images/Azeezah Aina.jpg";
+import img20 from "../../assets/images/galleries/studio-images/ama1.jpg";
 
-import webpImg1 from "../../assets/webpimages/galleries/studio-images-thumbnails/w1-s.webp";
-import webpImg2 from "../../assets/webpimages/galleries/studio-images-thumbnails/dorotasmall.webp";
-import webpImg4 from "../../assets/webpimages/galleries/studio-images-thumbnails/ewa.webp";
-import webpImg5 from "../../assets/webpimages/galleries/studio-images-thumbnails/Fatimah Adebimpe Salami.webp";
-import webpImg6 from "../../assets/webpimages/galleries/studio-images-thumbnails/gosiasmall.webp";
-import webpImg7 from "../../assets/webpimages/galleries/studio-images-thumbnails/Isabela Pereira Carvalho.webp";
-import webpImg8 from "../../assets/webpimages/galleries/studio-images-thumbnails/justyna.webp";
-import webpImg9 from "../../assets/webpimages/galleries/studio-images-thumbnails/Kasjana.webp";
-import webpImg10 from "../../assets/webpimages/galleries/studio-images-thumbnails/ł1-s.webp";
-import webpImg11 from "../../assets/webpimages/galleries/studio-images-thumbnails/łukasz.webp";
-import webpImg12 from "../../assets/webpimages/galleries/studio-images-thumbnails/marcin1-3x2.webp";
-import webpImg13 from "../../assets/webpimages/galleries/studio-images-thumbnails/marta.webp";
-import webpImg14 from "../../assets/webpimages/galleries/studio-images-thumbnails/michalek.webp";
-import webpImg15 from "../../assets/webpimages/galleries/studio-images-thumbnails/p1-3x2.webp";
-import webpImg16 from "../../assets/webpimages/galleries/studio-images-thumbnails/patrycja1-3x2.webp";
-import webpImg17 from "../../assets/webpimages/galleries/studio-images-thumbnails/Radosław.webp";
-import webpImg18 from "../../assets/webpimages/galleries/studio-images-thumbnails/Seher.webp";
-import webpImg19 from "../../assets/webpimages/galleries/studio-images-thumbnails/Azeezah Aina.webp";
-import webpImg20 from "../../assets/webpimages/galleries/studio-images-thumbnails/ama1.webp";
+import webpImg1 from "../../assets/webpimages/galleries/studio-images/w1-s.webp";
+import webpImg2 from "../../assets/webpimages/galleries/studio-images/dorotasmall.webp";
+import webpImg4 from "../../assets/webpimages/galleries/studio-images/ewa.webp";
+import webpImg5 from "../../assets/webpimages/galleries/studio-images/Fatimah Adebimpe Salami.webp";
+import webpImg6 from "../../assets/webpimages/galleries/studio-images/gosiasmall.webp";
+import webpImg7 from "../../assets/webpimages/galleries/studio-images/Isabela Pereira Carvalho.webp";
+import webpImg8 from "../../assets/webpimages/galleries/studio-images/justyna.webp";
+import webpImg9 from "../../assets/webpimages/galleries/studio-images/Kasjana.webp";
+import webpImg10 from "../../assets/webpimages/galleries/studio-images/ł1-s.webp";
+import webpImg11 from "../../assets/webpimages/galleries/studio-images/łukasz.webp";
+import webpImg12 from "../../assets/webpimages/galleries/studio-images/marcin1-3x2.webp";
+import webpImg13 from "../../assets/webpimages/galleries/studio-images/marta.webp";
+import webpImg14 from "../../assets/webpimages/galleries/studio-images/michalek.webp";
+import webpImg15 from "../../assets/webpimages/galleries/studio-images/p1-3x2.webp";
+import webpImg16 from "../../assets/webpimages/galleries/studio-images/patrycja1-3x2.webp";
+import webpImg17 from "../../assets/webpimages/galleries/studio-images/Radosław.webp";
+import webpImg18 from "../../assets/webpimages/galleries/studio-images/Seher.webp";
+import webpImg19 from "../../assets/webpimages/galleries/studio-images/Azeezah Aina.webp";
+import webpImg20 from "../../assets/webpimages/galleries/studio-images/ama1.webp";
 
 const Business = () => {
   const [currentImage, setCurrentImage] = useState([]);
@@ -154,7 +154,8 @@ const Business = () => {
         </div>
         <div className={classes.square}>
           <p>indywidualnie</p>
-          <p>1 osoba 3 zdjęcia</p>
+          <p>1 osoba</p>
+          <p>3 zdjęcia</p>
           <p>250 zł</p>
         </div>
         <div className={classes.square}>

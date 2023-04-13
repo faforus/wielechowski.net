@@ -17,7 +17,7 @@ footer {
   align-items: center;
   margin-top: auto;
   height: 5rem;
-  min-height: 140px;
+  min-height: 120px;
   background-color: white;
   z-index: 10;
 }
@@ -30,5 +30,11 @@ footer p {
 @media (max-width: 1488px) {
   footer p {
     font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 800px) {
+  footer {
+    min-height: 90px;
   }
 }
