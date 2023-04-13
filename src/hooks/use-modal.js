@@ -2,34 +2,33 @@ import { useEffect, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import classes from "../components/Modal.module.css";
 
-const useModal = (props) => {
+const useModal = (images) => {
   const [modal, setModal] = useState(false);
   const [tempImgSrc, setTempImgSrc] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [largeImgIsLoading, setLargeImgIsLoading] = useState(false);
-  const [sortedImages, setSortedImages] = useState([]);
   const navigate = useNavigate();
 
   const handlePrevClick = useCallback(() => {
+    console.log(currentIndex);
     setLargeImgIsLoading(true);
-    const currentImageIndex = sortedImages.findIndex(
+    const currentImageIndex = images.findIndex(
       (img) => img.id === currentIndex
     );
-    const newIndex =
-      (currentImageIndex + sortedImages.length - 1) % sortedImages.length;
-    setTempImgSrc(sortedImages[newIndex].largeImage);
-    setCurrentIndex(sortedImages[newIndex].id);
-  }, [sortedImages, currentIndex]);
+    const newIndex = (currentImageIndex + images.length - 1) % images.length;
+    setTempImgSrc(images[newIndex].largeImage);
+    setCurrentIndex(images[newIndex].id);
+  }, [images, currentIndex]);
 
   const handleNextClick = useCallback(() => {
     setLargeImgIsLoading(true);
-    const currentImageIndex = sortedImages.findIndex(
+    const currentImageIndex = images.findIndex(
       (img) => img.id === currentIndex
     );
-    const newIndex = (currentImageIndex + 1) % sortedImages.length;
-    setTempImgSrc(sortedImages[newIndex].largeImage);
-    setCurrentIndex(sortedImages[newIndex].id);
-  }, [sortedImages, currentIndex]);
+    const newIndex = (currentImageIndex + 1) % images.length;
+    setTempImgSrc(images[newIndex].largeImage);
+    setCurrentIndex(images[newIndex].id);
+  }, [images, currentIndex]);
 
   const handleLargeImageLoad = () => {
     setLargeImgIsLoading(false);
@@ -54,8 +53,8 @@ const useModal = (props) => {
 
     const handleKeyDown = (e) => {
       if (e.keyCode === 8) {
-        navigate("/galeria");
-        window.scrollTo(0, 0);
+        // navigate("/galeria");
+        // window.scrollTo(0, 0);
       }
       if (e.keyCode === 37) {
         handlePrevClick();
@@ -77,11 +76,14 @@ const useModal = (props) => {
 
   return {
     modal,
-    largeImgIsLoading,
-    tempImgSrc,
-    handleLargeImageLoad,
     setModal,
+    closeModal,
+    tempImgSrc,
+    setLargeImgIsLoading,
+    setCurrentIndex,
     setTempImgSrc,
+    handleLargeImageLoad,
+    largeImgIsLoading,
     handlePrevClick,
     handleNextClick,
   };

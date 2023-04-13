@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React from "react";
 import classes from "./Modal.module.css";
 import Spinner from "./Spinner";
 
@@ -35,6 +35,7 @@ const Modal = (props) => {
     >
       {props.largeImgIsLoading && <Spinner />}
       <img
+        key={props.tempImgSrc}
         alt={props.tempImgSrc
           .replace(/%20/g, " ")
           .replace("/static/media/", "")
