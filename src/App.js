@@ -13,6 +13,12 @@ import Studio from "./pages/gallery/Studio";
 import Reportage from "./pages/gallery/Reportage";
 import Outdoors from "./pages/gallery/Outdoors";
 import Animals from "./pages/gallery/Animals";
+import Business from "./pages/offer/Business";
+import Image from "./pages/offer/Image";
+import Children from "./pages/offer/Children";
+import Wedding from "./pages/offer/Wedding";
+import NonCommercialReportage from "./pages/offer/NonCommercialReportage";
+import CommercialReportage from "./pages/offer/CommercialReportage";
 import RootLayout from "./pages/Root";
 import webpSupported from "./helpers/webpSupport";
 
@@ -33,6 +39,36 @@ const router = createBrowserRouter([
       {
         path: "/zwierzeta",
         element: <Animals webpSupported={webpSupported} />,
+      },
+      ,
+      {
+        path: "/sesja-biznesowa",
+        element: <Business webpSupported={webpSupported} />,
+      },
+      ,
+      {
+        path: "/sesja-wizerunkowa",
+        element: <Image webpSupported={webpSupported} />,
+      },
+      ,
+      {
+        path: "/sesja-dziecieca",
+        element: <Children webpSupported={webpSupported} />,
+      },
+      ,
+      {
+        path: "/reportaz-slubny",
+        element: <Wedding webpSupported={webpSupported} />,
+      },
+      ,
+      {
+        path: "/reportaz-okolicznosciowy",
+        element: <NonCommercialReportage webpSupported={webpSupported} />,
+      },
+      ,
+      {
+        path: "/reportaz-firmowy",
+        element: <CommercialReportage webpSupported={webpSupported} />,
       },
     ],
   },

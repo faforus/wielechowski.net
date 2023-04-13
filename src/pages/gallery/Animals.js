@@ -4,7 +4,6 @@ import Gallery from "./Gallery";
 const Animals = () => {
   const {
     modal,
-    closeModal,
     largeImgIsLoading,
     tempImgSrc,
     handleLargeImageLoad,
@@ -19,9 +18,8 @@ const Animals = () => {
 
   return (
     <Gallery
-      category={"Plener"}
+      category={"Zwierzęta"}
       modal={modal}
-      closeModal={closeModal}
       largeImgIsLoading={largeImgIsLoading}
       tempImgSrc={tempImgSrc}
       handleLargeImageLoad={handleLargeImageLoad}

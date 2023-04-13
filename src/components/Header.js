@@ -18,22 +18,24 @@ const Header = () => {
             </Link>
             <ul className={classes["dropdown-content"]}>
               <li>
-                <Link to="#">Sesja Biznesowa</Link>
+                <Link to="/sesja-biznesowa">Sesja Biznesowa</Link>
               </li>
               <li>
-                <Link to="#">Sesja Wizerunkowa</Link>
+                <Link to="/sesja-wizerunkowa">Sesja Wizerunkowa</Link>
               </li>
               <li>
-                <Link to="#">Sesja Dziecięca</Link>
+                <Link to="/sesja-dziecieca">Sesja Dziecięca</Link>
               </li>
               <li>
-                <Link to="#">Reportaż Ślubny</Link>
+                <Link to="/reportaz-slubny">Reportaż Ślubny</Link>
               </li>
               <li>
-                <Link to="#">Reportaż Okolicznościowy</Link>
+                <Link to="/reportaz-okolicznosciowy">
+                  Reportaż Okolicznościowy
+                </Link>
               </li>
               <li>
-                <Link to="#">Eventy Firmowe / Sportowe</Link>
+                <Link to="/reportaz-firmowy">Eventy Firmowe / Sportowe</Link>
               </li>
             </ul>
           </li>

@@ -1,0 +1,31 @@
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 80%;
+  height: 2rem;
+  min-height: 25px;
+}
+
+.title h2 {
+  font-family: "Cinzel", serif;
+  font-display: swap;
+  font-weight: 400;
+  font-size: 1.6rem;
+}
+
+@media (max-width: 1488px) {
+  .title {
+    min-height: 2rem;
+  }
+  .title h2 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .title h2 {
+    font-size: 1.2rem;
+  }
+}

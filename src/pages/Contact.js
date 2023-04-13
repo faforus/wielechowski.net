@@ -1,11 +1,10 @@
 import classes from "./Contact.module.css";
+import Title from "../components/Title";
 
 const Contact = () => {
   return (
     <div className={classes["contact-container"]}>
-      <div className={classes.title}>
-        <h2>Kontakt</h2>
-      </div>
+      <Title title={"Kontakt"} />
       <div className={classes["contact-image"]}>
         <div className={classes.info}>
           <a href="tel:+48722265649">+48 722 265 649</a>

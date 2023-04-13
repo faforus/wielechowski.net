@@ -57,16 +57,6 @@ function useGallery(category) {
     setLargeImgIsLoading(false);
   };
 
-  const closeModal = useCallback(
-    (e) => {
-      if (e.target.classList.contains(classes.modal)) {
-        setModal(false);
-        setTempImgSrc("");
-      }
-    },
-    [setModal, setTempImgSrc]
-  );
-
   useEffect(() => {
     (async () => {
       let images;
@@ -312,7 +302,6 @@ function useGallery(category) {
 
   return {
     modal,
-    closeModal,
     largeImgIsLoading,
     tempImgSrc,
     handleLargeImageLoad,
