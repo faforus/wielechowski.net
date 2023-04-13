@@ -1,22 +1,130 @@
-import { Fragment } from "react";
+import { useState, useEffect } from "react";
+import Title from "../../components/Title";
 import classes from "./Offer.module.css";
-import Offer from "./Offer";
+import webpSupported from "../../helpers/webpSupport";
+
+import img1 from "../../assets/images/galleries/reportaz-images-thumbnails/chrz1.jpg";
+import img2 from "../../assets/images/galleries/reportaz-images-thumbnails/dp1.jpg";
+import img3 from "../../assets/images/galleries/reportaz-images-thumbnails/dp2.jpg";
+import img4 from "../../assets/images/galleries/reportaz-images-thumbnails/dp3.jpg";
+import img5 from "../../assets/images/galleries/reportaz-images-thumbnails/dp4.jpg";
+import img6 from "../../assets/images/galleries/reportaz-images-thumbnails/dp5.jpg";
+import img7 from "../../assets/images/galleries/reportaz-images-thumbnails/dp6.jpg";
+import img8 from "../../assets/images/galleries/reportaz-images-thumbnails/dp7.jpg";
+import img9 from "../../assets/images/galleries/reportaz-images-thumbnails/okolicznosciowe.jpg";
+import img10 from "../../assets/images/galleries/reportaz-images-thumbnails/p1.jpg";
+import img11 from "../../assets/images/galleries/reportaz-images-thumbnails/p2.jpg";
+import img12 from "../../assets/images/galleries/reportaz-images-thumbnails/p3.jpg";
+import img13 from "../../assets/images/galleries/reportaz-images-thumbnails/panienski.jpg";
+
+import webpImg1 from "../../assets/webpimages/galleries/reportaz-images-thumbnails/chrz1.webp";
+import webpImg2 from "../../assets/webpimages/galleries/reportaz-images-thumbnails/dp1.webp";
+import webpImg3 from "../../assets/webpimages/galleries/reportaz-images-thumbnails/dp2.webp";
+import webpImg4 from "../../assets/webpimages/galleries/reportaz-images-thumbnails/dp3.webp";
+import webpImg5 from "../../assets/webpimages/galleries/reportaz-images-thumbnails/dp4.webp";
+import webpImg6 from "../../assets/webpimages/galleries/reportaz-images-thumbnails/dp5.webp";
+import webpImg7 from "../../assets/webpimages/galleries/reportaz-images-thumbnails/dp6.webp";
+import webpImg8 from "../../assets/webpimages/galleries/reportaz-images-thumbnails/dp7.webp";
+import webpImg9 from "../../assets/webpimages/galleries/reportaz-images-thumbnails/okolicznosciowe.webp";
+import webpImg10 from "../../assets/webpimages/galleries/reportaz-images-thumbnails/p1.webp";
+import webpImg11 from "../../assets/webpimages/galleries/reportaz-images-thumbnails/p2.webp";
+import webpImg12 from "../../assets/webpimages/galleries/reportaz-images-thumbnails/p3.webp";
+import webpImg13 from "../../assets/webpimages/galleries/reportaz-images-thumbnails/panienski.webp";
 
 const NonCommercialReportage = () => {
+  const [currentImage, setCurrentImage] = useState([]);
+  const [mappedImages, setMappedImages] = useState([]);
+
+  useEffect(() => {
+    let images;
+    if (webpSupported) {
+      images = [
+        webpImg1,
+        webpImg2,
+        webpImg3,
+        webpImg4,
+        webpImg5,
+        webpImg6,
+        webpImg7,
+        webpImg8,
+        webpImg9,
+        webpImg10,
+        webpImg11,
+        webpImg12,
+        webpImg13,
+      ];
+    } else {
+      images = [
+        img1,
+        img2,
+        img3,
+        img4,
+        img5,
+        img6,
+        img7,
+        img8,
+        img9,
+        img10,
+        img11,
+        img12,
+        img13,
+      ];
+    }
+    const mappedImages = images.map((img, index) => {
+      return (
+        <img
+          onClick={() => {
+            setCurrentImage(mappedImages[index]);
+          }}
+          src={img}
+          alt={img
+            .replace(/%20/g, " ")
+            .replace("/static/media/", "")
+            .replace(/\..*$/, "")}
+          key={index}
+        />
+      );
+    });
+    setMappedImages(mappedImages);
+    setCurrentImage(mappedImages[0]);
+  }, []);
+
   return (
-    <Fragment>
-      <Offer title="Reportaż Okolicznościowy" />
+    <div className={classes.wrapper}>
+      <Title title="Reportaż Okolicznościowy" />
       <div className={classes.main}>
-        <div className={classes["main-left"]}>
-          <p>Między innymi:</p>
-          <p>wieczory panieńskie / kawalerskie</p>
-          <p>chrzciny / pierwsza komunia</p>
-          <p>zaręczyny</p>
-          <p>urodziny / imieniny</p>
+        <div className={classes["main-container"]}>
+          <div className={classes["main-left"]}>
+            <p>Między innymi:</p>
+            <p>wieczory panieńskie / kawalerskie</p>
+            <p>chrzciny / pierwsza komunia</p>
+            <p>zaręczyny</p>
+            <p>urodziny / imieniny</p>
+          </div>
+          <div className={classes["main-right"]}>
+            <div className={classes["mini-gallery-horizontal"]}>
+              <div className={classes["mini-gallery-top"]}>{currentImage}</div>
+              <div className={classes["mini-gallery-bottom"]}>
+                {mappedImages}
+              </div>
+              <div></div>
+            </div>
+          </div>
         </div>
-        <div className={classes["main-right"]}></div>
       </div>
-    </Fragment>
+      <div className={classes.price}>
+        <p>Ceny od:</p>
+        <p className={classes["price-large"]}>
+          500<span className={classes["price-currency"]}> zł</span>
+        </p>
+      </div>
+      <div className={classes.main}>
+        <p>
+          Cena jest zależna od długości wydarzenia, lokalizacji, ilości zdjęć i
+          rodzaju obróbki.
+        </p>
+      </div>
+    </div>
   );
 };
 

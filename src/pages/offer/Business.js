@@ -5,7 +5,6 @@ import webpSupported from "../../helpers/webpSupport";
 
 import img1 from "../../assets/images/galleries/studio-images-thumbnails/w1-s.jpg";
 import img2 from "../../assets/images/galleries/studio-images-thumbnails/dorotasmall.jpg";
-import img3 from "../../assets/images/galleries/studio-images-thumbnails/d1.jpg";
 import img4 from "../../assets/images/galleries/studio-images-thumbnails/ewa.jpg";
 import img5 from "../../assets/images/galleries/studio-images-thumbnails/Fatimah Adebimpe Salami.jpg";
 import img6 from "../../assets/images/galleries/studio-images-thumbnails/gosiasmall.jpg";
@@ -26,7 +25,6 @@ import img20 from "../../assets/images/galleries/studio-images-thumbnails/ama1.j
 
 import webpImg1 from "../../assets/webpimages/galleries/studio-images-thumbnails/w1-s.webp";
 import webpImg2 from "../../assets/webpimages/galleries/studio-images-thumbnails/dorotasmall.webp";
-import webpImg3 from "../../assets/webpimages/galleries/studio-images-thumbnails/d1.webp";
 import webpImg4 from "../../assets/webpimages/galleries/studio-images-thumbnails/ewa.webp";
 import webpImg5 from "../../assets/webpimages/galleries/studio-images-thumbnails/Fatimah Adebimpe Salami.webp";
 import webpImg6 from "../../assets/webpimages/galleries/studio-images-thumbnails/gosiasmall.webp";
@@ -55,7 +53,6 @@ const Business = () => {
       images = [
         webpImg1,
         webpImg2,
-        webpImg3,
         webpImg4,
         webpImg5,
         webpImg6,
@@ -78,7 +75,6 @@ const Business = () => {
       images = [
         img1,
         img2,
-        img3,
         img4,
         img5,
         img6,
@@ -118,7 +114,7 @@ const Business = () => {
   }, []);
 
   return (
-    <div className={classes.business}>
+    <div className={classes.wrapper}>
       <Title title="portret biznesowy / sesja biznesowa / korporacyjna" />
       <div className={classes.main}>
         <div className={classes["main-container"]}>
@@ -200,69 +196,3 @@ const Business = () => {
 };
 
 export default Business;
-
-// const {
-//   modal,
-//   setModal,
-//   tempImgSrc,
-//   setCurrentIndex,
-//   setLargeImgIsLoading,
-//   setTempImgSrc,
-//   handleLargeImageLoad,
-//   largeImgIsLoading,
-//   handlePrevClick,
-//   handleNextClick,
-// } = useModal(images);
-
-// <img
-// alt={imageX}
-// key={imageX}
-// onClick={() => {
-//   setModal(true);
-//   setTempImgSrc(images[0].src);
-//   setCurrentIndex(images[0].id);
-// }}
-// src={images[0].src}
-// />
-// <img
-// alt={imageY}
-// key={imageY}
-// onClick={() => {
-//   setModal(true);
-//   setTempImgSrc(images[1].src);
-//   setCurrentIndex(images[1].id);
-// }}
-// src={images[1].src}
-// />
-// <img
-// alt={imageA}
-// key={imageA}
-// onClick={() => {
-//   setModal(true);
-//   setTempImgSrc(images[2].src);
-//   setCurrentIndex(images[2].id);
-// }}
-// src={images[2].src}
-// />
-// <img
-// alt={imageS}
-// key={imageS}
-// onClick={() => {
-//   setModal(true);
-//   setTempImgSrc(images[3].src);
-//   setCurrentIndex(images[3].id);
-// }}
-// src={images[3].src}
-// />
-// <Modal
-// modal={modal}
-// setModal={setModal}
-// tempImgSrc={tempImgSrc}
-// setLargeImgIsLoading={setLargeImgIsLoading}
-// setTempImgSrc={setTempImgSrc}
-// handleLargeImageLoad={handleLargeImageLoad}
-// largeImgIsLoading={largeImgIsLoading}
-// handlePrevClick={handlePrevClick}
-// handleNextClick={handleNextClick}
-// setCurrentIndex={setCurrentIndex}
-// />

@@ -1,11 +1,11 @@
 import { Fragment } from "react";
 import classes from "./Offer.module.css";
-import Offer from "./Offer";
+import Title from "../../components/Title";
 
 const Children = () => {
   return (
     <Fragment>
-      <Offer title="Sesja Dziecięca" />
+      <Title title="Sesja Dziecięca" />
       <div className={classes.main}>
         <div className={classes["main-left"]}>
           <p>Lot Balonem</p>
