@@ -31,7 +31,12 @@ const Modal = (props) => {
           ? `${classes.modal} ${classes.open} ${classes["disable-select"]}`
           : classes.modal
       }
-      onClick={props.closeModal}
+      onClick={() => {
+        props.setModal(false);
+        setTimeout(() => {
+          props.setTempImgSrc("");
+        }, 500);
+      }}
     >
       {props.largeImgIsLoading && <Spinner />}
       <img
@@ -43,15 +48,32 @@ const Modal = (props) => {
         src={props.tempImgSrc}
         onLoad={props.handleLargeImageLoad}
         style={{ display: props.largeImgIsLoading ? "none" : "block" }}
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
       />
       <CloseButton
         onClick={() => {
           props.setModal(false);
-          props.setTempImgSrc("");
+          setTimeout(() => {
+            props.setTempImgSrc("");
+          }, 500);
         }}
       />
-      <ArrowButton direction="prev" onClick={props.handlePrevClick} />
-      <ArrowButton direction="next" onClick={props.handleNextClick} />
+      <ArrowButton
+        direction="prev"
+        onClick={(e) => {
+          e.stopPropagation();
+          props.handlePrevClick();
+        }}
+      />
+      <ArrowButton
+        direction="next"
+        onClick={(e) => {
+          e.stopPropagation();
+          props.handleNextClick();
+        }}
+      />
     </div>
   );
 };

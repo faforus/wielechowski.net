@@ -3,60 +3,21 @@ import { Link } from "react-router-dom";
 import classes from "./Gallery.module.css";
 import Spinner from "../../components/Spinner";
 import Title from "../../components/Title";
-
-const ArrowButton = React.memo(({ direction, onClick }) => {
-  return (
-    <button
-      className={
-        direction === "prev" ? classes["prev-button"] : classes["next-button"]
-      }
-      onClick={onClick}
-    >
-      {direction === "prev" ? "‹" : "›"}
-    </button>
-  );
-});
-
-const CloseButton = React.memo(({ onClick }) => {
-  return (
-    <span onClick={onClick} className={`${classes["close-button"]}`}>
-      {"×"}
-    </span>
-  );
-});
+import Modal from "../../components/Modal";
 
 function Gallery(props) {
   return (
     <Fragment>
-      <div
-        className={
-          props.modal
-            ? `${classes.modal} ${classes.open} ${classes["disable-select"]}`
-            : classes.modal
-        }
-        onClick={props.closeModal}
-      >
-        {props.largeImgIsLoading && <Spinner />}
-        (
-        <img
-          alt={props.tempImgSrc
-            .replace(/%20/g, " ")
-            .replace("/static/media/", "")
-            .replace(/\..*$/, "")}
-          src={props.tempImgSrc}
-          onLoad={props.handleLargeImageLoad}
-          style={{ display: props.largeImgIsLoading ? "none" : "block" }}
-        />
-        )
-        <CloseButton
-          onClick={() => {
-            props.setModal(false);
-            props.setTempImgSrc("");
-          }}
-        />
-        <ArrowButton direction="prev" onClick={props.handlePrevClick} />
-        <ArrowButton direction="next" onClick={props.handleNextClick} />
-      </div>
+      <Modal
+        modal={props.modal}
+        setModal={props.setModal}
+        tempImgSrc={props.tempImgSrc}
+        setTempImgSrc={props.setTempImgSrc}
+        largeImgIsLoading={props.largeImgIsLoading}
+        handleLargeImageLoad={props.handleLargeImageLoad}
+        handlePrevClick={props.handlePrevClick}
+        handleNextClick={props.handleNextClick}
+      />
       <div className={classes.title}>
         <Title title={props.category} />
       </div>

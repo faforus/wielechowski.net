@@ -1,6 +1,5 @@
 import { useEffect, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import classes from "../components/Modal.module.css";
 
 const useModal = (images) => {
   const [modal, setModal] = useState(false);
@@ -8,7 +7,6 @@ const useModal = (images) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [largeImgIsLoading, setLargeImgIsLoading] = useState(false);
   const navigate = useNavigate();
-
   const handlePrevClick = useCallback(() => {
     console.log(currentIndex);
     setLargeImgIsLoading(true);
@@ -34,15 +32,15 @@ const useModal = (images) => {
     setLargeImgIsLoading(false);
   };
 
-  const closeModal = useCallback(
-    (e) => {
-      if (e.target.classList.contains(classes.modal)) {
-        setModal(false);
-        setTempImgSrc("");
-      }
-    },
-    [setModal, setTempImgSrc]
-  );
+  // const closeModal = useCallback(
+  //   (e) => {
+  //     if (e.target.classList.contains(classes.modal)) {
+  //       setModal(false);
+  //       setTempImgSrc("");
+  //     }
+  //   },
+  //   [setModal, setTempImgSrc]
+  // );
 
   useEffect(() => {
     if (modal) {
@@ -77,7 +75,6 @@ const useModal = (images) => {
   return {
     modal,
     setModal,
-    closeModal,
     tempImgSrc,
     setLargeImgIsLoading,
     setCurrentIndex,
