@@ -1,16 +1,11 @@
 import { Fragment } from "react";
 import classes from "./Offer.module.css";
 import Offer from "./Offer";
-import Slicer from "react-slick";
-
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
 
 const Children = () => {
   return (
     <Fragment>
       <Offer title="Sesja Dziecięca" />
-      <Slicer />
       <div className={classes.main}>
         <div className={classes["main-left"]}>
           <p>Lot Balonem</p>
