@@ -152,3 +152,40 @@ export function importReportage() {
   }
   return { images, thumbnailImages };
 }
+
+export function importWedding() {
+  let images, thumbnailImages;
+
+  if (webpSupported) {
+    images = importAll(
+      require.context(
+        `../assets/webpimages/galleries/slub-images/`,
+        false,
+        /\.(webp)$/
+      )
+    );
+    thumbnailImages = importAll(
+      require.context(
+        `../assets/webpimages/galleries/slub-images-thumbnails/`,
+        false,
+        /\.(webp)$/
+      )
+    );
+  } else {
+    images = importAll(
+      require.context(
+        `../assets/images/galleries/slub-images`,
+        false,
+        /\.(jpe?g)$/
+      )
+    );
+    thumbnailImages = importAll(
+      require.context(
+        `../assets/images/galleries/slub-images-thumbnails`,
+        false,
+        /\.(jpe?g)$/
+      )
+    );
+  }
+  return { images, thumbnailImages };
+}

@@ -7,6 +7,7 @@ import {
   importStudio,
   importOutdoors,
   importReportage,
+  importWedding,
 } from "../helpers/importImages";
 
 const GRID_LAYOUT = [0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1];
@@ -73,6 +74,9 @@ function useGallery(category) {
       }
       if (category === "reportage") {
         ({ images, thumbnailImages } = importReportage());
+      }
+      if (category === "wedding") {
+        ({ images, thumbnailImages } = importWedding());
       }
 
       const horizontalImages = [];

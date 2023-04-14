@@ -8,7 +8,7 @@ const Header = () => {
         <h1>Filip Wielechowski</h1>
       </Link>
       <nav>
-        <ul>
+        <ul className={classes["menu-main"]}>
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -22,9 +22,6 @@ const Header = () => {
               </li>
               <li>
                 <Link to="/sesja-wizerunkowa">Sesja Wizerunkowa</Link>
-              </li>
-              <li>
-                <Link to="/sesja-dziecieca">Sesja Dziecięca</Link>
               </li>
               <li>
                 <Link to="/reportaz-slubny">Reportaż Ślubny</Link>

@@ -45,7 +45,7 @@ header li {
   position: relative;
 }
 
-header li:last-child {
+menu-main li:last-child {
   margin-right: 0;
 }
 
@@ -126,8 +126,13 @@ header a:hover {
   transform: translateX(-50%);
 }
 
+.dropdown-content li {
+  margin: 0;
+}
+
 .dropdown:hover .dropdown-content {
   display: block;
+  text-align: center;
 }
 
 /* Added this rule to hide the dropdown content when not hovered */

@@ -1,12 +1,32 @@
 import classes from "./Offer.module.css";
 import Title from "../../components/Title";
-
-import img1 from "../../assets/images/galleries/reportaz-images-thumbnails/Kasia i Rafał.jpg";
+import useGallery from "../../hooks/use-gallery";
+import Gallery from "../gallery/Gallery";
 
 const Wedding = () => {
+  const {
+    modal,
+    largeImgIsLoading,
+    tempImgSrc,
+    handleLargeImageLoad,
+    setModal,
+    setTempImgSrc,
+    isLoading,
+    mappedImgs,
+    mappedUnsortedImgs,
+    handlePrevClick,
+    handleNextClick,
+  } = useGallery("wedding");
+
   return (
     <div className={classes.wrapper}>
       <Title title="Reportaż Ślubny" />
+      <div className={classes.price}>
+        <p>Ceny od:</p>
+        <p className={classes["price-large"]}>
+          3000<span className={classes["price-currency"]}> zł</span>
+        </p>
+      </div>
       <div className={classes.main}>
         <div className={classes["main-container"]}>
           <div className={classes["main-left"]}>
@@ -28,6 +48,22 @@ const Wedding = () => {
           </div>
           <div className={classes["main-right"]}></div>
         </div>
+      </div>
+      <div className={classes["gallery-container"]}>
+        <Gallery
+          category={"Galeria Ślubna"}
+          modal={modal}
+          largeImgIsLoading={largeImgIsLoading}
+          tempImgSrc={tempImgSrc}
+          handleLargeImageLoad={handleLargeImageLoad}
+          setModal={setModal}
+          setTempImgSrc={setTempImgSrc}
+          isLoading={isLoading}
+          mappedImgs={mappedImgs}
+          mappedUnsortedImgs={mappedUnsortedImgs}
+          handlePrevClick={handlePrevClick}
+          handleNextClick={handleNextClick}
+        />
       </div>
     </div>
   );
