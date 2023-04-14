@@ -52,6 +52,7 @@ const Wedding = () => {
       <div className={classes["gallery-container"]}>
         <Gallery
           category={"Galeria Ślubna"}
+          link="empty"
           modal={modal}
           largeImgIsLoading={largeImgIsLoading}
           tempImgSrc={tempImgSrc}

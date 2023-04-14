@@ -29,15 +29,19 @@ function Gallery(props) {
         {props.mappedUnsortedImgs}
       </div>
       <div className={classes["button-container"]}>
-        <Link to="/galeria">
-          <button
-            onClick={() => {
-              window.scrollTo(0, 0);
-            }}
-          >
-            ‹‹‹
-          </button>
-        </Link>
+        {props.link === "empty" ? (
+          ""
+        ) : (
+          <Link to={props.link}>
+            <button
+              onClick={() => {
+                window.scrollTo(0, 0);
+              }}
+            >
+              ‹‹‹
+            </button>
+          </Link>
+        )}
       </div>
     </Fragment>
   );

@@ -19,6 +19,7 @@ const Animals = () => {
   return (
     <Gallery
       category={"Zwierzęta"}
+      link="/galeria"
       modal={modal}
       largeImgIsLoading={largeImgIsLoading}
       tempImgSrc={tempImgSrc}

@@ -20,6 +20,7 @@ const Animals = () => {
   return (
     <Gallery
       category={"Studio"}
+      link="/galeria"
       modal={modal}
       closeModal={closeModal}
       largeImgIsLoading={largeImgIsLoading}
