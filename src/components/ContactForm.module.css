@@ -31,6 +31,16 @@
   width: 200px;
   font-size: 1rem;
   text-indent: 10px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.form input:focus,
+.form textarea:focus {
+  outline: none;
+  border: 1px solid #5bc0de;
+  box-shadow: 0 0 5px #5bc0de;
 }
 
 .form textarea {
@@ -39,6 +49,8 @@
   width: 400px;
   height: 100px;
   resize: none;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 .form button,
