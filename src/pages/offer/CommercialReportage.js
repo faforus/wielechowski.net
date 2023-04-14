@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Title from "../../components/Title";
 import classes from "./Offer.module.css";
 import webpSupported from "../../helpers/webpSupport";
+import HorizontalMiniGallery from "../../components/Gallery Mini Horizontal/HorizontalMiniGallery";
 
 import p1 from "../../assets/images/partners/emporium.png";
 import p2 from "../../assets/images/partners/fedex.png";
@@ -169,13 +170,10 @@ const CommercialReportage = () => {
             <p>otwarcia nowych lokali</p>
           </div>
           <div className={classes["main-right"]}>
-            <div className={classes["mini-gallery-horizontal"]}>
-              <div className={classes["mini-gallery-top"]}>{currentImage}</div>
-              <div className={classes["mini-gallery-bottom"]}>
-                {mappedImages}
-              </div>
-              <div></div>
-            </div>
+            <HorizontalMiniGallery
+              currentImage={currentImage}
+              mappedImages={mappedImages}
+            />
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Title from "../../components/Title";
 import classes from "./Offer.module.css";
 import webpSupported from "../../helpers/webpSupport";
+import VerticalMiniGallery from "../../components/Gallery Mini Vertical/VerticalMiniGallery";
 
 import img1 from "../../assets/images/galleries/studio-images/w1-s.jpg";
 import img2 from "../../assets/images/galleries/studio-images/dorotasmall.jpg";
@@ -131,12 +132,10 @@ const Business = () => {
             </p>
           </div>
           <div className={classes["main-right"]}>
-            <div className={classes["mini-gallery"]}>
-              <div className={classes["mini-gallery-left"]}>{currentImage}</div>
-              <div className={classes["mini-gallery-right"]}>
-                {mappedImages}
-              </div>
-            </div>
+            <VerticalMiniGallery
+              currentImage={currentImage}
+              mappedImages={mappedImages}
+            />
           </div>
         </div>
       </div>

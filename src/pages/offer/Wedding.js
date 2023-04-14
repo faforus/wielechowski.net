@@ -1,7 +1,7 @@
 import classes from "./Offer.module.css";
 import Title from "../../components/Title";
 import useGallery from "../../hooks/use-gallery";
-import Gallery from "../gallery/Gallery";
+import Gallery from "../../components/Gallery Large/Gallery";
 
 const Wedding = () => {
   const {

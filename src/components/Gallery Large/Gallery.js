@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import classes from "./Gallery.module.css";
-import Spinner from "../../components/Spinner";
-import Title from "../../components/Title";
-import Modal from "../../components/Modal";
+import Spinner from "../Spinner";
+import Title from "../Title";
+import Modal from "../Modal";
 
 function Gallery(props) {
   return (

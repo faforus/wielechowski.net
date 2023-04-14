@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import classes from "../pages/gallery/Gallery.module.css";
+import classes from "../components/Gallery Large/Gallery.module.css";
 import { SERVER_COUNT } from "../config/SERVER";
 import {
   importAnimals,

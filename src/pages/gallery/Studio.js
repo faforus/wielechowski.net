@@ -1,5 +1,5 @@
 import useGallery from "../../hooks/use-gallery";
-import Gallery from "./Gallery";
+import Gallery from "../../components/Gallery Large/Gallery";
 
 const Animals = () => {
   const {

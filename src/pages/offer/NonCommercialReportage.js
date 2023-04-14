@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Title from "../../components/Title";
 import classes from "./Offer.module.css";
 import webpSupported from "../../helpers/webpSupport";
+import HorizontalMiniGallery from "../../components/Gallery Mini Horizontal/HorizontalMiniGallery";
 
 import img1 from "../../assets/images/galleries/reportaz-images/chrz1.jpg";
 import img2 from "../../assets/images/galleries/reportaz-images/dp1.jpg";
@@ -102,13 +103,10 @@ const NonCommercialReportage = () => {
             <p>urodziny / imieniny</p>
           </div>
           <div className={classes["main-right"]}>
-            <div className={classes["mini-gallery-horizontal"]}>
-              <div className={classes["mini-gallery-top"]}>{currentImage}</div>
-              <div className={classes["mini-gallery-bottom"]}>
-                {mappedImages}
-              </div>
-              <div></div>
-            </div>
+            <HorizontalMiniGallery
+              currentImage={currentImage}
+              mappedImages={mappedImages}
+            />
           </div>
         </div>
       </div>
