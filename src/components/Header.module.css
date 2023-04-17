@@ -1,5 +1,6 @@
 header {
   width: 80%;
+  max-width: 1040px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -11,10 +12,12 @@ header {
 
 header h1 {
   margin-top: 3rem;
+  margin-left: 1rem;
   font-family: "Cinzel", serif;
   font-display: swap;
   font-weight: lighter;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 header h1:hover {
@@ -28,7 +31,6 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
   z-index: 10;
 }
 
@@ -45,8 +47,8 @@ header li {
   position: relative;
 }
 
-menu-main li:last-child {
-  margin-right: 0;
+header li:last-child {
+  padding: 0.7rem 0rem 0.7rem 1rem;
 }
 
 header a {
@@ -60,7 +62,7 @@ header a:hover {
   color: #a0a0a0;
 }
 
-@media (max-width: 1488px) {
+@media (max-width: 2560px) {
   header h1 {
     font-size: 1.5rem;
     margin-top: 3.7rem;
@@ -68,13 +70,16 @@ header a:hover {
   nav {
     margin-left: 0;
   }
-}
-
-@media (max-width: 1295px) {
   header {
     justify-content: space-between;
   }
 }
+
+/* @media (max-width: 1295px) {
+  header {
+    justify-content: space-between;
+  }
+} */
 
 @media (max-width: 815px) {
   header h1 {

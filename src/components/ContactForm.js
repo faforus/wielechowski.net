@@ -9,7 +9,8 @@ const ContactForm = () => {
   const [message, setMessage] = useState("");
   const [formIsValid, setFormIsValid] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
-  const [formIsSent, setFormIsSent] = useState(false);
+  const [formSendAttempt, setFormSendAttempt] = useState(false);
+  const [formNotSent, setFormNotSent] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -38,12 +39,17 @@ const ContactForm = () => {
           setPhoneNumber("");
           setEmail("");
           setMessage("");
-          setFormIsSent(true);
+          setFormSendAttempt(true);
+          setFormNotSent(false);
         } else {
+          setFormSendAttempt(true);
+          setFormNotSent(true);
           throw new Error("Error sending the form.");
         }
       } catch (error) {
-        console.error(error);
+        setFormSendAttempt(true);
+        setFormNotSent(true);
+        console.log(error);
       }
     }
   };
@@ -94,15 +100,23 @@ const ContactForm = () => {
 
   return (
     <Fragment>
-      {formIsSent ? (
+      {formSendAttempt ? (
         <div className={classes.sent}>
-          <p>Wiadomośc wysłana!</p>
+          {formNotSent ? (
+            <p style={{ textAlign: "center" }}>
+              Problem z wysłaniem wiadomości.
+              <br />
+              Spróbuj ponownie.
+            </p>
+          ) : (
+            <p>Wiadomośc wysłana!</p>
+          )}
           <button
             onClick={() => {
-              setFormIsSent(false);
+              setFormSendAttempt(false);
             }}
           >
-            Ok
+            OK
           </button>
         </div>
       ) : (

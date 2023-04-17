@@ -26,46 +26,46 @@
 }
 
 .tab1 {
-  background-image: url("../assets/images/1.jpg");
-  background-position: 25% 25%;
+  background-image: url("../assets/images/studio.jpg");
+  background-position: 25% 35%;
 }
 
-@supports (background-image: url("../assets/webpimages/1.webp")) {
+@supports (background-image: url("../assets/webpimages/studio.webp")) {
   .tab1 {
-    background-image: url("../assets/webpimages/1.webp");
+    background-image: url("../assets/webpimages/studio.webp");
   }
 }
 
 .tab2 {
-  background-image: url("../assets/images/2.jpg");
-  background-position: 65% 45%;
+  background-image: url("../assets/images/reportaz1.jpg");
+  background-position: 35% 22%;
 }
 
-@supports (background-image: url("../assets/webpimages/2.webp")) {
+@supports (background-image: url("../assets/webpimages/reportaz1.webp")) {
   .tab2 {
-    background-image: url("../assets/webpimages/2.webp");
+    background-image: url("../assets/webpimages/reportaz1.webp");
   }
 }
 
 .tab3 {
-  background-image: url("../assets/images/3.jpg");
-  background-position: 0% 85%;
+  background-image: url("../assets/images/plener.jpg");
+  background-position: 0% 50%;
 }
 
-@supports (background-image: url("../assets/webpimages/3.webp")) {
+@supports (background-image: url("../assets/webpimages/plener.webp")) {
   .tab3 {
-    background-image: url("../assets/webpimages/3.webp");
+    background-image: url("../assets/webpimages/plener.webp");
   }
 }
 
 .tab4 {
-  background-image: url("../assets/images/4.jpg");
-  background-position: 35% 75%;
+  background-image: url("../assets/images/animals.jpg");
+  background-position: 35% 67%;
 }
 
-@supports (background-image: url("../assets/webpimages/4.webp")) {
+@supports (background-image: url("../assets/webpimages/animals.webp")) {
   .tab4 {
-    background-image: url("../assets/webpimages/4.webp");
+    background-image: url("../assets/webpimages/animals.webp");
   }
 }
 

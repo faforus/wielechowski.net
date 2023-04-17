@@ -4,27 +4,9 @@ import classes from "./Offer.module.css";
 import webpSupported from "../../helpers/webpSupport";
 import VerticalMiniGallery from "../../components/Gallery Mini Vertical/VerticalMiniGallery";
 
-import img1 from "../../assets/images/galleries/studio-images/amadred.jpg";
-import img2 from "../../assets/images/galleries/studio-images/aniares.jpg";
-import img3 from "../../assets/images/galleries/studio-images/asdasd.jpg";
-import img4 from "../../assets/images/galleries/studio-images/asiablue.jpg";
-import img5 from "../../assets/images/galleries/studio-images/d1.jpg";
-import img6 from "../../assets/images/galleries/studio-images/g1.jpg";
-import img7 from "../../assets/images/galleries/studio-images/asiasmall.jpg";
-import img8 from "../../assets/images/galleries/studio-images/nadia.jpg";
-import img9 from "../../assets/images/galleries/studio-images/parasmini.jpg";
-import img10 from "../../assets/images/galleries/studio-images/pat.jpg";
-
-import webpImg1 from "../../assets/webpimages/galleries/studio-images/amadred.webp";
-import webpImg2 from "../../assets/webpimages/galleries/studio-images/aniares.webp";
-import webpImg3 from "../../assets/webpimages/galleries/studio-images/asdasd.webp";
-import webpImg4 from "../../assets/webpimages/galleries/studio-images/asiablue.webp";
-import webpImg5 from "../../assets/webpimages/galleries/studio-images/d1.webp";
-import webpImg6 from "../../assets/webpimages/galleries/studio-images/g1.webp";
-import webpImg7 from "../../assets/webpimages/galleries/studio-images/asiasmall.webp";
-import webpImg8 from "../../assets/webpimages/galleries/studio-images/nadia.webp";
-import webpImg9 from "../../assets/webpimages/galleries/studio-images/parasmini.webp";
-import webpImg10 from "../../assets/webpimages/galleries/studio-images/pat.webp";
+const importAll = (r) => {
+  return r.keys().map(r);
+};
 
 const Image = () => {
   const [currentImage, setCurrentImage] = useState([]);
@@ -32,37 +14,42 @@ const Image = () => {
 
   useEffect(() => {
     let images;
+
     if (webpSupported) {
-      images = [
-        webpImg1,
-        webpImg2,
-        webpImg3,
-        webpImg4,
-        webpImg5,
-        webpImg6,
-        webpImg7,
-        webpImg8,
-        webpImg9,
-        webpImg10,
-      ];
-    } else {
-      images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
-    }
-    const mappedImages = images.map((img, index) => {
-      return (
-        <img
-          onClick={() => {
-            setCurrentImage(mappedImages[index]);
-          }}
-          src={img}
-          alt={img
-            .replace(/%20/g, " ")
-            .replace("/static/media/", "")
-            .replace(/\..*$/, "")}
-          key={index}
-        />
+      images = importAll(
+        require.context(
+          `../../assets/webpimages/galleries/studio/image/`,
+          true,
+          /\.(webp)$/
+        )
       );
-    });
+    } else {
+      images = importAll(
+        require.context(
+          `../../assets/images/galleries/studio/image/`,
+          true,
+          /\.(jpe?g)$/
+        )
+      );
+    }
+
+    const mappedImages = images
+      .sort(() => Math.random() - 0.5)
+      .map((img, index) => {
+        return (
+          <img
+            onClick={() => {
+              setCurrentImage(mappedImages[index]);
+            }}
+            src={img}
+            alt={img
+              .replace(/%20/g, " ")
+              .replace("/static/media/", "")
+              .replace(/\..*$/, "")}
+            key={index}
+          />
+        );
+      });
     setMappedImages(mappedImages);
     setCurrentImage(mappedImages[0]);
   }, []);

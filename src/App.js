@@ -67,11 +67,13 @@ function App() {
   const [loadedWelcome, setLoadedWelcome] = useState(false);
 
   useEffect(() => {
-    const welcomeElement = document.querySelector(`.${classes.welcome}`);
-    welcomeElement.style.opacity = 0;
     setTimeout(() => {
-      setLoadedWelcome(true);
-    }, 1000);
+      const welcomeElement = document.querySelector(`.${classes.welcome}`);
+      welcomeElement.style.opacity = 0;
+      setTimeout(() => {
+        setLoadedWelcome(true);
+      }, 400);
+    }, 500);
   }, []);
 
   return (
