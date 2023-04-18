@@ -1,5 +1,6 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import classes from "./ContactForm.module.css";
+import Spinner from "./Spinner";
 
 const ContactForm = () => {
   const [name, setName] = useState("");
@@ -9,47 +10,48 @@ const ContactForm = () => {
   const [message, setMessage] = useState("");
   const [formIsValid, setFormIsValid] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
-  const [formSendAttempt, setFormSendAttempt] = useState(false);
-  const [formNotSent, setFormNotSent] = useState(false);
+  const [sendingForm, setSendingForm] = useState(false);
+  const [sendingFormOutcome, setSendingFormOutcome] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    validateForm();
 
     if (formIsValid) {
+      setSendingForm(true);
+      const url = "https://sendemail-2qkjfrtbsq-uw.a.run.app";
+      const data = {
+        name,
+        surname,
+        phoneNumber,
+        email,
+        message,
+      };
+
       try {
-        const response = await fetch(
-          "https://react-http-83ecd-default-rtdb.europe-west1.firebasedatabase.app/emails.json",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              name: name,
-              surname: surname,
-              phoneNumber: phoneNumber,
-              email: email,
-              message: message,
-            }),
-          }
-        );
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
         if (response.ok) {
           setName("");
           setSurname("");
           setPhoneNumber("");
           setEmail("");
           setMessage("");
-          setFormSendAttempt(true);
-          setFormNotSent(false);
+          setSendingForm(false);
+          setSendingFormOutcome("sent");
         } else {
-          setFormSendAttempt(true);
-          setFormNotSent(true);
           throw new Error("Error sending the form.");
         }
       } catch (error) {
-        setFormSendAttempt(true);
-        setFormNotSent(true);
-        console.log(error);
+        console.error("Error:", error);
+        setSendingForm(false);
+        setSendingFormOutcome("notsent");
       }
     }
   };
@@ -98,92 +100,109 @@ const ContactForm = () => {
     setErrorMessage(error);
   };
 
-  return (
-    <Fragment>
-      {formSendAttempt ? (
-        <div className={classes.sent}>
-          {formNotSent ? (
-            <p style={{ textAlign: "center" }}>
-              Problem z wysłaniem wiadomości.
-              <br />
-              Spróbuj ponownie.
-            </p>
-          ) : (
-            <p>Wiadomośc wysłana!</p>
-          )}
-          <button
-            onClick={() => {
-              setFormSendAttempt(false);
-            }}
-          >
-            OK
-          </button>
+  let content;
+  if (!sendingForm && sendingFormOutcome === null) {
+    content = (
+      <form className={classes.form} onSubmit={handleSubmit}>
+        <div className={classes["input-label-caontainer"]}>
+          <label htmlFor="name">Imię:</label>
+          <input
+            type="text"
+            id="name"
+            value={name}
+            name="Name"
+            onChange={(event) => setName(event.target.value)}
+          />
         </div>
-      ) : (
-        <form className={classes.form} onSubmit={handleSubmit}>
-          <div className={classes["input-label-caontainer"]}>
-            <label htmlFor="name">Imię:</label>
-            <input
-              type="text"
-              id="name"
-              value={name}
-              name="Name"
-              onChange={(event) => setName(event.target.value)}
-            />
+        <div className={classes["input-label-caontainer"]}>
+          <label htmlFor="surname">Nazwisko:</label>
+          <input
+            type="text"
+            id="surname"
+            value={surname}
+            name="Surname"
+            onChange={(event) => setSurname(event.target.value)}
+          />
+        </div>
+        <div className={classes["input-label-caontainer"]}>
+          <label htmlFor="phone">Telefon:</label>
+          <input
+            type="tel"
+            id="phone"
+            value={phoneNumber}
+            name="phone"
+            onChange={(event) => setPhoneNumber(event.target.value)}
+          />
+        </div>
+        <div className={classes["input-label-caontainer"]}>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            name="email"
+            onChange={(event) => setEmail(event.target.value)}
+          />
+        </div>
+        <div className={classes["input-label-caontainer"]}>
+          <label htmlFor="message">Wiadomość:</label>
+          <textarea
+            id="message"
+            value={message}
+            name="message"
+            onChange={(event) => setMessage(event.target.value)}
+          />
+        </div>
+        {!formIsValid ? (
+          <div className={classes["error-message-container"]}>
+            <p>{errorMessage}</p>
           </div>
-          <div className={classes["input-label-caontainer"]}>
-            <label htmlFor="surname">Nazwisko:</label>
-            <input
-              type="text"
-              id="surname"
-              value={surname}
-              name="Surname"
-              onChange={(event) => setSurname(event.target.value)}
-            />
-          </div>
-          <div className={classes["input-label-caontainer"]}>
-            <label htmlFor="phone">Telefon:</label>
-            <input
-              type="tel"
-              id="phone"
-              value={phoneNumber}
-              name="phone"
-              onChange={(event) => setPhoneNumber(event.target.value)}
-            />
-          </div>
-          <div className={classes["input-label-caontainer"]}>
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              name="email"
-              onChange={(event) => setEmail(event.target.value)}
-            />
-          </div>
-          <div className={classes["input-label-caontainer"]}>
-            <label htmlFor="message">Wiadomość:</label>
-            <textarea
-              id="message"
-              value={message}
-              name="message"
-              onChange={(event) => setMessage(event.target.value)}
-            />
-          </div>
-          {!formIsValid ? (
-            <div className={classes["error-message-container"]}>
-              <p>{errorMessage}</p>
-            </div>
-          ) : (
-            ""
-          )}
-          <button type="submit" onClick={validateForm}>
-            Wyślij
-          </button>
-        </form>
-      )}
-    </Fragment>
-  );
+        ) : (
+          ""
+        )}
+        <button type="submit" onClick={validateForm}>
+          Wyślij
+        </button>
+      </form>
+    );
+  }
+  if (sendingForm) {
+    content = <Spinner />;
+  }
+  if (sendingFormOutcome === "sent") {
+    content = (
+      <div className={classes.sent}>
+        <p>Wiadomośc wysłana!</p>
+        <button
+          onClick={() => {
+            setSendingFormOutcome(null);
+          }}
+        >
+          OK
+        </button>
+      </div>
+    );
+  }
+  if (sendingFormOutcome === "notsent") {
+    content = (
+      <div className={classes.sent}>
+        <p style={{ textAlign: "center" }}>
+          Problem z wysłaniem wiadomości.
+          <br />
+          Spróbuj ponownie.
+        </p>
+        <button
+          onClick={() => {
+            setSendingFormOutcome(null);
+          }}
+        >
+          OK
+        </button>
+      </div>
+    );
+  }
+
+  return content;
 };
 
 export default ContactForm;

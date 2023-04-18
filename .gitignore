@@ -1,5 +1,11 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# FUNCTIONS IMPORTANT
+/functions
+.gcloudignore
+.prettierignore
+.gitignore
+
 # dependencies
 /node_modules
 /.pnp
@@ -18,6 +24,7 @@
 README.md
 .firebaserc
 /.firebase
+.firebase/
 firebase.json
 .DS_Store
 .env.local

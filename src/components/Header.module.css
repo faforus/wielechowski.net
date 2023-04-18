@@ -48,7 +48,7 @@ header li {
 }
 
 header li:last-child {
-  padding: 0.7rem 0rem 0.7rem 1rem;
+  padding-right: 0rem;
 }
 
 header a {
