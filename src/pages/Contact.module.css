@@ -4,7 +4,7 @@
   align-items: center;
   width: 80%;
   min-height: 500px;
-  height: calc(78vh - 2rem - 10px);
+  height: 78vh;
   background-color: rgb(247, 247, 247);
 }
 

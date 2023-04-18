@@ -1,6 +1,6 @@
 .spinner-container {
-  height: 50vh;
-  z-index: 999;
+  height: 78vh;
+  z-index: 500;
 }
 .spinner {
   position: absolute;
