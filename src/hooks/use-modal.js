@@ -7,8 +7,8 @@ const useModal = (images) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [largeImgIsLoading, setLargeImgIsLoading] = useState(false);
   const navigate = useNavigate();
+
   const handlePrevClick = useCallback(() => {
-    console.log(currentIndex);
     setLargeImgIsLoading(true);
     const currentImageIndex = images.findIndex(
       (img) => img.id === currentIndex
@@ -16,6 +16,12 @@ const useModal = (images) => {
     const newIndex = (currentImageIndex + images.length - 1) % images.length;
     setTempImgSrc(images[newIndex].largeImage);
     setCurrentIndex(images[newIndex].id);
+    const newImg = new Image();
+    newImg.src = images[newIndex].largeImage;
+
+    const prevIndex = (newIndex + images.length - 1) % images.length;
+    const prevImg = new Image();
+    prevImg.src = images[prevIndex].largeImage;
   }, [images, currentIndex]);
 
   const handleNextClick = useCallback(() => {
@@ -26,21 +32,17 @@ const useModal = (images) => {
     const newIndex = (currentImageIndex + 1) % images.length;
     setTempImgSrc(images[newIndex].largeImage);
     setCurrentIndex(images[newIndex].id);
+    const newImg = new Image();
+    newImg.src = images[newIndex].largeImage;
+
+    const nextIndex = (newIndex + 1) % images.length;
+    const nextImg = new Image();
+    nextImg.src = images[nextIndex].largeImage;
   }, [images, currentIndex]);
 
   const handleLargeImageLoad = () => {
     setLargeImgIsLoading(false);
   };
-
-  // const closeModal = useCallback(
-  //   (e) => {
-  //     if (e.target.classList.contains(classes.modal)) {
-  //       setModal(false);
-  //       setTempImgSrc("");
-  //     }
-  //   },
-  //   [setModal, setTempImgSrc]
-  // );
 
   useEffect(() => {
     if (modal) {
@@ -50,14 +52,14 @@ const useModal = (images) => {
     }
 
     const handleKeyDown = (e) => {
-      if (e.keyCode === 8) {
-        // navigate("/galeria");
-        // window.scrollTo(0, 0);
-      }
       if (e.keyCode === 37) {
-        handlePrevClick();
+        setTimeout(() => {
+          handlePrevClick();
+        }, 300);
       } else if (e.keyCode === 39) {
-        handleNextClick();
+        setTimeout(() => {
+          handleNextClick();
+        }, 300);
       } else if (e.keyCode === 27) {
         setModal(false);
         setTempImgSrc("");

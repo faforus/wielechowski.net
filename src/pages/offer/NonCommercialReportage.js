@@ -3,6 +3,8 @@ import Title from "../../components/Title";
 import classes from "./Offer.module.css";
 import webpSupported from "../../helpers/webpSupport";
 import HorizontalMiniGallery from "../../components/Gallery Mini Horizontal/HorizontalMiniGallery";
+import { motion } from "framer-motion";
+import { CUSTOM_MOTION_PROPS } from "../../config/config";
 
 const importAll = (r) => {
   return r.keys().map(r);
@@ -18,7 +20,7 @@ const NonCommercialReportage = () => {
     if (webpSupported) {
       images = importAll(
         require.context(
-          `../../assets/webpimages/galleries/reportage/noncorporate/`,
+          `../../assets/webpimages/galleries/reportage-thumbnails/noncorporate/`,
           true,
           /\.(webp)$/
         )
@@ -26,7 +28,7 @@ const NonCommercialReportage = () => {
     } else {
       images = importAll(
         require.context(
-          `../../assets/images/galleries/reportage/noncorporate/`,
+          `../../assets/images/galleries/reportage-thumbnails/noncorporate/`,
           true,
           /\.(jpe?g)$/
         )
@@ -55,7 +57,7 @@ const NonCommercialReportage = () => {
   }, []);
 
   return (
-    <div className={classes.wrapper}>
+    <motion.div {...CUSTOM_MOTION_PROPS} className={classes.wrapper}>
       <Title title="Reportaż Okolicznościowy" />
       <div className={classes.main}>
         <div className={classes["main-container"]}>
@@ -86,7 +88,7 @@ const NonCommercialReportage = () => {
           rodzaju obróbki.
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

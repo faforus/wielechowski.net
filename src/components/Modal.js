@@ -1,6 +1,8 @@
+import { useEffect, useRef } from "react";
 import React from "react";
 import classes from "./Modal.module.css";
 import Spinner from "./Spinner";
+import { useNavigate } from "react-router-dom";
 
 const ArrowButton = React.memo(({ direction, onClick }) => {
   return (
@@ -24,6 +26,57 @@ const CloseButton = React.memo(({ onClick }) => {
 });
 
 const Modal = (props) => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (props.modal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    const handleKeyDown = (e) => {
+      if (e.keyCode === 8) {
+        navigate("/galeria");
+        window.scrollTo(0, 0);
+      }
+      if (e.keyCode === 37) {
+        imgRef.current.style.opacity = "0";
+        setTimeout(() => {
+          props.handlePrevClick();
+        }, 300);
+      } else if (e.keyCode === 39) {
+        imgRef.current.style.opacity = "0";
+        setTimeout(() => {
+          props.handleNextClick();
+        }, 300);
+      } else if (e.keyCode === 27) {
+        props.setModal(false);
+        props.setTempImgSrc("");
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = "auto";
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [props.modal, navigate, props.handlePrevClick, props.handleNextClick]);
+
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    if (props.modal === true) {
+      document.documentElement.style.overflowY = "hidden";
+    } else {
+      document.documentElement.style.overflowY = "scroll";
+    }
+
+    return () => {
+      document.documentElement.style.overflowY = "scroll";
+    };
+  }, [props.modal]);
+
   return (
     <div
       className={
@@ -35,19 +88,26 @@ const Modal = (props) => {
         props.setModal(false);
         setTimeout(() => {
           props.setTempImgSrc("");
-        }, 500);
+        }, 300);
       }}
     >
-      {props.largeImgIsLoading && <Spinner />}
+      {props.largeImgIsLoading && (
+        <div className={classes.spinner}>
+          <Spinner />
+        </div>
+      )}
       <img
+        ref={imgRef}
         key={props.tempImgSrc}
         alt={props.tempImgSrc
           .replace(/%20/g, " ")
           .replace("/static/media/", "")
           .replace(/\..*$/, "")}
         src={props.tempImgSrc}
-        onLoad={props.handleLargeImageLoad}
-        style={{ display: props.largeImgIsLoading ? "none" : "block" }}
+        onLoad={(e) => {
+          e.target.style.opacity = "1";
+          props.handleLargeImageLoad();
+        }}
         onClick={(e) => {
           e.stopPropagation();
         }}
@@ -57,21 +117,27 @@ const Modal = (props) => {
           props.setModal(false);
           setTimeout(() => {
             props.setTempImgSrc("");
-          }, 500);
+          }, 300);
         }}
       />
       <ArrowButton
         direction="prev"
         onClick={(e) => {
           e.stopPropagation();
-          props.handlePrevClick();
+          imgRef.current.style.opacity = "0";
+          setTimeout(() => {
+            props.handlePrevClick();
+          }, 300);
         }}
       />
       <ArrowButton
         direction="next"
         onClick={(e) => {
           e.stopPropagation();
-          props.handleNextClick();
+          imgRef.current.style.opacity = "0";
+          setTimeout(() => {
+            props.handleNextClick();
+          }, 300);
         }}
       />
     </div>

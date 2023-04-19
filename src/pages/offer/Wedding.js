@@ -2,6 +2,8 @@ import classes from "./Offer.module.css";
 import Title from "../../components/Title";
 import useGallery from "../../hooks/use-gallery";
 import Gallery from "../../components/Gallery Large/Gallery";
+import { motion } from "framer-motion";
+import { CUSTOM_MOTION_PROPS } from "../../config/config";
 
 const Wedding = () => {
   const {
@@ -19,7 +21,7 @@ const Wedding = () => {
   } = useGallery("wedding");
 
   return (
-    <div className={classes.wrapper}>
+    <motion.div {...CUSTOM_MOTION_PROPS} className={classes.wrapper}>
       <Title title="Reportaż Ślubny" />
       <div className={classes.price}>
         <p>Ceny od:</p>
@@ -66,7 +68,7 @@ const Wedding = () => {
           handleNextClick={handleNextClick}
         />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

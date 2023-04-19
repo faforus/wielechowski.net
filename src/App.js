@@ -1,70 +1,43 @@
 import React, { useState, useEffect, Fragment } from "react";
 import ReactDOM from "react-dom";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
+import AnimatedRoutes from "./components/AnimatedRoutes";
 import "./App.css";
 
-import WelcomeModal from "./components/WelcomeModal";
 import classes from "./components/WelcomeModal.module.css";
-import Home from "./pages/Home";
-import MainGallery from "./pages/MainGallery";
-import Contact from "./pages/Contact";
+import Header from "./components/Header";
+import WelcomeModal from "./components/WelcomeModal";
 import Footer from "./components/Footer";
-import Studio from "./pages/gallery/Studio";
-import Reportage from "./pages/gallery/Reportage";
-import Outdoors from "./pages/gallery/Outdoors";
-import Animals from "./pages/gallery/Animals";
-import Business from "./pages/offer/Business";
-import Image from "./pages/offer/Image";
-import Wedding from "./pages/offer/Wedding";
-import NonCommercialReportage from "./pages/offer/NonCommercialReportage";
-import CommercialReportage from "./pages/offer/CommercialReportage";
-import RootLayout from "./pages/Root";
 import webpSupported from "./helpers/webpSupport";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <RootLayout />,
-    children: [
-      { path: "/", element: <Home /> },
-      { path: "/galeria", element: <MainGallery /> },
-      { path: "/kontakt", element: <Contact /> },
-      { path: "/studio", element: <Studio webpSupported={webpSupported} /> },
-      {
-        path: "/reportaz",
-        element: <Reportage webpSupported={webpSupported} />,
-      },
-      { path: "/plener", element: <Outdoors webpSupported={webpSupported} /> },
-      {
-        path: "/zwierzeta",
-        element: <Animals webpSupported={webpSupported} />,
-      },
-      {
-        path: "/sesja-biznesowa",
-        element: <Business webpSupported={webpSupported} />,
-      },
-      {
-        path: "/sesja-wizerunkowa",
-        element: <Image webpSupported={webpSupported} />,
-      },
-      {
-        path: "/reportaz-slubny",
-        element: <Wedding webpSupported={webpSupported} />,
-      },
-      {
-        path: "/reportaz-okolicznosciowy",
-        element: <NonCommercialReportage webpSupported={webpSupported} />,
-      },
-      {
-        path: "/reportaz-firmowy",
-        element: <CommercialReportage webpSupported={webpSupported} />,
-      },
-    ],
-  },
-]);
+import wgal1 from "./assets/webpimages/reportaz1.webp";
+import wgal2 from "./assets/webpimages/studio.webp";
+import wgal3 from "./assets/webpimages/animals.webp";
+import wgal4 from "./assets/webpimages/plener.webp";
+import wkon1 from "./assets/webpimages/kontakt.webp";
+
+import gal1 from "./assets/images/reportaz1.jpg";
+import gal2 from "./assets/images/studio.jpg";
+import gal3 from "./assets/images/animals.jpg";
+import gal4 from "./assets/images/plener.jpg";
+import kon1 from "./assets/images/kontakt.jpg";
+
+let imagesToPreload = [];
+if (webpSupported) {
+  imagesToPreload = [wgal1, wgal2, wgal3, wgal4, wkon1];
+} else {
+  imagesToPreload = [gal1, gal2, gal3, gal4, kon1];
+}
 
 function App() {
   const [loadedWelcome, setLoadedWelcome] = useState(false);
+
+  useEffect(() => {
+    imagesToPreload.forEach((image) => {
+      const img = new Image();
+      img.src = image;
+    });
+  }, []);
 
   useEffect(() => {
     setTimeout(() => {
@@ -84,8 +57,11 @@ function App() {
           document.getElementById("welcome")
         )}
       <div className="container">
-        <RouterProvider router={router} />
-        <Footer className="footer" />
+        <BrowserRouter>
+          <Header />
+          <AnimatedRoutes />
+          <Footer className="footer" />
+        </BrowserRouter>
       </div>
     </Fragment>
   );

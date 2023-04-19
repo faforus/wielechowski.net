@@ -135,12 +135,16 @@ header a:hover {
   margin: 0;
 }
 
+.last-dropdown-item {
+  margin-right: 1rem;
+}
+/* 
 .dropdown:hover .dropdown-content {
   display: block;
   text-align: center;
-}
+} */
 
 /* Added this rule to hide the dropdown content when not hovered */
-.dropdown-content:hover {
+/* .dropdown-content:hover {
   display: block;
-}
+} */

@@ -10,6 +10,8 @@ import topSmallWEBP from "../assets/webpimages/topsmall.webp";
 import bottomSmall from "../assets/images/bottomsmall.jpg";
 import bottomSmallWEBP from "../assets/webpimages/bottomsmall.webp";
 import color from "../assets/images/color.png";
+import { motion } from "framer-motion";
+import { CUSTOM_MOTION_PROPS } from "../config/config";
 
 const Home = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -21,7 +23,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className={classes["img-container"]}>
+    <motion.div {...CUSTOM_MOTION_PROPS} className={classes["img-container"]}>
       {windowWidth > 800 ? (
         <img
           className={classes.color}
@@ -62,7 +64,7 @@ const Home = () => {
             : bottomSmall
         }
       />
-    </div>
+    </motion.div>
   );
 };
 

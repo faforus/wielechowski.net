@@ -154,7 +154,7 @@ export function importWedding() {
     );
     thumbnailImages = importAll(
       require.context(
-        `../assets/webpimages/galleries/reportage/wedding/`,
+        `../assets/webpimages/galleries/reportage-thumbnails/wedding/`,
         true,
         /\.(webp)$/
       )
@@ -169,7 +169,7 @@ export function importWedding() {
     );
     thumbnailImages = importAll(
       require.context(
-        `../assets/images/galleries/reportage/wedding`,
+        `../assets/images/galleries/reportage-thumbnails/wedding`,
         true,
         /\.(jpe?g)$/
       )

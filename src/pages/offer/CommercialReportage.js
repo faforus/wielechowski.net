@@ -3,6 +3,8 @@ import Title from "../../components/Title";
 import classes from "./Offer.module.css";
 import webpSupported from "../../helpers/webpSupport";
 import HorizontalMiniGallery from "../../components/Gallery Mini Horizontal/HorizontalMiniGallery";
+import { motion } from "framer-motion";
+import { CUSTOM_MOTION_PROPS } from "../../config/config";
 
 import p1 from "../../assets/images/partners/emporium.png";
 import p2 from "../../assets/images/partners/fedex.png";
@@ -28,7 +30,7 @@ const CommercialReportage = () => {
     if (webpSupported) {
       images = importAll(
         require.context(
-          `../../assets/webpimages/galleries/reportage/corporate/`,
+          `../../assets/webpimages/galleries/reportage-thumbnails/corporate/`,
           true,
           /\.(webp)$/
         )
@@ -36,7 +38,7 @@ const CommercialReportage = () => {
     } else {
       images = importAll(
         require.context(
-          `../../assets/images/galleries/reportage/corporate/`,
+          `../../assets/images/galleries/reportage-thumbnails/corporate/`,
           true,
           /\.(jpe?g)$/
         )
@@ -65,7 +67,7 @@ const CommercialReportage = () => {
   }, []);
 
   return (
-    <div className={classes.wrapper}>
+    <motion.div {...CUSTOM_MOTION_PROPS} className={classes.wrapper}>
       <Title title="Eventy Firmowe / Sportowe" />
       <div className={classes.main}>
         <div className={classes["main-container"]}>
@@ -159,7 +161,7 @@ const CommercialReportage = () => {
             .replace(/\..*$/, "")}
         />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,18 +1,19 @@
 import classes from "./Contact.module.css";
 import ContactForm from "../components/ContactForm";
-import { Fragment } from "react";
+import { motion } from "framer-motion";
+import { CUSTOM_MOTION_PROPS } from "../config/config";
 
 const Contact = () => {
   return (
-    <Fragment>
-      <div className={classes["contact-container"]}>
-        <div className={classes["contact-image"]}></div>
-        <div className={classes["contact-form"]}>
-          {" "}
-          <ContactForm />
-        </div>
+    <motion.div
+      {...CUSTOM_MOTION_PROPS}
+      className={classes["contact-container"]}
+    >
+      <div className={classes["contact-image"]}></div>
+      <div className={classes["contact-form"]}>
+        <ContactForm />
       </div>
-    </Fragment>
+    </motion.div>
   );
 };
 

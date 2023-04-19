@@ -1,3 +1,46 @@
+import React, { useState, useEffect, Fragment } from "react";
+import ReactDOM from "react-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./App.css";
+
+import WelcomeModal from "./components/WelcomeModal";
+import classes from "./components/WelcomeModal.module.css";
+import Footer from "./components/Footer";
+import OutletWrapper from "./pages/Root";
+
+function App() {
+  const [loadedWelcome, setLoadedWelcome] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      const welcomeElement = document.querySelector(`.${classes.welcome}`);
+      welcomeElement.style.opacity = 0;
+      setTimeout(() => {
+        setLoadedWelcome(true);
+      }, 400);
+    }, 500);
+  }, []);
+
+  return (
+    <Fragment>
+      {!loadedWelcome &&
+        ReactDOM.createPortal(
+          <WelcomeModal />,
+          document.getElementById("welcome")
+        )}
+      <div className="container">
+        <RouterProvider router={createBrowserRouter()}>
+          <OutletWrapper />
+        </RouterProvider>
+        <Footer className="footer" />
+      </div>
+    </Fragment>
+  );
+}
+
+export default App;
+
+
 import { Outlet, useMatch, Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import MainGallery from "../pages/MainGallery";

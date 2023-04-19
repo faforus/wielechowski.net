@@ -4,6 +4,8 @@ import classes from "./Gallery.module.css";
 import Spinner from "../Spinner";
 import Title from "../Title";
 import Modal from "../Modal";
+import { motion } from "framer-motion";
+import { CUSTOM_MOTION_PROPS } from "../../config/config";
 
 function Gallery(props) {
   return (
@@ -19,30 +21,32 @@ function Gallery(props) {
         handlePrevClick={props.handlePrevClick}
         handleNextClick={props.handleNextClick}
       />
-      <Title title={props.category} />
-      {props.isLoading && <Spinner />}
-      <div
-        style={{ display: props.isLoading ? "none" : "block" }}
-        className={classes.container}
-      >
-        {props.mappedImgs}
-        {props.mappedUnsortedImgs}
-      </div>
-      <div className={classes["button-container"]}>
-        {props.link === "empty" ? (
-          ""
-        ) : (
-          <Link to={props.link}>
-            <button
-              onClick={() => {
-                window.scrollTo(0, 0);
-              }}
-            >
-              ‹‹‹
-            </button>
-          </Link>
-        )}
-      </div>
+      <motion.div {...CUSTOM_MOTION_PROPS} className={classes.wrapper}>
+        <Title title={props.category} />
+        {props.isLoading && <Spinner />}
+        <div
+          style={{ display: props.isLoading ? "none" : "block" }}
+          className={classes.container}
+        >
+          {props.mappedImgs}
+          {props.mappedUnsortedImgs}
+        </div>
+        <div className={classes["button-container"]}>
+          {props.link === "empty" ? (
+            ""
+          ) : (
+            <Link to={props.link}>
+              <button
+                onClick={() => {
+                  window.scrollTo(0, 0);
+                }}
+              >
+                ‹‹‹
+              </button>
+            </Link>
+          )}
+        </div>
+      </motion.div>
     </Fragment>
   );
 }

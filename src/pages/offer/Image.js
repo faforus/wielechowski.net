@@ -3,6 +3,8 @@ import Title from "../../components/Title";
 import classes from "./Offer.module.css";
 import webpSupported from "../../helpers/webpSupport";
 import VerticalMiniGallery from "../../components/Gallery Mini Vertical/VerticalMiniGallery";
+import { motion } from "framer-motion";
+import { CUSTOM_MOTION_PROPS } from "../../config/config";
 
 const importAll = (r) => {
   return r.keys().map(r);
@@ -18,7 +20,7 @@ const Image = () => {
     if (webpSupported) {
       images = importAll(
         require.context(
-          `../../assets/webpimages/galleries/studio/image/`,
+          `../../assets/webpimages/galleries/studio-thumbnails/image/`,
           true,
           /\.(webp)$/
         )
@@ -26,7 +28,7 @@ const Image = () => {
     } else {
       images = importAll(
         require.context(
-          `../../assets/images/galleries/studio/image/`,
+          `../../assets/images/galleries/studio-thumbnails/image/`,
           true,
           /\.(jpe?g)$/
         )
@@ -55,7 +57,7 @@ const Image = () => {
   }, []);
 
   return (
-    <div className={classes.wrapper}>
+    <motion.div {...CUSTOM_MOTION_PROPS} className={classes.wrapper}>
       <Title title="portret biznesowy / sesja biznesowa / korporacyjna" />
       <div className={classes.main}>
         <div className={classes["main-container"]}>
@@ -99,9 +101,8 @@ const Image = () => {
           zaawansowany retusz.
         </p>
         <p>** zdjęcia bez kadrowania są w rozdzielczości 8640 x 5760.</p>
-        <p>*** zdjęcia bez kadrowania są w rozdzielczości 8640 x 5760.</p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
