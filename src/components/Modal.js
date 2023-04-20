@@ -27,13 +27,23 @@ const CloseButton = React.memo(({ onClick }) => {
 
 const Modal = (props) => {
   const navigate = useNavigate();
-  useEffect(() => {
-    if (props.modal) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
 
+  const debounce = (func, wait) => {
+    let timeout;
+    return (...args) => {
+      const later = () => {
+        timeout = null;
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  };
+
+  const debouncedHandlePrevClick = debounce(props.handlePrevClick, 150);
+  const debouncedHandleNextClick = debounce(props.handleNextClick, 150);
+
+  useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.keyCode === 8) {
         navigate("/galeria");
@@ -42,13 +52,13 @@ const Modal = (props) => {
       if (e.keyCode === 37) {
         imgRef.current.style.opacity = "0";
         setTimeout(() => {
-          props.handlePrevClick();
-        }, 300);
+          debouncedHandlePrevClick();
+        }, 150);
       } else if (e.keyCode === 39) {
         imgRef.current.style.opacity = "0";
         setTimeout(() => {
-          props.handleNextClick();
-        }, 300);
+          debouncedHandleNextClick();
+        }, 150);
       } else if (e.keyCode === 27) {
         props.setModal(false);
         props.setTempImgSrc("");
@@ -66,14 +76,21 @@ const Modal = (props) => {
   const imgRef = useRef(null);
 
   useEffect(() => {
-    if (props.modal === true) {
-      document.documentElement.style.overflowY = "hidden";
-    } else {
-      document.documentElement.style.overflowY = "scroll";
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (!isMobile) {
+      if (props.modal) {
+        document.documentElement.style.overflowY = "hidden";
+        document.body.style.width = "calc(100% - 6px)";
+      } else {
+        document.documentElement.style.overflowY = "scroll";
+        document.body.style.width = "100%";
+      }
     }
 
     return () => {
       document.documentElement.style.overflowY = "scroll";
+      document.body.style.width = "100%";
     };
   }, [props.modal]);
 
@@ -88,7 +105,7 @@ const Modal = (props) => {
         props.setModal(false);
         setTimeout(() => {
           props.setTempImgSrc("");
-        }, 300);
+        }, 150);
       }}
     >
       {props.largeImgIsLoading && (
@@ -117,7 +134,7 @@ const Modal = (props) => {
           props.setModal(false);
           setTimeout(() => {
             props.setTempImgSrc("");
-          }, 300);
+          }, 150);
         }}
       />
       <ArrowButton
@@ -126,8 +143,8 @@ const Modal = (props) => {
           e.stopPropagation();
           imgRef.current.style.opacity = "0";
           setTimeout(() => {
-            props.handlePrevClick();
-          }, 300);
+            debouncedHandlePrevClick();
+          }, 150);
         }}
       />
       <ArrowButton
@@ -136,8 +153,8 @@ const Modal = (props) => {
           e.stopPropagation();
           imgRef.current.style.opacity = "0";
           setTimeout(() => {
-            props.handleNextClick();
-          }, 300);
+            debouncedHandleNextClick();
+          }, 150);
         }}
       />
     </div>

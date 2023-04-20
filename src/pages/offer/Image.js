@@ -58,7 +58,7 @@ const Image = () => {
 
   return (
     <motion.div {...CUSTOM_MOTION_PROPS} className={classes.wrapper}>
-      <Title title="portret biznesowy / sesja biznesowa / korporacyjna" />
+      <Title title="portret / sesja wizerunkowa" />
       <div className={classes.main}>
         <div className={classes["main-container"]}>
           <div className={classes["main-left"]}>
@@ -95,12 +95,14 @@ const Image = () => {
         </div>
       </div>
       <div className={classes["additional-info"]}>
-        <p>
-          * podstawowy retusz to korekta cery, oczu, sylwetki oraz lekkie
-          wybielanie zębów. Na życzenie klienta można wykonać bardziej
-          zaawansowany retusz.
-        </p>
-        <p>** zdjęcia bez kadrowania są w rozdzielczości 8640 x 5760.</p>
+        <div className={classes["additional-info-container"]}>
+          <p>
+            * podstawowy retusz to korekta cery, oczu, sylwetki oraz lekkie
+            wybielanie zębów. Na życzenie klienta można wykonać bardziej
+            zaawansowany retusz.
+          </p>
+          <p>** zdjęcia bez kadrowania są w rozdzielczości 8640 x 5760.</p>
+        </div>
       </div>
     </motion.div>
   );

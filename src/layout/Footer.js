@@ -1,4 +1,4 @@
-import Links from "./Links";
+import Links from "../components/Links";
 
 const Footer = () => {
   return (

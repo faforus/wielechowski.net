@@ -5,6 +5,8 @@
   align-items: center;
   width: 80%;
   max-width: 1300px;
+  height: 100%;
+  overflow: hidden;
 }
 
 .main {
