@@ -1,7 +1,7 @@
 import useGallery from "../../hooks/use-gallery";
 import Gallery from "../../components/Gallery Large/Gallery";
 
-const Animals = () => {
+const Reportage = () => {
   const {
     modal,
     closeModal,
@@ -37,4 +37,4 @@ const Animals = () => {
   );
 };
 
-export default Animals;
+export default Reportage;

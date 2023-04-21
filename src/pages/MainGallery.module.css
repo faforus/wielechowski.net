@@ -5,6 +5,8 @@
   flex-direction: row;
   width: 80%;
   height: 78vh;
+  max-height: 100%;
+  overflow: hidden;
 }
 
 .gallery a {

@@ -10,8 +10,21 @@ const Contact = () => {
       className={classes["contact-container"]}
     >
       <div className={classes["contact-image"]}></div>
-      <div className={classes["contact-form"]}>
-        <ContactForm />
+      <div className={classes["contact-form-container"]}>
+        <div className={classes["contact-form"]}>
+          <ContactForm />
+        </div>
+        <div className={classes["contact-info-container"]}>
+          <div className={classes["contact-info"]}>
+            <p>
+              <a href="tel:+48722265649">+48 722 265 649</a>
+            </p>
+            <p>
+              <a href="mailto:info@wielechowski.net">info@wielechowski.net</a>
+            </p>
+            <p>Filip Wielechowski Fotografia - Trójmiasto</p>
+          </div>
+        </div>
       </div>
     </motion.div>
   );

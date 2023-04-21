@@ -78,6 +78,10 @@ const Modal = (props) => {
   useEffect(() => {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
+    const handleTouchMove = (e) => {
+      e.preventDefault();
+    };
+
     if (!isMobile) {
       if (props.modal) {
         document.documentElement.style.overflowY = "hidden";
@@ -88,9 +92,16 @@ const Modal = (props) => {
       }
     }
 
+    if (props.modal && isMobile) {
+      document.addEventListener("touchmove", handleTouchMove, {
+        passive: false,
+      });
+    }
+
     return () => {
       document.documentElement.style.overflowY = "scroll";
       document.body.style.width = "100%";
+      document.removeEventListener("touchmove", handleTouchMove);
     };
   }, [props.modal]);
 

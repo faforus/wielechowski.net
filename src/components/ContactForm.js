@@ -12,6 +12,11 @@ const ContactForm = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [sendingForm, setSendingForm] = useState(false);
   const [sendingFormOutcome, setSendingFormOutcome] = useState(null);
+  const [rodo, setRodo] = useState(false);
+
+  const toggleRodoHandler = () => {
+    setRodo((prev) => !prev);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -172,7 +177,7 @@ const ContactForm = () => {
   if (sendingFormOutcome === "sent") {
     content = (
       <div className={classes.sent}>
-        <p>Wiadomośc wysłana!</p>
+        <p>Wiadomość wysłana!</p>
         <button
           onClick={() => {
             setSendingFormOutcome(null);
@@ -202,7 +207,23 @@ const ContactForm = () => {
     );
   }
 
-  return content;
+  return (
+    <div className={classes["form-container"]}>
+      {content}
+      <button onClick={toggleRodoHandler} className={classes.rodo}>
+        rodo
+      </button>
+      {rodo ? (
+        <p className={classes["rodo-text"]}>
+          Administratorem danych osobowych jest Filip Wielechowski NIP
+          5862228933, REGON 520394284. Dane wpisane w formularzu kontaktowym
+          będą przetwarzane w celu udzielenia odpowiedzi na przesłane pytanie.
+        </p>
+      ) : (
+        ""
+      )}
+    </div>
+  );
 };
 
 export default ContactForm;

@@ -8,8 +8,7 @@ import reportWebVitals from "./reportWebVitals";
 // FORM SERVER SIDE VALIDATION
 // webpSupport into redux? how often does it run
 // CHECK IF USEMODAL ON ITS OWN WORKS
-
-// Burger menu
+// Redesign modal for mobile devices swipe
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

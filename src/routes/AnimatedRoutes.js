@@ -4,7 +4,7 @@ import MainGallery from "../pages/MainGallery";
 import Contact from "../pages/Contact";
 import Studio from "../pages/gallery/Studio";
 import Reportage from "../pages/gallery/Reportage";
-import Outdoors from "../pages/gallery/Outdoors";
+import Travel from "../pages/gallery/Travel";
 import Animals from "../pages/gallery/Animals";
 import Business from "../pages/offer/Business";
 import Image from "../pages/offer/Image";
@@ -24,7 +24,7 @@ const AnimatedRoutes = () => {
           <Route path="galeria" element={<MainGallery />} />
           <Route path="kontakt" element={<Contact />} />
           <Route
-            path="studio"
+            path="studio-portret"
             element={<Studio webpSupported={webpSupported} />}
           />
           <Route
@@ -32,8 +32,8 @@ const AnimatedRoutes = () => {
             element={<Reportage webpSupported={webpSupported} />}
           />
           <Route
-            path="plener"
-            element={<Outdoors webpSupported={webpSupported} />}
+            path="travel"
+            element={<Travel webpSupported={webpSupported} />}
           />
           <Route
             path="zwierzeta"

@@ -71,6 +71,21 @@
   background-color: #333;
   border-radius: 3px;
   margin-bottom: 6px;
+  transition: all 0.3s ease-out;
+}
+
+.bottom-line {
+  transform: rotate(45deg) translateY(6px);
+  transform-origin: bottom right;
+}
+
+.middle-line {
+  opacity: 0;
+}
+
+.top-line {
+  transform: rotate(-45deg) translateY(-5px);
+  transform-origin: bottom right;
 }
 
 .burger-nav {

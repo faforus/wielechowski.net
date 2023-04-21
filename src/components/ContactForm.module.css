@@ -1,3 +1,11 @@
+.form-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .form,
 .sent {
   display: flex;
@@ -6,7 +14,7 @@
   align-items: center;
   justify-content: center;
   width: 500px;
-  height: 400px;
+  /* height: 500px; */
   max-width: 100%;
 }
 
@@ -74,6 +82,34 @@
   background-color: rgb(121, 121, 121);
 }
 
+.rodo {
+  width: 100px;
+  height: 20px;
+  border: none;
+  background-color: rgb(158, 158, 158);
+  color: white;
+  border-radius: 0px;
+  cursor: pointer;
+  font-family: "Cinzel", sans-serif;
+  font-display: swap;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.rodo:hover {
+  background-color: rgb(121, 121, 121);
+}
+
+.rodo-text {
+  font-family: "Cinzel", sans-serif;
+  font-display: swap;
+  width: 400px;
+  margin-top: -5px;
+  text-align: justify;
+  font-size: 0.8rem;
+}
+
 .form input,
 .form textarea,
 .sent p {
@@ -102,7 +138,8 @@
 
 .error-message-container {
   text-align: center;
-  width: 100%;
+  width: 400px;
+  max-width: 100%;
 }
 
 .error-message-container p {
@@ -113,7 +150,10 @@
   font-weight: 600;
 }
 
-@media (max-width: 970px) {
+@media (max-width: 600px) {
+  .rodo-text {
+    max-width: 100%;
+  }
   .input-label-caontainer {
     width: 100%;
     margin: 5px 0 5px 0;
@@ -121,7 +161,6 @@
   .form {
     height: auto;
     margin-top: 20px;
-    margin-bottom: 10px;
     width: 100%;
   }
   .form input {

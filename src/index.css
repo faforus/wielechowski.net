@@ -57,6 +57,8 @@ body::-webkit-scrollbar-thumb:hover {
   align-items: center;
   width: 100%;
   min-height: 78vh;
+  overflow: hidden;
+  height: 100%;
 }
 
 .footer {

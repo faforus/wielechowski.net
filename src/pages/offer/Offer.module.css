@@ -205,9 +205,15 @@
 }
 
 .gallery-container {
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: -40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+}
+
+.larger {
+  font-size: 1.3rem;
+  margin: 0;
 }

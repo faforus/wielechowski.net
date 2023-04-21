@@ -23,12 +23,7 @@ const Wedding = () => {
   return (
     <motion.div {...CUSTOM_MOTION_PROPS} className={classes.wrapper}>
       <Title title="Reportaż Ślubny" />
-      <div className={classes.price}>
-        <p>Ceny od:</p>
-        <p className={classes["price-large"]}>
-          3000<span className={classes["price-currency"]}> zł</span>
-        </p>
-      </div>
+
       <div className={classes.main}>
         <div className={classes["main-container"]}>
           <div className={classes["main-left"]}>
@@ -39,9 +34,9 @@ const Wedding = () => {
             <p>
               Podczas reportażu ślubnego korzystam z 2 aparatów jednocześnie
               oraz lamp reporterskich lub studyjnych rozmieszczonych w różnych
-              miejscach na sal
+              miejscach na sali
             </p>
-            <p>Trójmiasto i okolice</p>
+            <p className={classes.larger}>Trójmiasto i okolice</p>
             <p>
               * Podczas całodniowej imprezy jestem w stanie wykonać kilka
               tysięcy zdjęć. Wybieram z nich najlepsze, unikatowe i
@@ -67,6 +62,12 @@ const Wedding = () => {
           handlePrevClick={handlePrevClick}
           handleNextClick={handleNextClick}
         />
+      </div>
+      <div className={classes.price}>
+        <p>Ceny od:</p>
+        <p className={classes["price-large"]}>
+          3000<span className={classes["price-currency"]}> zł</span>
+        </p>
       </div>
     </motion.div>
   );

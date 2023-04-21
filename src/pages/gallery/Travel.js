@@ -1,7 +1,7 @@
 import useGallery from "../../hooks/use-gallery";
 import Gallery from "../../components/Gallery Large/Gallery";
 
-const Animals = () => {
+const Travel = () => {
   const {
     modal,
     closeModal,
@@ -19,7 +19,7 @@ const Animals = () => {
 
   return (
     <Gallery
-      category={"Plener"}
+      category={"Travel"}
       link="/galeria"
       modal={modal}
       closeModal={closeModal}
@@ -37,4 +37,4 @@ const Animals = () => {
   );
 };
 
-export default Animals;
+export default Travel;

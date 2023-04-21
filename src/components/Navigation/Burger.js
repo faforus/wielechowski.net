@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import classes from "./Burger.module.css";
 import { preloadNavImages } from "../../helpers/preloadNavigationImages";
@@ -9,6 +9,30 @@ const scrollToTop = () => {
 
 const Burger = () => {
   const [toggleBurger, setToggleBurger] = useState(false);
+
+  useEffect(() => {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    const handleTouchMove = (e) => {
+      e.preventDefault();
+    };
+
+    if (toggleBurger && !isMobile) {
+      document.documentElement.style.overflowY = "hidden";
+      document.body.style.width = "calc(100% - 6px)";
+    } else {
+      document.documentElement.style.overflowY = "scroll";
+      document.body.style.width = "100%";
+    }
+    if (toggleBurger && isMobile) {
+      document.addEventListener("touchmove", handleTouchMove, {
+        passive: false,
+      });
+    }
+    return () => {
+      document.removeEventListener("touchmove", handleTouchMove);
+    };
+  }, [toggleBurger]);
 
   const toggleBurgerMenuHandler = () => {
     setToggleBurger((prev) => !prev);
@@ -29,9 +53,13 @@ const Burger = () => {
         className={`${classes.button} ${toggleBurger ? classes.move : ""}`}
       >
         <div className={classes["menu-icon"]}>
-          <span></span>
-          <span></span>
-          <span></span>
+          <span className={toggleBurger ? `${classes["top-line"]}` : ""}></span>
+          <span
+            className={toggleBurger ? `${classes["middle-line"]}` : ""}
+          ></span>
+          <span
+            className={toggleBurger ? `${classes["bottom-line"]}` : ""}
+          ></span>
         </div>
       </div>
       <div

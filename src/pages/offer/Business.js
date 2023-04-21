@@ -115,7 +115,7 @@ const Business = () => {
           <p>
             * możliwy dojazd do biura/firmy klienta gdzie zdjęcia zostaną
             wykonane w przestrzeni biurowej/firmowej przy użyciu lamp. W grę
-            wchodzą miejsca nie tylko ogarniczające się wyłącznie do biur np.
+            wchodzą miejsca nie tylko ograniczające się wyłącznie do biur np.
             fabryki. Cena zależy od lokalizacji i ilości zdjęć.
           </p>
           <p>
