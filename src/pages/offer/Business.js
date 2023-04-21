@@ -113,10 +113,9 @@ const Business = () => {
       <div className={classes["additional-info"]}>
         <div className={classes["additional-info-container"]}>
           <p>
-            * możliwy dojazd do biura/firmy klienta gdzie zdjęcia zostaną
+            * Możliwy dojazd do biura/firmy klienta, gdzie zdjęcia zostaną
             wykonane w przestrzeni biurowej/firmowej przy użyciu lamp. W grę
-            wchodzą miejsca nie tylko ograniczające się wyłącznie do biur np.
-            fabryki. Cena zależy od lokalizacji i ilości zdjęć.
+            wchodzą również obszary znajdujące się poza biurem, np. fabryki..
           </p>
           <p>
             ** podstawowy retusz to korekta cery, oczu, sylwetki oraz lekkie
