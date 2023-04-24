@@ -11,14 +11,23 @@ const importAll = (r) => {
 };
 
 const Business = () => {
-  const [currentImage, setCurrentImage] = useState([]);
-  const [mappedImages, setMappedImages] = useState([]);
+  const [images, setImages] = useState([]);
+  const [thumbnailImages, setThumbnailImages] = useState([]);
+  const [mappedObjectImages, setMappedObjectsImages] = useState([]);
 
   useEffect(() => {
     let images;
+    let thumbnailImages;
 
     if (webpSupported) {
       images = importAll(
+        require.context(
+          `../../assets/webpimages/galleries/studio/business/`,
+          true,
+          /\.(webp)$/
+        )
+      );
+      thumbnailImages = importAll(
         require.context(
           `../../assets/webpimages/galleries/studio-thumbnails/business/`,
           true,
@@ -28,6 +37,13 @@ const Business = () => {
     } else {
       images = importAll(
         require.context(
+          `../../assets/images/galleries/studio/business/`,
+          true,
+          /\.(jpe?g)$/
+        )
+      );
+      thumbnailImages = importAll(
+        require.context(
           `../../assets/images/galleries/studio-thumbnails/business/`,
           true,
           /\.(jpe?g)$/
@@ -35,26 +51,16 @@ const Business = () => {
       );
     }
 
-    const mappedImages = images
-      .sort(() => Math.random() - 0.5)
-      .map((img, index) => {
-        return (
-          <img
-            onClick={() => {
-              setCurrentImage(mappedImages[index]);
-            }}
-            src={img}
-            alt={img
-              .replace(/%20/g, " ")
-              .replace("/static/media/", "")
-              .replace(/\..*$/, "")}
-            key={index}
-          />
-        );
-      });
-    setMappedImages(mappedImages);
-    setCurrentImage(mappedImages[0]);
+    setImages(images);
+    setThumbnailImages(thumbnailImages);
   }, []);
+
+  useEffect(() => {
+    const mappedObjectImages = images.map((img, index) => {
+      return { id: index + 1, src: thumbnailImages[index], largeImage: img };
+    });
+    setMappedObjectsImages(mappedObjectImages);
+  }, [images]);
 
   return (
     <motion.div {...CUSTOM_MOTION_PROPS} className={classes.wrapper}>
@@ -74,10 +80,7 @@ const Business = () => {
             </p>
           </div>
           <div className={classes["main-right"]}>
-            <VerticalMiniGallery
-              currentImage={currentImage}
-              mappedImages={mappedImages}
-            />
+            <VerticalMiniGallery images={mappedObjectImages} />
           </div>
         </div>
       </div>

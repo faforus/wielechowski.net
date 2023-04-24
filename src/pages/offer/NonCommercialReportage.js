@@ -11,14 +11,23 @@ const importAll = (r) => {
 };
 
 const NonCommercialReportage = () => {
-  const [currentImage, setCurrentImage] = useState([]);
-  const [mappedImages, setMappedImages] = useState([]);
+  const [images, setImages] = useState([]);
+  const [thumbnailImages, setThumbnailImages] = useState([]);
+  const [mappedObjectImages, setMappedObjectsImages] = useState([]);
 
   useEffect(() => {
     let images;
+    let thumbnailImages;
 
     if (webpSupported) {
       images = importAll(
+        require.context(
+          `../../assets/webpimages/galleries/reportage/noncorporate/`,
+          true,
+          /\.(webp)$/
+        )
+      );
+      thumbnailImages = importAll(
         require.context(
           `../../assets/webpimages/galleries/reportage-thumbnails/noncorporate/`,
           true,
@@ -28,6 +37,13 @@ const NonCommercialReportage = () => {
     } else {
       images = importAll(
         require.context(
+          `../../assets/images/galleries/reportage/noncorporate/`,
+          true,
+          /\.(jpe?g)$/
+        )
+      );
+      thumbnailImages = importAll(
+        require.context(
           `../../assets/images/galleries/reportage-thumbnails/noncorporate/`,
           true,
           /\.(jpe?g)$/
@@ -35,26 +51,16 @@ const NonCommercialReportage = () => {
       );
     }
 
-    const mappedImages = images
-      .sort(() => Math.random() - 0.5)
-      .map((img, index) => {
-        return (
-          <img
-            onClick={() => {
-              setCurrentImage(mappedImages[index]);
-            }}
-            src={img}
-            alt={img
-              .replace(/%20/g, " ")
-              .replace("/static/media/", "")
-              .replace(/\..*$/, "")}
-            key={index}
-          />
-        );
-      });
-    setMappedImages(mappedImages);
-    setCurrentImage(mappedImages[0]);
+    setImages(images);
+    setThumbnailImages(thumbnailImages);
   }, []);
+
+  useEffect(() => {
+    const mappedObjectImages = images.map((img, index) => {
+      return { id: index + 1, src: thumbnailImages[index], largeImage: img };
+    });
+    setMappedObjectsImages(mappedObjectImages);
+  }, [images]);
 
   return (
     <motion.div {...CUSTOM_MOTION_PROPS} className={classes.wrapper}>
@@ -69,10 +75,7 @@ const NonCommercialReportage = () => {
             <p>urodziny / imieniny</p>
           </div>
           <div className={classes["main-right"]}>
-            <HorizontalMiniGallery
-              currentImage={currentImage}
-              mappedImages={mappedImages}
-            />
+            <HorizontalMiniGallery images={mappedObjectImages} />
           </div>
         </div>
       </div>
