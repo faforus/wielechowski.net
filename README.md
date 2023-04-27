@@ -28,20 +28,21 @@ Two mini galleries with custom scroll - vertical and horizontal with modal.
 
 One large gallery with modal and image sorting.
 
-    Custom gallery hook and component.
+Custom gallery hook and component.
 
-    Custom repeating grid layout for 14 images, including 4 vertical and 10 horizontal images.
+Custom repeating grid layout for 14 images, including 4 vertical and 10 horizontal images.
 
-    Automatic importing of images from the selected folder, along with thumbnail images.
+Automatic importing of images from the selected folder, along with thumbnail images.
 
-    Efficient loading and sorting of images, ensuring horizontal images are placed in designated spaces within the grid, as well as the vertical images.
+Efficient loading and sorting of images, ensuring horizontal images are placed in designated spaces within the grid, as well as the vertical images.
 
-    When there are no more appropriate images available, the grid populating cycle is completed, and a new grid is rendered based on the remaining images, either horizontal or vertical. This can be observed in the Studio and Travel galleries. In the Studio gallery, the layout changes to vertical images after the first 14, while in the Travel gallery, the grid changes to horizontal after 28 images.
+When there are no more appropriate images available, the grid populating cycle is completed, and a new grid is rendered based on the remaining images, either horizontal or vertical. This can be observed in the Studio and Travel galleries. In the Studio gallery, the layout changes to vertical images after the first 14, while in the Travel gallery, the grid changes to horizontal after 28 images.
 
-    Automatic generation of image alt attributes from modified src strings.
-    Loading state management.
+Automatic generation of image alt attributes from modified src strings.
 
-    Modal compatibility with Large, Horizontal, and Vertical Galleries.
+Loading state management.
+
+Modal compatibility with Large, Horizontal, and Vertical Galleries.
 
 Keyboard navigation support.
 
