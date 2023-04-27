@@ -122,6 +122,10 @@
   font-size: 0.8rem;
 }
 
+.burger-ul a.activeB {
+  color: #a0a0a0;
+}
+
 .dropdown-content li:last-child {
   margin-bottom: -20px;
 }

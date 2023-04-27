@@ -1,0 +1,15 @@
+.error {
+  width: 100%;
+  min-height: 550px;
+  height: 78vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error h1 {
+  font-family: "Cinzel", serif;
+  font-display: swap;
+  font-weight: 400;
+}

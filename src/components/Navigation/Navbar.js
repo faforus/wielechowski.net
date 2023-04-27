@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import classes from "./Navbar.module.css";
 import { preloadNavImages } from "../../helpers/preloadNavigationImages";
 
@@ -25,14 +25,20 @@ const Navbar = () => {
     }, 300);
   };
 
+  const activeHandler = ({ isActive }) => {
+    return isActive ? classes.active : undefined;
+  };
+
   return (
     <nav className={classes.navigation}>
       <ul onMouseOut={handleMouseOut} className={classes["menu-main"]}>
         <li>
-          <Link to="/">Home</Link>
+          <NavLink className={activeHandler} to="/">
+            Home
+          </NavLink>
         </li>
         <li className={classes.dropdown}>
-          <Link
+          <NavLink
             onMouseOver={() => {
               handleHover();
               preloadNavImages();
@@ -41,7 +47,7 @@ const Navbar = () => {
             className={classes.arrow}
           >
             Oferta
-          </Link>
+          </NavLink>
           <ul
             ref={dropdownRef}
             onMouseOver={handleHover}
@@ -52,41 +58,63 @@ const Navbar = () => {
             className={classes["dropdown-content"]}
           >
             <li>
-              <Link onClick={handleClick} to="/sesja-biznesowa">
+              <NavLink
+                className={activeHandler}
+                onClick={handleClick}
+                to="/sesja-biznesowa"
+              >
                 Sesja Biznesowa
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link onClick={handleClick} to="/sesja-wizerunkowa">
+              <NavLink
+                className={activeHandler}
+                onClick={handleClick}
+                to="/sesja-wizerunkowa"
+              >
                 Sesja Wizerunkowa
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link onClick={handleClick} to="/reportaz-slubny">
+              <NavLink
+                className={activeHandler}
+                onClick={handleClick}
+                to="/reportaz-slubny"
+              >
                 Reportaż Ślubny
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link onClick={handleClick} to="/reportaz-okolicznosciowy">
+              <NavLink
+                className={activeHandler}
+                onClick={handleClick}
+                to="/reportaz-okolicznosciowy"
+              >
                 Reportaż Okolicznościowy
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
-                className={classes["last-dropdown-item"]}
+              <NavLink
+                className={activeHandler}
                 onClick={handleClick}
                 to="/reportaz-firmowy"
               >
-                Eventy Firmowe / Sportowe
-              </Link>
+                <span className={classes["last-dropdown-item"]}>
+                  Eventy Firmowe / Sportowe
+                </span>
+              </NavLink>
             </li>
           </ul>
         </li>
         <li>
-          <Link to="/galeria">Galeria</Link>
+          <NavLink className={activeHandler} to="/galeria">
+            Galeria
+          </NavLink>
         </li>
         <li>
-          <Link to="/kontakt">Kontakt</Link>
+          <NavLink className={activeHandler} to="/kontakt">
+            Kontakt
+          </NavLink>
         </li>
       </ul>
     </nav>

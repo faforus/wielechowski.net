@@ -32,7 +32,8 @@
   cursor: pointer;
 }
 
-.navigation a:hover {
+.navigation a:hover,
+.navigation a.active {
   color: #a0a0a0;
 }
 

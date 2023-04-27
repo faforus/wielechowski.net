@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+[https://wielechowski.net/]
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+2-in-1 Photography and React Portfolio
 
-## Available Scripts
+As of April 27, 2023 - This website was created within a two-week span, leveraging the knowledge I gained during this period from a React course. I continue to learn more each day and am eager to implement new features.
 
-In the project directory, you can run:
+I built this website from scratch, and all the photographs used in the project were taken and edited by me.
 
-### `npm start`
+[FEATURES]
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Single Page Application with routing
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Facebook-ready with Open Graph (OG) image integration
 
-### `npm test`
+Responsive design for large screens, regular screens, and mobile devices
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Animated burger menu with locked scrolling for all devices
+Preloading of crucial images
 
-### `npm run build`
+WEBP image support
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Appropriate image types loaded for devices that either support or do not support WEBP images, with the help of the ua-parser-js library
+Smooth page transitions using the Framer Motion library
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Functional contact form set up with Firebase functions, Fetch API, Express, and Nodemailer library
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Two mini galleries with custom scroll - vertical and horizontal with modal
 
-### `npm run eject`
+One large gallery with modal and image sorting
+    Custom repeating grid layout for 14 images, including 4 vertical and 10 horizontal images
+    Automatic importing of images from the selected folder, along with thumbnail images
+    Efficient loading and sorting of images, ensuring horizontal images are placed in designated spaces within the grid, as well as the vertical images
+    When there are no more appropriate images available, the grid populating cycle is completed, and a new grid is rendered based on the remaining images, either horizontal or vertical. This can be observed in the Studio and Travel galleries. In the Studio gallery, the layout changes to vertical images after the first 14, while in the Travel gallery, the grid changes to horizontal after 28 images
+    Automatic generation of image alt attributes from modified src strings
+    Loading state management
+    Modal compatibility with Large, Horizontal, and Vertical Galleries
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Keyboard navigation support
+Scrolling locked on all devices
+Loading state and animation management
+Upon opening the modal, the next and previous images are preloaded, and subsequent images are preloaded when navigating right or left
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+TO BE [IMPLEMENTED] - Features I have learned but have not yet had the time to implement.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Add swiping functionality to modal on mobile devices
+Utilize Router to send HTTP requests for the contact form
+Implement server-side validation for the contact form
+Create unique routes/links for large images in modal
+Manage WEBP support using Redux
+Implement lazy loading for galleries
+Enhance SEO

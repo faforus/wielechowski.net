@@ -13,6 +13,7 @@ import NonCommercialReportage from "../pages/offer/NonCommercialReportage";
 import CommercialReportage from "../pages/offer/CommercialReportage";
 import webpSupported from "../helpers/webpSupport";
 import { AnimatePresence } from "framer-motion";
+import ErrorPage from "../pages/ErrorPage";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -59,6 +60,7 @@ const AnimatedRoutes = () => {
             path="reportaz-firmowy"
             element={<CommercialReportage webpSupported={webpSupported} />}
           />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </AnimatePresence>
     </div>

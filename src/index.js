@@ -4,12 +4,6 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-// LAZDY LOADING
-// FORM SERVER SIDE VALIDATION
-// webpSupport into redux? how often does it run
-// CHECK IF USEMODAL ON ITS OWN WORKS
-// Redesign modal for mobile devices swipe
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>

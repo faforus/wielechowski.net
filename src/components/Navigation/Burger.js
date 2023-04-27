@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import classes from "./Burger.module.css";
 import { preloadNavImages } from "../../helpers/preloadNavigationImages";
 
@@ -43,6 +43,10 @@ const Burger = () => {
     scrollToTop();
   };
 
+  const activeHandler = ({ isActive }) => {
+    return isActive ? classes.activeB : undefined;
+  };
+
   return (
     <div className={classes["burger-overflow-hidden"]}>
       <div
@@ -66,58 +70,83 @@ const Burger = () => {
         className={`${classes.container} ${toggleBurger ? "" : classes.hidden}`}
       >
         <nav className={classes["burger-nav"]}>
-          <ul>
+          <ul className={classes["burger-ul"]}>
             <li>
-              <Link onClick={scrollToTopAndClose} to="/">
+              <NavLink
+                className={activeHandler}
+                onClick={scrollToTopAndClose}
+                to="/"
+              >
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link>Oferta</Link>
+              <NavLink>Oferta</NavLink>
               <ul className={classes["dropdown-content"]}>
                 <li>
-                  <Link onClick={scrollToTopAndClose} to="/sesja-biznesowa">
+                  <NavLink
+                    className={activeHandler}
+                    onClick={scrollToTopAndClose}
+                    to="/sesja-biznesowa"
+                  >
                     Sesja Biznesowa
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link onClick={scrollToTopAndClose} to="/sesja-wizerunkowa">
+                  <NavLink
+                    className={activeHandler}
+                    onClick={scrollToTopAndClose}
+                    to="/sesja-wizerunkowa"
+                  >
                     Sesja Wizerunkowa
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link onClick={scrollToTopAndClose} to="/reportaz-slubny">
+                  <NavLink
+                    className={activeHandler}
+                    onClick={scrollToTopAndClose}
+                    to="/reportaz-slubny"
+                  >
                     Reportaż Ślubny
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link
+                  <NavLink
+                    className={activeHandler}
                     onClick={scrollToTopAndClose}
                     to="/reportaz-okolicznosciowy"
                   >
                     Reportaż Okolicznościowy
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link
+                  <NavLink
+                    className={activeHandler}
                     onClick={scrollToTopAndClose}
-                    className={classes["last-dropdown-item"]}
                     to="/reportaz-firmowy"
                   >
                     Eventy Firmowe / Sportowe
-                  </Link>
+                  </NavLink>
                 </li>
               </ul>
             </li>
             <li>
-              <Link onClick={scrollToTopAndClose} to="/galeria">
+              <NavLink
+                className={activeHandler}
+                onClick={scrollToTopAndClose}
+                to="/galeria"
+              >
                 Galeria
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link onClick={scrollToTopAndClose} to="/kontakt">
+              <NavLink
+                className={activeHandler}
+                onClick={scrollToTopAndClose}
+                to="/kontakt"
+              >
                 Kontakt
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </nav>
