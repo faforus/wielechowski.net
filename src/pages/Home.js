@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+import { Helmet } from "react-helmet";
 import { useState, useEffect } from "react";
 import classes from "./Home.module.css";
 import webpSupported from "../helpers/webpSupport";
@@ -23,48 +25,61 @@ const Home = () => {
   }, []);
 
   return (
-    <motion.div {...CUSTOM_MOTION_PROPS} className={classes["img-container"]}>
-      {windowWidth > 800 ? (
-        <img
-          className={classes.color}
-          alt="+48 722 265 649 Fotograf, Gdynia, Sopot, Gdańsk, Trójmiasto"
-          src={color}
+    <Fragment>
+      <Helmet>
+        <meta
+          property="description"
+          content="Fotograf Trójmiasto - Studio / Portret / Reportaż Komercyjny / Reportaż Okolicznościowy / Śluby / Eventy / Sport / Trójmiasto"
         />
-      ) : (
-        ""
-      )}
-      <img
-        className={classes["img-top"]}
-        alt="Filip Wielechowski Fotografia - Gdynia, Sopot, Gdańsk, Trójmiasto"
-        src={
-          windowWidth > 800
-            ? webpSupported
-              ? topWEBP
-              : top
-            : webpSupported
-            ? topSmallWEBP
-            : topSmall
-        }
-      />
-      <div className={classes.stripe}>
-        F<span className={classes.smaller}>ILIP&nbsp;</span> W
-        <span className={classes.smaller}>IELECHOWSKI&nbsp;</span>F
-        <span className={classes.smaller}>OTOGRAFIA</span>
-      </div>
-      <img
-        className={classes["img-bottom"]}
-        alt="Filip Wielechowski Fotografia - Gdynia, Sopot, Gdańsk, Trójmiasto"
-        src={
-          windowWidth > 800
-            ? webpSupported
-              ? bottomWEBP
-              : bottom
-            : webpSupported
-            ? bottomSmallWEBP
-            : bottomSmall
-        }
-      />
-    </motion.div>
+        <meta
+          property="og:description"
+          content="Fotograf Trójmiasto - Studio / Portret / Reportaż Komercyjny / Reportaż Okolicznościowy / Śluby / Eventy / Sport / Trójmiasto"
+        />
+        <title>FW Fotografia</title>
+      </Helmet>
+      <motion.div {...CUSTOM_MOTION_PROPS} className={classes["img-container"]}>
+        {windowWidth > 800 ? (
+          <img
+            className={classes.color}
+            alt="+48 722 265 649 Fotograf, Gdynia, Sopot, Gdańsk, Trójmiasto"
+            src={color}
+          />
+        ) : (
+          ""
+        )}
+        <img
+          className={classes["img-top"]}
+          alt="Filip Wielechowski Fotografia - Gdynia, Sopot, Gdańsk, Trójmiasto"
+          src={
+            windowWidth > 800
+              ? webpSupported
+                ? topWEBP
+                : top
+              : webpSupported
+              ? topSmallWEBP
+              : topSmall
+          }
+        />
+        <div className={classes.stripe}>
+          F<span className={classes.smaller}>ILIP&nbsp;</span> W
+          <span className={classes.smaller}>IELECHOWSKI&nbsp;</span>F
+          <span className={classes.smaller}>OTOGRAFIA</span>
+        </div>
+        <img
+          className={classes["img-bottom"]}
+          alt="Filip Wielechowski Fotografia - Gdynia, Sopot, Gdańsk, Trójmiasto"
+          src={
+            windowWidth > 800
+              ? webpSupported
+                ? bottomWEBP
+                : bottom
+              : webpSupported
+              ? bottomSmallWEBP
+              : bottomSmall
+          }
+        />
+      </motion.div>
+    </Fragment>
   );
 };
 

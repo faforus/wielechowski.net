@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+import { Helmet } from "react-helmet";
 import { useState, useEffect } from "react";
 import Title from "../../components/Title";
 import classes from "./Offer.module.css";
@@ -73,98 +75,111 @@ const CommercialReportage = () => {
   }, [images]);
 
   return (
-    <motion.div {...CUSTOM_MOTION_PROPS} className={classes.wrapper}>
-      <Title title="Eventy Firmowe / Sportowe" />
-      <div className={classes.main}>
-        <div className={classes["main-container"]}>
-          <div className={classes["main-left"]}>
-            <p>Między innymi:</p>
-            <p>wszelkiego rodzaju reportaże</p>
-            <p>imprezy / eventy firmowe</p>
-            <p>jubileusze / konferencje</p>
-            <p>eventy sportowe / muzyczne</p>
-            <p>otwarcia nowych lokali</p>
-          </div>
-          <div className={classes["main-right"]}>
-            <HorizontalMiniGallery images={mappedObjectImages} />
+    <Fragment>
+      <Helmet>
+        <meta
+          property="description"
+          content="wszelkiego rodzaju reportaże / imprezy / eventy firmowe / jubileusze / konferencje / eventy sportowe / muzyczne / otwarcia nowych lokali"
+        />
+        <meta
+          property="og:description"
+          content="wszelkiego rodzaju reportaże / imprezy / eventy firmowe / jubileusze / konferencje / eventy sportowe / muzyczne / otwarcia nowych lokali"
+        />
+        <title>Eventy Firmowe / Sportowe - Reportaż</title>
+      </Helmet>
+      <motion.div {...CUSTOM_MOTION_PROPS} className={classes.wrapper}>
+        <Title title="Eventy Firmowe / Sportowe" />
+        <div className={classes.main}>
+          <div className={classes["main-container"]}>
+            <div className={classes["main-left"]}>
+              <p>Między innymi:</p>
+              <p>wszelkiego rodzaju reportaże</p>
+              <p>imprezy / eventy firmowe</p>
+              <p>jubileusze / konferencje</p>
+              <p>eventy sportowe / muzyczne</p>
+              <p>otwarcia nowych lokali</p>
+            </div>
+            <div className={classes["main-right"]}>
+              <HorizontalMiniGallery images={mappedObjectImages} />
+            </div>
           </div>
         </div>
-      </div>
-      <div className={classes.price}>
-        <p>
-          Cena jest zależna od długości wydarzenia, lokalizacji, ilości zdjęć i
-          rodzaju obróbki.
-        </p>
-      </div>
-      <div className={classes.main}>
-        <p className={classes["partners-txt"]}>Współpracowałem z</p>
-      </div>
-      <div className={classes.partners}>
-        <img
-          src={p1}
-          alt={p1
-            .replace(/%20/g, " ")
-            .replace("/static/media/", "")
-            .replace(/\..*$/, "")}
-        />
-        <img
-          src={p2}
-          alt={p2
-            .replace(/%20/g, " ")
-            .replace("/static/media/", "")
-            .replace(/\..*$/, "")}
-        />
-        <img
-          src={p3}
-          alt={p3
-            .replace(/%20/g, " ")
-            .replace("/static/media/", "")
-            .replace(/\..*$/, "")}
-        />
-        <img
-          src={p4}
-          alt={p4
-            .replace(/%20/g, " ")
-            .replace("/static/media/", "")
-            .replace(/\..*$/, "")}
-        />
-        <img
-          src={p5}
-          alt={p5
-            .replace(/%20/g, " ")
-            .replace("/static/media/", "")
-            .replace(/\..*$/, "")}
-        />
-        <img
-          src={p6}
-          alt={p6
-            .replace(/%20/g, " ")
-            .replace("/static/media/", "")
-            .replace(/\..*$/, "")}
-        />
-        <img
-          src={p7}
-          alt={p7
-            .replace(/%20/g, " ")
-            .replace("/static/media/", "")
-            .replace(/\..*$/, "")}
-        />
-        <img
-          src={p8}
-          alt={p8
-            .replace(/%20/g, " ")
-            .replace("/static/media/", "")
-            .replace(/\..*$/, "")}
-        />
-        <img
-          src={p9}
-          alt={p9
-            .replace(/%20/g, " ")
-            .replace("/static/media/", "")
-            .replace(/\..*$/, "")}
-        />
-      </div>
-    </motion.div>
+        <div className={classes.price}>
+          <p>
+            Cena jest zależna od długości wydarzenia, lokalizacji, ilości zdjęć
+            i rodzaju obróbki.
+          </p>
+        </div>
+        <div className={classes.main}>
+          <p className={classes["partners-txt"]}>Współpracowałem z</p>
+        </div>
+        <div className={classes.partners}>
+          <img
+            src={p1}
+            alt={p1
+              .replace(/%20/g, " ")
+              .replace("/static/media/", "")
+              .replace(/\..*$/, "")}
+          />
+          <img
+            src={p2}
+            alt={p2
+              .replace(/%20/g, " ")
+              .replace("/static/media/", "")
+              .replace(/\..*$/, "")}
+          />
+          <img
+            src={p3}
+            alt={p3
+              .replace(/%20/g, " ")
+              .replace("/static/media/", "")
+              .replace(/\..*$/, "")}
+          />
+          <img
+            src={p4}
+            alt={p4
+              .replace(/%20/g, " ")
+              .replace("/static/media/", "")
+              .replace(/\..*$/, "")}
+          />
+          <img
+            src={p5}
+            alt={p5
+              .replace(/%20/g, " ")
+              .replace("/static/media/", "")
+              .replace(/\..*$/, "")}
+          />
+          <img
+            src={p6}
+            alt={p6
+              .replace(/%20/g, " ")
+              .replace("/static/media/", "")
+              .replace(/\..*$/, "")}
+          />
+          <img
+            src={p7}
+            alt={p7
+              .replace(/%20/g, " ")
+              .replace("/static/media/", "")
+              .replace(/\..*$/, "")}
+          />
+          <img
+            src={p8}
+            alt={p8
+              .replace(/%20/g, " ")
+              .replace("/static/media/", "")
+              .replace(/\..*$/, "")}
+          />
+          <img
+            src={p9}
+            alt={p9
+              .replace(/%20/g, " ")
+              .replace("/static/media/", "")
+              .replace(/\..*$/, "")}
+          />
+        </div>
+      </motion.div>
+    </Fragment>
   );
 };
 
