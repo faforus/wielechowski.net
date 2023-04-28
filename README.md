@@ -14,7 +14,8 @@ Facebook-ready with Open Graph (OG) image integration.
 
 Responsive design for large screens, regular screens, and mobile devices.
 
-Animated burger menu with locked scrolling for all devices.
+Animated burger menu.
+
 Preloading of crucial images.
 
 WEBP image support.
@@ -45,8 +46,6 @@ Loading state management.
 Modal compatibility with Large, Horizontal, and Vertical Galleries.
 
 Keyboard navigation support.
-
-Scrolling locked on all devices.
 
 Loading state and animation management.
 

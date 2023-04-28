@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import classes from "../components/Gallery Large/Gallery.module.css";
 import { SERVER_COUNT } from "../config/config";
 import {
@@ -8,10 +9,11 @@ import {
   importReportage,
   importWedding,
 } from "../helpers/importImages";
-
-const GRID_LAYOUT = [0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1];
+import { sortImages } from "../helpers/sortImages";
 
 function useGallery(category) {
+  const navigate = useNavigate();
+
   const [loader, setLoader] = useState(false);
   const [modal, setModal] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -151,47 +153,12 @@ function useGallery(category) {
       horizontalImages.sort(() => Math.random() - 0.5);
       verticalImages.sort(() => Math.random() - 0.5);
 
-      let horizontalIndex = 0;
-      let verticalIndex = 0;
-      let idCounter = 1;
-      let newSortedImages = [];
-      let isFirstUnfitImage = true;
-
-      while (newSortedImages.length < data.length) {
-        for (
-          let i = 0;
-          i < GRID_LAYOUT.length && newSortedImages.length < data.length;
-          i++
-        ) {
-          const isHorizontal = GRID_LAYOUT[i] === 1;
-          let image;
-          let imageAvailable = true;
-
-          if (isHorizontal) {
-            if (horizontalIndex < horizontalImages.length) {
-              image = horizontalImages[horizontalIndex++];
-            } else {
-              imageAvailable = false;
-            }
-          } else {
-            if (verticalIndex < verticalImages.length) {
-              image = verticalImages[verticalIndex++];
-            } else {
-              imageAvailable = false;
-            }
-          }
-
-          if (!imageAvailable && isFirstUnfitImage) {
-            isFirstUnfitImage = false;
-            setIndexWithoutAppropriateProportion(newSortedImages.length);
-          }
-
-          if (image) {
-            image.id = idCounter++;
-            newSortedImages.push(image);
-          }
-        }
-      }
+      const { newSortedImages, iWAP } = sortImages(
+        horizontalImages,
+        verticalImages,
+        data
+      );
+      setIndexWithoutAppropriateProportion(iWAP);
       setSortedImages(newSortedImages);
     })().then(() => {
       setLoader(true);
