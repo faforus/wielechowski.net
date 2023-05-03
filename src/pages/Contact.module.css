@@ -64,16 +64,21 @@
   height: 100%;
   background-size: cover;
   background-position: center;
-  background-image: url("../assets/images/kontakt.jpg");
 }
 
-@supports (background-image: url("../assets/webpimages/kontakt.webp")) {
-  .contact-image {
-    background-image: url("../assets/webpimages/kontakt.webp");
-  }
+.contact-image img {
+  height: 100%;
+  min-height: 78vh;
+  width: 100%;
+  object-fit: cover;
 }
 
 @media (max-width: 1200px) {
+  .contact-image img {
+    height: 300px;
+    min-height: auto;
+    width: 100%;
+  }
   .contact-form-container {
     width: 100%;
   }

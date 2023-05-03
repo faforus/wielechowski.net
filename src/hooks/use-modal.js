@@ -29,7 +29,6 @@ const useModal = (images) => {
     const currentImageIndex = images.findIndex(
       (img) => img.id === currentIndex
     );
-    console.log(currentImageIndex);
     const newIndex = (currentImageIndex + 1) % images.length;
     setTempImgSrc(images[newIndex].largeImage);
     setCurrentIndex(images[newIndex].id);

@@ -62,7 +62,7 @@ const Business = () => {
       return { id: index + 1, src: thumbnailImages[index], largeImage: img };
     });
     setMappedObjectsImages(mappedObjectImages);
-  }, [images]);
+  }, [images, thumbnailImages]);
 
   return (
     <Fragment>
@@ -78,7 +78,7 @@ const Business = () => {
         <title>Sesja Biznesowa - Portret Biznesowy / Sesja Korporacyjna</title>
       </Helmet>
       <motion.div {...CUSTOM_MOTION_PROPS} className={classes.wrapper}>
-        <Title title="portret biznesowy / sesja biznesowa / korporacyjna" />
+        <Title title="Portret biznesowy / Sesja biznesowa / Korporacyjna" />
         <div className={classes.main}>
           <div className={classes["main-container"]}>
             <div className={classes["main-left"]}>

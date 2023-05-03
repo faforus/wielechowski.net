@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
 import classes from "../components/Gallery Large/Gallery.module.css";
 import { SERVER_COUNT } from "../config/config";
 import {
@@ -12,8 +11,6 @@ import {
 import { sortImages } from "../helpers/sortImages";
 
 function useGallery(category) {
-  const navigate = useNavigate();
-
   const [loader, setLoader] = useState(false);
   const [modal, setModal] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -63,22 +60,25 @@ function useGallery(category) {
     nextImg.src = sortedImages[nextIndex].largeImage;
   }, [sortedImages, currentIndex]);
 
-  const preloadTwoImages = (passedID) => {
-    const currentImageIndex = sortedImages.findIndex(
-      (img) => img.id === passedID
-    );
-    const currentImage = new Image();
-    currentImage.src = sortedImages[currentImageIndex].largeImage;
+  const preloadTwoImages = useCallback(
+    (passedID) => {
+      const currentImageIndex = sortedImages.findIndex(
+        (img) => img.id === passedID
+      );
+      const currentImage = new Image();
+      currentImage.src = sortedImages[currentImageIndex].largeImage;
 
-    const nextIndex = (currentImageIndex + 1) % sortedImages.length;
-    const nextImg = new Image();
-    nextImg.src = sortedImages[nextIndex].largeImage;
+      const nextIndex = (currentImageIndex + 1) % sortedImages.length;
+      const nextImg = new Image();
+      nextImg.src = sortedImages[nextIndex].largeImage;
 
-    const prevIndex =
-      (currentImageIndex + sortedImages.length - 1) % sortedImages.length;
-    const prevImg = new Image();
-    prevImg.src = sortedImages[prevIndex].largeImage;
-  };
+      const prevIndex =
+        (currentImageIndex + sortedImages.length - 1) % sortedImages.length;
+      const prevImg = new Image();
+      prevImg.src = sortedImages[prevIndex].largeImage;
+    },
+    [sortedImages]
+  );
 
   const largeImageHandler = () => {
     setLargeImgIsLoading(true);
@@ -272,7 +272,13 @@ function useGallery(category) {
 
     setMappedUnsortedImgs(mappedUnsortedImgs);
     setMappedImgs(mappedImgs);
-  }, [loader, indexWithoutAppropriateProportion, loadedImages, sortedImages]);
+  }, [
+    loader,
+    indexWithoutAppropriateProportion,
+    loadedImages,
+    sortedImages,
+    preloadTwoImages,
+  ]);
 
   return {
     modal,

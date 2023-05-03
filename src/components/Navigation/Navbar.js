@@ -39,12 +39,15 @@ const Navbar = () => {
         </li>
         <li className={classes.dropdown}>
           <NavLink
+            onClick={(e) => {
+              e.preventDefault();
+            }}
             onMouseOver={() => {
               handleHover();
               preloadNavImages();
             }}
-            to="#"
-            className={classes.arrow}
+            to="/oferta"
+            className={activeHandler}
           >
             Oferta
           </NavLink>
@@ -61,7 +64,7 @@ const Navbar = () => {
               <NavLink
                 className={activeHandler}
                 onClick={handleClick}
-                to="/sesja-biznesowa"
+                to="/oferta/sesja-biznesowa"
               >
                 Sesja Biznesowa
               </NavLink>
@@ -70,7 +73,7 @@ const Navbar = () => {
               <NavLink
                 className={activeHandler}
                 onClick={handleClick}
-                to="/sesja-wizerunkowa"
+                to="/oferta/sesja-wizerunkowa"
               >
                 Sesja Wizerunkowa
               </NavLink>
@@ -79,7 +82,7 @@ const Navbar = () => {
               <NavLink
                 className={activeHandler}
                 onClick={handleClick}
-                to="/reportaz-slubny"
+                to="/oferta/reportaz-slubny"
               >
                 Reportaż Ślubny
               </NavLink>
@@ -88,7 +91,7 @@ const Navbar = () => {
               <NavLink
                 className={activeHandler}
                 onClick={handleClick}
-                to="/reportaz-okolicznosciowy"
+                to="/oferta/reportaz-okolicznosciowy"
               >
                 Reportaż Okolicznościowy
               </NavLink>
@@ -97,7 +100,7 @@ const Navbar = () => {
               <NavLink
                 className={activeHandler}
                 onClick={handleClick}
-                to="/reportaz-firmowy"
+                to="/oferta/reportaz-firmowy"
               >
                 <span className={classes["last-dropdown-item"]}>
                   Eventy Firmowe / Sportowe

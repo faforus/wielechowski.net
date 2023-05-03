@@ -33,25 +33,33 @@ const MainGallery = () => {
   return (
     <Fragment>
       <Helmet>
+        <meta
+          property="description"
+          content="Galeria: Studio i Portret / Reportaż / Zwierzęta / Travel"
+        />
+        <meta
+          property="og:description"
+          content="Galeria: Studio i Portret / Reportaż / Zwierzęta / Travel"
+        />
         <title>Galeria: Studio i Portret / Reportaż / Zwierzęta / Travel</title>
       </Helmet>
       <motion.div {...motionProps} className={classes.gallery}>
-        <Link onClick={scrollHandler} to="/studio-portret">
+        <Link onClick={scrollHandler} to="/galeria/studio-portret">
           <div className={`${classes.tab1} ${classes.tabs}`}>
             <button>STUDIO / PORTRET</button>
           </div>
         </Link>
-        <Link onClick={scrollHandler} to="/reportaz">
+        <Link onClick={scrollHandler} to="/galeria/reportaz">
           <div className={`${classes.tab2} ${classes.tabs}`}>
             <button>REPORTAŻ</button>
           </div>
         </Link>
-        <Link onClick={scrollHandler} to="/zwierzeta">
+        <Link onClick={scrollHandler} to="/galeria/zwierzeta">
           <div className={`${classes.tab4} ${classes.tabs}`}>
             <button>ZWIERZĘTA</button>
           </div>
         </Link>
-        <Link onClick={scrollHandler} to="/travel">
+        <Link onClick={scrollHandler} to="/galeria/travel">
           <div className={`${classes.tab3} ${classes.tabs}`}>
             <button>TRAVEL</button>
           </div>

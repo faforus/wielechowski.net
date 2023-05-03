@@ -150,6 +150,12 @@
   font-weight: 600;
 }
 
+@media (max-width: 1200px) {
+  .form {
+    margin-top: 20px;
+  }
+}
+
 @media (max-width: 600px) {
   .rodo-text {
     max-width: 100%;
@@ -160,7 +166,6 @@
   }
   .form {
     height: auto;
-    margin-top: 20px;
     width: 100%;
   }
   .form input {

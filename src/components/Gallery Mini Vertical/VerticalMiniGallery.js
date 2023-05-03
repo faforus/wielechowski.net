@@ -7,7 +7,21 @@ const HorizontalMiniGallery = (props) => {
   const [currentImage, setCurrentImage] = useState([]);
   const [mappedImages, setMappedImages] = useState([]);
 
+  const {
+    modal,
+    setModal,
+    closeModal,
+    tempImgSrc,
+    setTempImgSrc,
+    setCurrentIndex,
+    largeImgIsLoading,
+    handleLargeImageLoad,
+    handlePrevClick,
+    handleNextClick,
+  } = useModal(props.images);
+
   useEffect(() => {
+    if (props.images.length === 0) return;
     const mappedImages = props.images
       .sort(() => Math.random() - 0.5)
       .map((img, index) => {
@@ -22,6 +36,7 @@ const HorizontalMiniGallery = (props) => {
                     setTempImgSrc(props.images[index].largeImage);
                   }}
                   src={props.images[index].src}
+                  alt=""
                 />
               );
             }}
@@ -37,26 +52,13 @@ const HorizontalMiniGallery = (props) => {
 
     setMappedImages(mappedImages);
     setCurrentImage(mappedImages[0]);
-  }, [props.images]);
+  }, [props.images, setCurrentIndex, setModal, setTempImgSrc]);
 
   useEffect(() => {
     if (mappedImages.length === 0) return;
     setCurrentIndex(props.images[0].id);
     setTempImgSrc(props.images[0].largeImage);
-  }, [mappedImages]);
-
-  const {
-    modal,
-    setModal,
-    closeModal,
-    tempImgSrc,
-    setTempImgSrc,
-    setCurrentIndex,
-    largeImgIsLoading,
-    handleLargeImageLoad,
-    handlePrevClick,
-    handleNextClick,
-  } = useModal(props.images);
+  }, [mappedImages, props.images, setCurrentIndex, setTempImgSrc]);
 
   const myDivRef = useRef(null);
 

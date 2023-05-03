@@ -22,6 +22,52 @@ const AnimatedRoutes = () => {
       <AnimatePresence>
         <Routes location={location} key={location.pathname}>
           <Route index element={<Home />} />
+          <Route path="oferta">
+            <Route
+              path="sesja-biznesowa"
+              element={<Business webpSupported={webpSupported} />}
+            />
+            <Route
+              path="sesja-wizerunkowa"
+              element={<Image webpSupported={webpSupported} />}
+            />
+            <Route
+              path="reportaz-slubny"
+              element={<Wedding webpSupported={webpSupported} />}
+            />
+            <Route
+              path="reportaz-okolicznosciowy"
+              element={<NonCommercialReportage webpSupported={webpSupported} />}
+            />
+            <Route
+              path="reportaz-firmowy"
+              element={<CommercialReportage webpSupported={webpSupported} />}
+            />
+          </Route>
+          <Route path="galeria">
+            <Route index element={<MainGallery />} />
+            <Route
+              path="studio-portret"
+              element={<Studio webpSupported={webpSupported} />}
+            />
+            <Route
+              path="reportaz"
+              element={<Reportage webpSupported={webpSupported} />}
+            />
+            <Route
+              path="travel"
+              element={<Travel webpSupported={webpSupported} />}
+            />
+            <Route
+              path="zwierzeta"
+              element={<Animals webpSupported={webpSupported} />}
+            />
+          </Route>
+          <Route path="kontakt" element={<Contact />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+        {/* <Routes location={location} key={location.pathname}>
+          <Route index element={<Home />} />
           <Route path="galeria" element={<MainGallery />} />
           <Route path="kontakt" element={<Contact />} />
           <Route
@@ -61,7 +107,7 @@ const AnimatedRoutes = () => {
             element={<CommercialReportage webpSupported={webpSupported} />}
           />
           <Route path="*" element={<ErrorPage />} />
-        </Routes>
+        </Routes> */}
       </AnimatePresence>
     </div>
   );

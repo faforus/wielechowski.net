@@ -71,7 +71,7 @@ const Modal = (props) => {
       document.body.style.overflow = "auto";
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [props.modal, navigate, props.handlePrevClick, props.handleNextClick]);
+  });
 
   const imgRef = useRef(null);
 

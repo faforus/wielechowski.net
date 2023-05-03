@@ -41,7 +41,7 @@ const Home = () => {
         {windowWidth > 800 ? (
           <img
             className={classes.color}
-            alt="+48 722 265 649 Fotograf, Gdynia, Sopot, Gdańsk, Trójmiasto"
+            alt="Filip Wielechowski Fotograf Trójmiasto - Studio / Portret / Reportaż Komercyjny / Reportaż Okolicznościowy / Śluby / Eventy / Sport / Trójmiasto"
             src={color}
           />
         ) : (
@@ -49,7 +49,7 @@ const Home = () => {
         )}
         <img
           className={classes["img-top"]}
-          alt="Filip Wielechowski Fotografia - Gdynia, Sopot, Gdańsk, Trójmiasto"
+          alt="Filip Wielechowski Fotograf Trójmiasto - Studio / Portret / Reportaż Komercyjny / Reportaż Okolicznościowy / Śluby / Eventy / Sport / Trójmiasto"
           src={
             windowWidth > 800
               ? webpSupported
@@ -67,7 +67,7 @@ const Home = () => {
         </div>
         <img
           className={classes["img-bottom"]}
-          alt="Filip Wielechowski Fotografia - Gdynia, Sopot, Gdańsk, Trójmiasto"
+          alt="Filip Wielechowski Fotograf Trójmiasto - Studio / Portret / Reportaż Komercyjny / Reportaż Okolicznościowy / Śluby / Eventy / Sport / Trójmiasto"
           src={
             windowWidth > 800
               ? webpSupported

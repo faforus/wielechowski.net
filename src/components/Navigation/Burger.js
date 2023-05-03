@@ -87,7 +87,7 @@ const Burger = () => {
                   <NavLink
                     className={activeHandler}
                     onClick={scrollToTopAndClose}
-                    to="/sesja-biznesowa"
+                    to="/oferta/sesja-biznesowa"
                   >
                     Sesja Biznesowa
                   </NavLink>
@@ -96,7 +96,7 @@ const Burger = () => {
                   <NavLink
                     className={activeHandler}
                     onClick={scrollToTopAndClose}
-                    to="/sesja-wizerunkowa"
+                    to="/oferta/sesja-wizerunkowa"
                   >
                     Sesja Wizerunkowa
                   </NavLink>
@@ -105,7 +105,7 @@ const Burger = () => {
                   <NavLink
                     className={activeHandler}
                     onClick={scrollToTopAndClose}
-                    to="/reportaz-slubny"
+                    to="/oferta/reportaz-slubny"
                   >
                     Reportaż Ślubny
                   </NavLink>
@@ -114,7 +114,7 @@ const Burger = () => {
                   <NavLink
                     className={activeHandler}
                     onClick={scrollToTopAndClose}
-                    to="/reportaz-okolicznosciowy"
+                    to="/oferta/reportaz-okolicznosciowy"
                   >
                     Reportaż Okolicznościowy
                   </NavLink>
@@ -123,7 +123,7 @@ const Burger = () => {
                   <NavLink
                     className={activeHandler}
                     onClick={scrollToTopAndClose}
-                    to="/reportaz-firmowy"
+                    to="/oferta/reportaz-firmowy"
                   >
                     Eventy Firmowe / Sportowe
                   </NavLink>
