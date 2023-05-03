@@ -1,8 +1,11 @@
 import classes from "./Spinner.module.css";
 
-const Spinner = () => {
+const Spinner = (props) => {
   return (
-    <div className={classes["spinner-container"]}>
+    <div
+      style={{ maxHeight: props.maxHeight }}
+      className={classes["spinner-container"]}
+    >
       <div className={classes.spinner}></div>
     </div>
   );

@@ -172,7 +172,7 @@ const ContactForm = () => {
     );
   }
   if (sendingForm) {
-    content = <Spinner />;
+    content = <Spinner maxHeight="100px" />;
   }
   if (sendingFormOutcome === "sent") {
     content = (
@@ -210,9 +210,11 @@ const ContactForm = () => {
   return (
     <div className={classes["form-container"]}>
       {content}
-      <button onClick={toggleRodoHandler} className={classes.rodo}>
-        rodo
-      </button>
+      {!sendingForm && (
+        <button onClick={toggleRodoHandler} className={classes.rodo}>
+          rodo
+        </button>
+      )}
       {rodo ? (
         <p className={classes["rodo-text"]}>
           Administratorem danych osobowych jest Filip Wielechowski NIP

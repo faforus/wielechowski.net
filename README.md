@@ -1,4 +1,7 @@
-[https://wielechowski.net/]
+[https://wielechowski.net/] - React
+
+
+[https://nextjs-e44af.web.app/] - Next.js demo also available (not yet fully optimised)
 
 2-in-1 Photography and React Portfolio
 
