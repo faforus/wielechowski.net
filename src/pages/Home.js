@@ -14,6 +14,7 @@ import bottomSmallWEBP from "../assets/webpimages/bottomsmall.webp";
 import color from "../assets/images/color.png";
 import { motion } from "framer-motion";
 import { CUSTOM_MOTION_PROPS } from "../config/config";
+import Test from "./offer/test";
 
 const Home = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -25,61 +26,62 @@ const Home = () => {
   }, []);
 
   return (
-    <Fragment>
-      <Helmet>
-        <meta
-          property="description"
-          content="Fotograf Trójmiasto - Studio / Portret / Reportaż Komercyjny / Reportaż Okolicznościowy / Śluby / Eventy / Sport / Trójmiasto"
-        />
-        <meta
-          property="og:description"
-          content="Fotograf Trójmiasto - Studio / Portret / Reportaż Komercyjny / Reportaż Okolicznościowy / Śluby / Eventy / Sport / Trójmiasto"
-        />
-        <title>FW Fotografia</title>
-      </Helmet>
-      <motion.div {...CUSTOM_MOTION_PROPS} className={classes["img-container"]}>
-        {windowWidth > 800 ? (
-          <img
-            className={classes.color}
-            alt="Filip Wielechowski Fotograf Trójmiasto - Studio / Portret / Reportaż Komercyjny / Reportaż Okolicznościowy / Śluby / Eventy / Sport / Trójmiasto"
-            src={color}
-          />
-        ) : (
-          ""
-        )}
-        <img
-          className={classes["img-top"]}
-          alt="Filip Wielechowski Fotograf Trójmiasto - Studio / Portret / Reportaż Komercyjny / Reportaż Okolicznościowy / Śluby / Eventy / Sport / Trójmiasto"
-          src={
-            windowWidth > 800
-              ? webpSupported
-                ? topWEBP
-                : top
-              : webpSupported
-              ? topSmallWEBP
-              : topSmall
-          }
-        />
-        <div className={classes.stripe}>
-          F<span className={classes.smaller}>ILIP&nbsp;</span> W
-          <span className={classes.smaller}>IELECHOWSKI&nbsp;</span>F
-          <span className={classes.smaller}>OTOGRAFIA</span>
-        </div>
-        <img
-          className={classes["img-bottom"]}
-          alt="Filip Wielechowski Fotograf Trójmiasto - Studio / Portret / Reportaż Komercyjny / Reportaż Okolicznościowy / Śluby / Eventy / Sport / Trójmiasto"
-          src={
-            windowWidth > 800
-              ? webpSupported
-                ? bottomWEBP
-                : bottom
-              : webpSupported
-              ? bottomSmallWEBP
-              : bottomSmall
-          }
-        />
-      </motion.div>
-    </Fragment>
+    <Test />
+    // <Fragment>
+    //   <Helmet>
+    //     <meta
+    //       property="description"
+    //       content="Fotograf Trójmiasto - Studio / Portret / Reportaż Komercyjny / Reportaż Okolicznościowy / Śluby / Eventy / Sport / Trójmiasto"
+    //     />
+    //     <meta
+    //       property="og:description"
+    //       content="Fotograf Trójmiasto - Studio / Portret / Reportaż Komercyjny / Reportaż Okolicznościowy / Śluby / Eventy / Sport / Trójmiasto"
+    //     />
+    //     <title>FW Fotografia</title>
+    //   </Helmet>
+    //   <motion.div {...CUSTOM_MOTION_PROPS} className={classes["img-container"]}>
+    //     {windowWidth > 800 ? (
+    //       <img
+    //         className={classes.color}
+    //         alt="Filip Wielechowski Fotograf Trójmiasto - Studio / Portret / Reportaż Komercyjny / Reportaż Okolicznościowy / Śluby / Eventy / Sport / Trójmiasto"
+    //         src={color}
+    //       />
+    //     ) : (
+    //       ""
+    //     )}
+    //     <img
+    //       className={classes["img-top"]}
+    //       alt="Filip Wielechowski Fotograf Trójmiasto - Studio / Portret / Reportaż Komercyjny / Reportaż Okolicznościowy / Śluby / Eventy / Sport / Trójmiasto"
+    //       src={
+    //         windowWidth > 800
+    //           ? webpSupported
+    //             ? topWEBP
+    //             : top
+    //           : webpSupported
+    //           ? topSmallWEBP
+    //           : topSmall
+    //       }
+    //     />
+    //     <div className={classes.stripe}>
+    //       F<span className={classes.smaller}>ILIP&nbsp;</span> W
+    //       <span className={classes.smaller}>IELECHOWSKI&nbsp;</span>F
+    //       <span className={classes.smaller}>OTOGRAFIA</span>
+    //     </div>
+    //     <img
+    //       className={classes["img-bottom"]}
+    //       alt="Filip Wielechowski Fotograf Trójmiasto - Studio / Portret / Reportaż Komercyjny / Reportaż Okolicznościowy / Śluby / Eventy / Sport / Trójmiasto"
+    //       src={
+    //         windowWidth > 800
+    //           ? webpSupported
+    //             ? bottomWEBP
+    //             : bottom
+    //           : webpSupported
+    //           ? bottomSmallWEBP
+    //           : bottomSmall
+    //       }
+    //     />
+    //   </motion.div>
+    // </Fragment>
   );
 };
 
