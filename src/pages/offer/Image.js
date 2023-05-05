@@ -1,11 +1,11 @@
-import { Fragment } from "react";
-import { Helmet } from "react-helmet";
-import Title from "../../components/Title";
-import classes from "./Offer.module.css";
-import webpSupported from "../../helpers/webpSupport";
-import VerticalMiniGallery from "../../components/Gallery_Mini_Vertical/VerticalMiniGallery";
-import { motion } from "framer-motion";
-import { CUSTOM_MOTION_PROPS } from "../../config/config";
+import React, { Fragment } from 'react';
+import { Helmet } from 'react-helmet';
+import Title from '../../components/Title';
+import classes from './Offer.module.css';
+import webpSupported from '../../helpers/webpSupport';
+import VerticalMiniGallery from '../../components/Gallery_Mini_Vertical/VerticalMiniGallery';
+import { motion } from 'framer-motion';
+import { CUSTOM_MOTION_PROPS } from '../../config/config';
 
 const importAll = (r) => {
   return r.keys().map(r);
@@ -17,33 +17,21 @@ const Image = () => {
 
   if (webpSupported) {
     images = importAll(
-      require.context(
-        "../../assets/webpimages/galleries/studio/image/",
-        true,
-        /\.(webp)$/
-      )
+      require.context('../../assets/webpimages/galleries/studio/image/', true, /\.(webp)$/),
     );
     thumbnailImages = importAll(
       require.context(
-        "../../assets/webpimages/galleries/studio-thumbnails/image/",
+        '../../assets/webpimages/galleries/studio-thumbnails/image/',
         true,
-        /\.(webp)$/
-      )
+        /\.(webp)$/,
+      ),
     );
   } else {
     images = importAll(
-      require.context(
-        "../../assets/images/galleries/studio/image/",
-        true,
-        /\.(jpe?g)$/
-      )
+      require.context('../../assets/images/galleries/studio/image/', true, /\.(jpe?g)$/),
     );
     thumbnailImages = importAll(
-      require.context(
-        "../../assets/images/galleries/studio-thumbnails/image/",
-        true,
-        /\.(jpe?g)$/
-      )
+      require.context('../../assets/images/galleries/studio-thumbnails/image/', true, /\.(jpe?g)$/),
     );
   }
 
@@ -57,26 +45,26 @@ const Image = () => {
     <Fragment>
       <Helmet>
         <meta
-          property="description"
-          content="Zdjęcia w plenerze lub w studiu. Idealne na media społecznościowe, stronę www lub do CV. Zdjęcia są poddawane profesjonalnemu retuszowi"
+          property='description'
+          content='Zdjęcia w plenerze lub w studiu. Idealne na media społecznościowe, stronę www lub do CV. Zdjęcia są poddawane profesjonalnemu retuszowi'
         />
         <meta
-          property="og:description"
-          content="Zdjęcia w plenerze lub w studiu. Idealne na media społecznościowe, stronę www lub do CV. Zdjęcia są poddawane profesjonalnemu retuszowi"
+          property='og:description'
+          content='Zdjęcia w plenerze lub w studiu. Idealne na media społecznościowe, stronę www lub do CV. Zdjęcia są poddawane profesjonalnemu retuszowi'
         />
         <title>Sesja Wizerunkowa - Portret / Sesja Wizerunkowa</title>
       </Helmet>
       <motion.div {...CUSTOM_MOTION_PROPS} className={classes.wrapper}>
-        <Title title="portret / sesja wizerunkowa" />
+        <Title title='portret / sesja wizerunkowa' />
         <div className={classes.main}>
-          <div className={classes["main-container"]}>
-            <div className={classes["main-left"]}>
+          <div className={classes['main-container']}>
+            <div className={classes['main-left']}>
               <p>Zdjęcia w plenerze lub w studiu.</p>
               <p>Idealne na media społecznościowe, stronę www lub do CV</p>
               <p>Zdjęcia są poddawane profesjonalnemu retuszowi*</p>
               <p>Wysoka rozdzielczość zdjęć**</p>
             </div>
-            <div className={classes["main-right"]}>
+            <div className={classes['main-right']}>
               <VerticalMiniGallery images={mappedObjectImages} />
             </div>
           </div>
@@ -100,12 +88,11 @@ const Image = () => {
             <p>uzgodnienia</p>
           </div>
         </div>
-        <div className={classes["additional-info"]}>
-          <div className={classes["additional-info-container"]}>
+        <div className={classes['additional-info']}>
+          <div className={classes['additional-info-container']}>
             <p>
-              * podstawowy retusz to korekta cery, oczu, sylwetki oraz lekkie
-              wybielanie zębów. Na życzenie klienta można wykonać bardziej
-              zaawansowany retusz.
+              * podstawowy retusz to korekta cery, oczu, sylwetki oraz lekkie wybielanie zębów. Na
+              życzenie klienta można wykonać bardziej zaawansowany retusz.
             </p>
             <p>** zdjęcia bez kadrowania są w rozdzielczości 8640 x 5760.</p>
           </div>

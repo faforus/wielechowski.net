@@ -1,15 +1,15 @@
-import { useState } from "react";
-import classes from "./ContactForm.module.css";
-import Spinner from "./Spinner";
+import React, { useState } from 'react';
+import classes from './ContactForm.module.css';
+import Spinner from './Spinner';
 
 const ContactForm = () => {
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [name, setName] = useState('');
+  const [surname, setSurname] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
   const [formIsValid, setFormIsValid] = useState(true);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
   const [sendingForm, setSendingForm] = useState(false);
   const [sendingFormOutcome, setSendingFormOutcome] = useState(null);
   const [rodo, setRodo] = useState(false);
@@ -24,7 +24,7 @@ const ContactForm = () => {
 
     if (formIsValid) {
       setSendingForm(true);
-      const url = "https://sendemail-2qkjfrtbsq-uw.a.run.app";
+      const url = 'https://sendemail-2qkjfrtbsq-uw.a.run.app';
       const data = {
         name,
         surname,
@@ -35,49 +35,47 @@ const ContactForm = () => {
 
       try {
         const response = await fetch(url, {
-          method: "POST",
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify(data),
         });
 
         if (response.ok) {
-          setName("");
-          setSurname("");
-          setPhoneNumber("");
-          setEmail("");
-          setMessage("");
+          setName('');
+          setSurname('');
+          setPhoneNumber('');
+          setEmail('');
+          setMessage('');
           setSendingForm(false);
-          setSendingFormOutcome("sent");
+          setSendingFormOutcome('sent');
         } else {
-          throw new Error("Error sending the form.");
+          throw new Error('Error sending the form.');
         }
       } catch (error) {
-        console.error("Error:", error);
+        console.error('Error:', error);
         setSendingForm(false);
-        setSendingFormOutcome("notsent");
+        setSendingFormOutcome('notsent');
       }
     }
   };
 
   const validateForm = () => {
     let isValid = true;
-    let error = "";
+    let error = '';
 
     if (message.trim().length < 10) {
       isValid = false;
-      error = "Wiadomość musi mieć co najmniej 10 znaków.";
+      error = 'Wiadomość musi mieć co najmniej 10 znaków.';
     }
 
-    const nameAndSurnameProvided =
-      name.trim().length > 0 || surname.trim().length > 0;
-    const emailOrPhoneProvided =
-      email.trim().length > 0 || phoneNumber.trim().length > 0;
+    const nameAndSurnameProvided = name.trim().length > 0 || surname.trim().length > 0;
+    const emailOrPhoneProvided = email.trim().length > 0 || phoneNumber.trim().length > 0;
 
     if (!nameAndSurnameProvided || !emailOrPhoneProvided) {
       isValid = false;
-      error = "Proszę podać imię lub nazwisko oraz email lub numer telefonu.";
+      error = 'Proszę podać imię lub nazwisko oraz email lub numer telefonu.';
     }
 
     const nameContainsNumbers = /\d/.test(name);
@@ -85,20 +83,17 @@ const ContactForm = () => {
 
     if (nameContainsNumbers || surnameContainsNumbers) {
       isValid = false;
-      error = "Imię i nazwisko nie mogą zawierać cyfr.";
+      error = 'Imię i nazwisko nie mogą zawierać cyfr.';
     }
 
-    if (
-      email.trim().length > 0 &&
-      (!email.includes("@") || !email.includes("."))
-    ) {
+    if (email.trim().length > 0 && (!email.includes('@') || !email.includes('.'))) {
       isValid = false;
-      error = "Adres email jest nieprawidłowy.";
+      error = 'Adres email jest nieprawidłowy.';
     }
 
     if (phoneNumber.trim().length > 0 && !/^[0-9+\-\s]+$/.test(phoneNumber)) {
       isValid = false;
-      error = "Numer telefonu zawiera niedozwolone znaki.";
+      error = 'Numer telefonu zawiera niedozwolone znaki.';
     }
 
     setFormIsValid(isValid);
@@ -109,72 +104,72 @@ const ContactForm = () => {
   if (!sendingForm && sendingFormOutcome === null) {
     content = (
       <form className={classes.form} onSubmit={handleSubmit}>
-        <div className={classes["input-label-caontainer"]}>
-          <label htmlFor="name">Imię:</label>
+        <div className={classes['input-label-caontainer']}>
+          <label htmlFor='name'>Imię:</label>
           <input
-            type="text"
-            id="name"
+            type='text'
+            id='name'
             value={name}
-            name="Name"
+            name='Name'
             onChange={(event) => setName(event.target.value)}
           />
         </div>
-        <div className={classes["input-label-caontainer"]}>
-          <label htmlFor="surname">Nazwisko:</label>
+        <div className={classes['input-label-caontainer']}>
+          <label htmlFor='surname'>Nazwisko:</label>
           <input
-            type="text"
-            id="surname"
+            type='text'
+            id='surname'
             value={surname}
-            name="Surname"
+            name='Surname'
             onChange={(event) => setSurname(event.target.value)}
           />
         </div>
-        <div className={classes["input-label-caontainer"]}>
-          <label htmlFor="phone">Telefon:</label>
+        <div className={classes['input-label-caontainer']}>
+          <label htmlFor='phone'>Telefon:</label>
           <input
-            type="tel"
-            id="phone"
+            type='tel'
+            id='phone'
             value={phoneNumber}
-            name="phone"
+            name='phone'
             onChange={(event) => setPhoneNumber(event.target.value)}
           />
         </div>
-        <div className={classes["input-label-caontainer"]}>
-          <label htmlFor="email">Email:</label>
+        <div className={classes['input-label-caontainer']}>
+          <label htmlFor='email'>Email:</label>
           <input
-            type="email"
-            id="email"
+            type='email'
+            id='email'
             value={email}
-            name="email"
+            name='email'
             onChange={(event) => setEmail(event.target.value)}
           />
         </div>
-        <div className={classes["input-label-caontainer"]}>
-          <label htmlFor="message">Wiadomość:</label>
+        <div className={classes['input-label-caontainer']}>
+          <label htmlFor='message'>Wiadomość:</label>
           <textarea
-            id="message"
+            id='message'
             value={message}
-            name="message"
+            name='message'
             onChange={(event) => setMessage(event.target.value)}
           />
         </div>
         {!formIsValid ? (
-          <div className={classes["error-message-container"]}>
+          <div className={classes['error-message-container']}>
             <p>{errorMessage}</p>
           </div>
         ) : (
-          ""
+          ''
         )}
-        <button type="submit" onClick={validateForm}>
+        <button type='submit' onClick={validateForm}>
           Wyślij
         </button>
       </form>
     );
   }
   if (sendingForm) {
-    content = <Spinner maxHeight="100px" />;
+    content = <Spinner maxHeight='100px' />;
   }
-  if (sendingFormOutcome === "sent") {
+  if (sendingFormOutcome === 'sent') {
     content = (
       <div className={classes.sent}>
         <p>Wiadomość wysłana!</p>
@@ -188,10 +183,10 @@ const ContactForm = () => {
       </div>
     );
   }
-  if (sendingFormOutcome === "notsent") {
+  if (sendingFormOutcome === 'notsent') {
     content = (
       <div className={classes.sent}>
-        <p style={{ textAlign: "center" }}>
+        <p style={{ textAlign: 'center' }}>
           Problem z wysłaniem wiadomości.
           <br />
           Spróbuj ponownie.
@@ -208,7 +203,7 @@ const ContactForm = () => {
   }
 
   return (
-    <div className={classes["form-container"]}>
+    <div className={classes['form-container']}>
       {content}
       {!sendingForm && (
         <button onClick={toggleRodoHandler} className={classes.rodo}>
@@ -216,13 +211,13 @@ const ContactForm = () => {
         </button>
       )}
       {rodo ? (
-        <p className={classes["rodo-text"]}>
-          Administratorem danych osobowych jest Filip Wielechowski NIP
-          5862228933, REGON 520394284. Dane wpisane w formularzu kontaktowym
-          będą przetwarzane w celu udzielenia odpowiedzi na przesłane pytanie.
+        <p className={classes['rodo-text']}>
+          Administratorem danych osobowych jest Filip Wielechowski NIP 5862228933, REGON 520394284.
+          Dane wpisane w formularzu kontaktowym będą przetwarzane w celu udzielenia odpowiedzi na
+          przesłane pytanie.
         </p>
       ) : (
-        ""
+        ''
       )}
     </div>
   );

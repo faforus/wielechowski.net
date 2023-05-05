@@ -1,7 +1,7 @@
-import useGallery from "../../hooks/use-gallery";
-import Gallery from "../../components/Gallery_Main/Gallery";
-import { Fragment } from "react";
-import { Helmet } from "react-helmet";
+import useGallery from '../../hooks/use-gallery';
+import Gallery from '../../components/Gallery_Main/Gallery';
+import React, { Fragment } from 'react';
+import { Helmet } from 'react-helmet';
 
 const Studio = () => {
   const {
@@ -17,7 +17,7 @@ const Studio = () => {
     mappedUnsortedImgs,
     handlePrevClick,
     handleNextClick,
-  } = useGallery("studio");
+  } = useGallery('studio');
 
   return (
     <Fragment>
@@ -25,8 +25,8 @@ const Studio = () => {
         <title>Galeria Studio i Portret - Wizerunkowe i Biznesowe</title>
       </Helmet>
       <Gallery
-        category={"Studio / Portret"}
-        link="/galeria"
+        category={'Studio / Portret'}
+        link='/galeria'
         modal={modal}
         closeModal={closeModal}
         largeImgIsLoading={largeImgIsLoading}

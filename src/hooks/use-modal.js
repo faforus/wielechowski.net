@@ -1,18 +1,16 @@
-import { useEffect, useCallback, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const useModal = (images) => {
   const [modal, setModal] = useState(false);
-  const [tempImgSrc, setTempImgSrc] = useState("");
+  const [tempImgSrc, setTempImgSrc] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [largeImgIsLoading, setLargeImgIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handlePrevClick = useCallback(() => {
     setLargeImgIsLoading(true);
-    const currentImageIndex = images.findIndex(
-      (img) => img.id === currentIndex
-    );
+    const currentImageIndex = images.findIndex((img) => img.id === currentIndex);
     const newIndex = (currentImageIndex + images.length - 1) % images.length;
     setTempImgSrc(images[newIndex].largeImage);
     setCurrentIndex(images[newIndex].id);
@@ -26,9 +24,7 @@ const useModal = (images) => {
 
   const handleNextClick = useCallback(() => {
     setLargeImgIsLoading(true);
-    const currentImageIndex = images.findIndex(
-      (img) => img.id === currentIndex
-    );
+    const currentImageIndex = images.findIndex((img) => img.id === currentIndex);
     const newIndex = (currentImageIndex + 1) % images.length;
     setTempImgSrc(images[newIndex].largeImage);
     setCurrentIndex(images[newIndex].id);
@@ -46,9 +42,9 @@ const useModal = (images) => {
 
   useEffect(() => {
     if (modal) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = 'auto';
     }
 
     const handleKeyDown = (e) => {
@@ -62,15 +58,15 @@ const useModal = (images) => {
         }, 300);
       } else if (e.keyCode === 27) {
         setModal(false);
-        setTempImgSrc("");
+        setTempImgSrc('');
       }
     };
 
-    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      document.body.style.overflow = "auto";
-      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = 'auto';
+      document.removeEventListener('keydown', handleKeyDown);
     };
   }, [modal, navigate, handlePrevClick, handleNextClick]);
 

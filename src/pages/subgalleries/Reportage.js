@@ -1,7 +1,7 @@
-import useGallery from "../../hooks/use-gallery";
-import Gallery from "../../components/Gallery_Main/Gallery";
-import { Fragment } from "react";
-import { Helmet } from "react-helmet";
+import useGallery from '../../hooks/use-gallery';
+import Gallery from '../../components/Gallery_Main/Gallery';
+import React, { Fragment } from 'react';
+import { Helmet } from 'react-helmet';
 
 const Reportage = () => {
   const {
@@ -17,7 +17,7 @@ const Reportage = () => {
     mappedUnsortedImgs,
     handlePrevClick,
     handleNextClick,
-  } = useGallery("reportage");
+  } = useGallery('reportage');
 
   return (
     <Fragment>
@@ -25,8 +25,8 @@ const Reportage = () => {
         <title>Galeria Reportaż - Okolicznościowy i Komercyjny</title>
       </Helmet>
       <Gallery
-        category={"Reportaż"}
-        link="/galeria"
+        category={'Reportaż'}
+        link='/galeria'
         modal={modal}
         closeModal={closeModal}
         largeImgIsLoading={largeImgIsLoading}

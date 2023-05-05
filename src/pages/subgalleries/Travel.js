@@ -1,7 +1,7 @@
-import useGallery from "../../hooks/use-gallery";
-import Gallery from "../../components/Gallery_Main/Gallery";
-import { Fragment } from "react";
-import { Helmet } from "react-helmet";
+import useGallery from '../../hooks/use-gallery';
+import Gallery from '../../components/Gallery_Main/Gallery';
+import React, { Fragment } from 'react';
+import { Helmet } from 'react-helmet';
 
 const Travel = () => {
   const {
@@ -17,7 +17,7 @@ const Travel = () => {
     mappedUnsortedImgs,
     handlePrevClick,
     handleNextClick,
-  } = useGallery("outdoors");
+  } = useGallery('outdoors');
 
   return (
     <Fragment>
@@ -25,8 +25,8 @@ const Travel = () => {
         <title>Galeria Travel - Podróże / Architektura / Przyroda</title>
       </Helmet>
       <Gallery
-        category={"Travel"}
-        link="/galeria"
+        category={'Travel'}
+        link='/galeria'
         modal={modal}
         closeModal={closeModal}
         largeImgIsLoading={largeImgIsLoading}

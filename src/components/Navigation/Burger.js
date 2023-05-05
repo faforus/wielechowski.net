@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import classes from "./Burger.module.css";
-import { preloadNavImages } from "../../helpers/preloadNavigationImages";
-import { isMobileChecker } from "../../helpers/isMobile";
-import classNames from "classnames";
+import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import classes from './Burger.module.css';
+import { preloadNavImages } from '../../helpers/preloadNavigationImages';
+import { isMobileChecker } from '../../helpers/isMobile';
+import classNames from 'classnames';
 
 const scrollToTop = () => {
   window.scrollTo(0, 0);
@@ -19,12 +19,12 @@ const Burger = () => {
     };
 
     if (toggleBurger && isMobile) {
-      document.addEventListener("touchmove", handleTouchMove, {
+      document.addEventListener('touchmove', handleTouchMove, {
         passive: false,
       });
     }
     return () => {
-      document.removeEventListener("touchmove", handleTouchMove);
+      document.removeEventListener('touchmove', handleTouchMove);
     };
   }, [toggleBurger, isMobile]);
 
@@ -42,7 +42,7 @@ const Burger = () => {
   };
 
   return (
-    <div className={classes["burger-overflow-hidden"]}>
+    <div className={classes['burger-overflow-hidden']}>
       <div
         onClick={() => {
           toggleBurgerMenuHandler();
@@ -52,20 +52,20 @@ const Burger = () => {
           [classes.move]: toggleBurger,
         })}
       >
-        <div className={classes["menu-icon"]}>
+        <div className={classes['menu-icon']}>
           <span
             className={classNames({
-              [classes["top-line"]]: toggleBurger,
+              [classes['top-line']]: toggleBurger,
             })}
           ></span>
           <span
             className={classNames({
-              [classes["middle-line"]]: toggleBurger,
+              [classes['middle-line']]: toggleBurger,
             })}
           ></span>
           <span
             className={classNames({
-              [classes["bottom-line"]]: toggleBurger,
+              [classes['bottom-line']]: toggleBurger,
             })}
           ></span>
         </div>
@@ -75,25 +75,21 @@ const Burger = () => {
           [classes.hidden]: !toggleBurger,
         })}
       >
-        <nav className={classes["burger-nav"]}>
-          <ul className={classes["burger-ul"]}>
+        <nav className={classes['burger-nav']}>
+          <ul className={classes['burger-ul']}>
             <li>
-              <NavLink
-                className={activeHandler}
-                onClick={scrollToTopAndClose}
-                to="/"
-              >
+              <NavLink className={activeHandler} onClick={scrollToTopAndClose} to='/'>
                 Home
               </NavLink>
             </li>
             <li>
               <NavLink>Oferta</NavLink>
-              <ul className={classes["dropdown-content"]}>
+              <ul className={classes['dropdown-content']}>
                 <li>
                   <NavLink
                     className={activeHandler}
                     onClick={scrollToTopAndClose}
-                    to="/oferta/sesja-biznesowa"
+                    to='/oferta/sesja-biznesowa'
                   >
                     Sesja Biznesowa
                   </NavLink>
@@ -102,7 +98,7 @@ const Burger = () => {
                   <NavLink
                     className={activeHandler}
                     onClick={scrollToTopAndClose}
-                    to="/oferta/sesja-wizerunkowa"
+                    to='/oferta/sesja-wizerunkowa'
                   >
                     Sesja Wizerunkowa
                   </NavLink>
@@ -111,7 +107,7 @@ const Burger = () => {
                   <NavLink
                     className={activeHandler}
                     onClick={scrollToTopAndClose}
-                    to="/oferta/reportaz-slubny"
+                    to='/oferta/reportaz-slubny'
                   >
                     Reportaż Ślubny
                   </NavLink>
@@ -120,7 +116,7 @@ const Burger = () => {
                   <NavLink
                     className={activeHandler}
                     onClick={scrollToTopAndClose}
-                    to="/oferta/reportaz-okolicznosciowy"
+                    to='/oferta/reportaz-okolicznosciowy'
                   >
                     Reportaż Okolicznościowy
                   </NavLink>
@@ -129,7 +125,7 @@ const Burger = () => {
                   <NavLink
                     className={activeHandler}
                     onClick={scrollToTopAndClose}
-                    to="/oferta/reportaz-firmowy"
+                    to='/oferta/reportaz-firmowy'
                   >
                     Eventy Firmowe / Sportowe
                   </NavLink>
@@ -137,20 +133,12 @@ const Burger = () => {
               </ul>
             </li>
             <li>
-              <NavLink
-                className={activeHandler}
-                onClick={scrollToTopAndClose}
-                to="/galeria"
-              >
+              <NavLink className={activeHandler} onClick={scrollToTopAndClose} to='/galeria'>
                 Galeria
               </NavLink>
             </li>
             <li>
-              <NavLink
-                className={activeHandler}
-                onClick={scrollToTopAndClose}
-                to="/kontakt"
-              >
+              <NavLink className={activeHandler} onClick={scrollToTopAndClose} to='/kontakt'>
                 Kontakt
               </NavLink>
             </li>

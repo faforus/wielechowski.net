@@ -1,7 +1,8 @@
-import { Fragment, useState, useRef, useEffect, useMemo } from "react";
-import classes from "./HorizontalMiniGallery.module.css";
-import Modal from "../../components/Modal";
-import useModal from "../../hooks/use-modal";
+import React, { Fragment, useState, useRef, useEffect, useMemo } from 'react';
+import PropTypes from 'prop-types';
+import classes from './HorizontalMiniGallery.module.css';
+import Modal from '../../components/Modal';
+import useModal from '../../hooks/use-modal';
 
 const HorizontalMiniGallery = (props) => {
   const myDivRef = useRef(null);
@@ -33,15 +34,12 @@ const HorizontalMiniGallery = (props) => {
                   setTempImgSrc(props.images[index].largeImage);
                 }}
                 src={props.images[index].src}
-                alt=""
-              />
+                alt=''
+              />,
             );
           }}
           src={img.src}
-          alt={img.src
-            .replace(/%20/g, " ")
-            .replace("/static/media/", "")
-            .replace(/\..*$/, "")}
+          alt={img.src.replace(/%20/g, ' ').replace('/static/media/', '').replace(/\..*$/, '')}
           key={index}
         />
       );
@@ -52,20 +50,14 @@ const HorizontalMiniGallery = (props) => {
     setCurrentImage(mappedImages[0]);
     setCurrentIndex(props.images[0].id);
     setTempImgSrc(props.images[0].largeImage);
-  }, [
-    setCurrentImage,
-    setCurrentIndex,
-    setTempImgSrc,
-    props.images,
-    mappedImages,
-  ]);
+  }, [setCurrentImage, setCurrentIndex, setTempImgSrc, props.images, mappedImages]);
 
   function scroll(direction) {
     if (myDivRef.current) {
-      const sign = direction === "left" ? -1 : 1;
+      const sign = direction === 'left' ? -1 : 1;
       myDivRef.current.scrollBy({
         left: sign * myDivRef.current.clientWidth * 0.3,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     }
   }
@@ -84,19 +76,19 @@ const HorizontalMiniGallery = (props) => {
         handlePrevClick={handlePrevClick}
         handleNextClick={handleNextClick}
       />
-      <div className={classes["mini-gallery-horizontal"]}>
-        <div className={classes["mini-gallery-top"]}>
+      <div className={classes['mini-gallery-horizontal']}>
+        <div className={classes['mini-gallery-top']}>
           <p
             onClick={() => {
-              scroll("left");
+              scroll('left');
             }}
             className={classes.arrowleft}
           >
             ›
-          </p>{" "}
+          </p>{' '}
           <p
             onClick={() => {
-              scroll("right");
+              scroll('right');
             }}
             className={classes.arrowright}
           >
@@ -106,17 +98,28 @@ const HorizontalMiniGallery = (props) => {
             onClick={() => {
               setModal(true);
             }}
-            style={{ height: "100%" }}
+            style={{ height: '100%' }}
           >
             {currentImage}
           </div>
         </div>
-        <div ref={myDivRef} className={classes["mini-gallery-bottom"]}>
+        <div ref={myDivRef} className={classes['mini-gallery-bottom']}>
           {mappedImages}
         </div>
       </div>
     </Fragment>
   );
+};
+
+HorizontalMiniGallery.propTypes = {
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      src: PropTypes.string.isRequired,
+      largeImage: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default HorizontalMiniGallery;

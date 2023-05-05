@@ -1,30 +1,37 @@
-import { useEffect, useRef } from "react";
-import React from "react";
-import classes from "./Modal.module.css";
-import Spinner from "./Spinner";
-import { useNavigate } from "react-router-dom";
-import classNames from "classnames";
+import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
+import classes from './Modal.module.css';
+import Spinner from './Spinner';
+import { useNavigate } from 'react-router-dom';
+import classNames from 'classnames';
 
-const ArrowButton = React.memo(({ direction, onClick }) => {
+const ArrowButton = React.memo(function ArrowButton({ direction, onClick }) {
   return (
     <button
-      className={
-        direction === "prev" ? classes["prev-button"] : classes["next-button"]
-      }
+      className={direction === 'prev' ? classes['prev-button'] : classes['next-button']}
       onClick={onClick}
     >
-      {direction === "prev" ? "‹" : "›"}
+      {direction === 'prev' ? '‹' : '›'}
     </button>
   );
 });
 
-const CloseButton = React.memo(({ onClick }) => {
+ArrowButton.propTypes = {
+  direction: PropTypes.oneOf(['prev', 'next']).isRequired,
+  onClick: PropTypes.func.isRequired,
+};
+
+const CloseButton = React.memo(function CloseButton({ onClick }) {
   return (
-    <span onClick={onClick} className={classes["close-button"]}>
-      {"×"}
+    <span onClick={onClick} className={classes['close-button']}>
+      {'×'}
     </span>
   );
 });
+
+CloseButton.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 const Modal = (props) => {
   const {
@@ -57,30 +64,30 @@ const Modal = (props) => {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.keyCode === 8) {
-        navigate("/galeria");
+        navigate('/galeria');
         window.scrollTo(0, 0);
       }
       if (e.keyCode === 37) {
-        imgRef.current.style.opacity = "0";
+        imgRef.current.style.opacity = '0';
         setTimeout(() => {
           debouncedHandlePrevClick();
         }, 150);
       } else if (e.keyCode === 39) {
-        imgRef.current.style.opacity = "0";
+        imgRef.current.style.opacity = '0';
         setTimeout(() => {
           debouncedHandleNextClick();
         }, 150);
       } else if (e.keyCode === 27) {
         setModal(false);
-        setTempImgSrc("");
+        setTempImgSrc('');
       }
     };
 
-    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      document.body.style.overflow = "auto";
-      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = 'auto';
+      document.removeEventListener('keydown', handleKeyDown);
     };
   });
 
@@ -95,24 +102,24 @@ const Modal = (props) => {
 
     if (!isMobile) {
       if (modal) {
-        document.documentElement.style.overflowY = "hidden";
-        document.body.style.width = "calc(100% - 6px)";
+        document.documentElement.style.overflowY = 'hidden';
+        document.body.style.width = 'calc(100% - 6px)';
       } else {
-        document.documentElement.style.overflowY = "scroll";
-        document.body.style.width = "100%";
+        document.documentElement.style.overflowY = 'scroll';
+        document.body.style.width = '100%';
       }
     }
 
     if (modal && isMobile) {
-      document.addEventListener("touchmove", handleTouchMove, {
+      document.addEventListener('touchmove', handleTouchMove, {
         passive: false,
       });
     }
 
     return () => {
-      document.documentElement.style.overflowY = "scroll";
-      document.body.style.width = "100%";
-      document.removeEventListener("touchmove", handleTouchMove);
+      document.documentElement.style.overflowY = 'scroll';
+      document.body.style.width = '100%';
+      document.removeEventListener('touchmove', handleTouchMove);
     };
   }, [modal]);
 
@@ -120,12 +127,12 @@ const Modal = (props) => {
     <div
       className={classNames(classes.modal, {
         [classes.open]: modal,
-        [classes["disable-select"]]: modal,
+        [classes['disable-select']]: modal,
       })}
       onClick={() => {
         setModal(false);
         setTimeout(() => {
-          setTempImgSrc("");
+          setTempImgSrc('');
         }, 150);
       }}
     >
@@ -137,13 +144,10 @@ const Modal = (props) => {
       <img
         ref={imgRef}
         key={tempImgSrc}
-        alt={tempImgSrc
-          .replace(/%20/g, " ")
-          .replace("/static/media/", "")
-          .replace(/\..*$/, "")}
+        alt={tempImgSrc.replace(/%20/g, ' ').replace('/static/media/', '').replace(/\..*$/, '')}
         src={tempImgSrc}
         onLoad={(e) => {
-          e.target.style.opacity = "1";
+          e.target.style.opacity = '1';
           handleLargeImageLoad();
         }}
         onClick={(e) => {
@@ -154,25 +158,25 @@ const Modal = (props) => {
         onClick={() => {
           setModal(false);
           setTimeout(() => {
-            setTempImgSrc("");
+            setTempImgSrc('');
           }, 150);
         }}
       />
       <ArrowButton
-        direction="prev"
+        direction='prev'
         onClick={(e) => {
           e.stopPropagation();
-          imgRef.current.style.opacity = "0";
+          imgRef.current.style.opacity = '0';
           setTimeout(() => {
             debouncedHandlePrevClick();
           }, 150);
         }}
       />
       <ArrowButton
-        direction="next"
+        direction='next'
         onClick={(e) => {
           e.stopPropagation();
-          imgRef.current.style.opacity = "0";
+          imgRef.current.style.opacity = '0';
           setTimeout(() => {
             debouncedHandleNextClick();
           }, 150);
@@ -180,6 +184,17 @@ const Modal = (props) => {
       />
     </div>
   );
+};
+
+Modal.propTypes = {
+  modal: PropTypes.bool.isRequired,
+  setModal: PropTypes.func.isRequired,
+  tempImgSrc: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  setTempImgSrc: PropTypes.func.isRequired,
+  largeImgIsLoading: PropTypes.bool.isRequired,
+  handleLargeImageLoad: PropTypes.func.isRequired,
+  handlePrevClick: PropTypes.func.isRequired,
+  handleNextClick: PropTypes.func.isRequired,
 };
 
 export default Modal;

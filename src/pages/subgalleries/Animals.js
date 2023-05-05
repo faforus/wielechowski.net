@@ -1,7 +1,7 @@
-import useGallery from "../../hooks/use-gallery";
-import Gallery from "../../components/Gallery_Main/Gallery";
-import { Fragment } from "react";
-import { Helmet } from "react-helmet";
+import useGallery from '../../hooks/use-gallery';
+import Gallery from '../../components/Gallery_Main/Gallery';
+import React, { Fragment } from 'react';
+import { Helmet } from 'react-helmet';
 
 const Animals = () => {
   const {
@@ -16,7 +16,7 @@ const Animals = () => {
     mappedUnsortedImgs,
     handlePrevClick,
     handleNextClick,
-  } = useGallery("animals");
+  } = useGallery('animals');
 
   return (
     <Fragment>
@@ -24,8 +24,8 @@ const Animals = () => {
         <title>FW Fotografia - Galeria Zwierzęta - Dzikie i Udomowione</title>
       </Helmet>
       <Gallery
-        category={"Zwierzęta"}
-        link="/galeria"
+        category={'Zwierzęta'}
+        link='/galeria'
         modal={modal}
         largeImgIsLoading={largeImgIsLoading}
         tempImgSrc={tempImgSrc}
