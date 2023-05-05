@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
 import classes from "../components/Gallery Large/Gallery.module.css";
-import { SERVER_COUNT } from "../config/config";
 import {
   importAnimals,
   importStudio,
@@ -8,23 +7,158 @@ import {
   importReportage,
   importWedding,
 } from "../helpers/importImages";
-import { sortImages } from "../helpers/sortImages";
+import { sortImagesIntoGrid } from "../helpers/LargeGalleryHelpers/sortImagesIntoGrid";
+import { combineAndSortHorizontalVertical } from "../helpers/LargeGalleryHelpers/combineAndSortHorizontalVertical";
 
 function useGallery(category) {
-  const [loader, setLoader] = useState(false);
   const [modal, setModal] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [tempImgSrc, setTempImgSrc] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loadedImages, setLoadedImages] = useState(0);
   const [largeImgIsLoading, setLargeImgIsLoading] = useState(false);
-  const [sortedImages, setSortedImages] = useState([]);
-  const [mappedImgs, setMappedImgs] = useState([]);
-  const [mappedUnsortedImgs, setMappedUnsortedImgs] = useState([]);
-  const [
-    indexWithoutAppropriateProportion,
-    setIndexWithoutAppropriateProportion,
-  ] = useState(undefined);
+
+  let images;
+  let thumbnailImages;
+
+  switch (category) {
+    case "animals":
+      ({ images, thumbnailImages } = importAnimals());
+      break;
+    case "studio":
+      ({ images, thumbnailImages } = importStudio());
+      break;
+    case "outdoors":
+      ({ images, thumbnailImages } = importOutdoors());
+      break;
+    case "reportage":
+      ({ images, thumbnailImages } = importReportage());
+      break;
+    case "wedding":
+      ({ images, thumbnailImages } = importWedding());
+      break;
+    default:
+      console.log("lala");
+  }
+
+  const { horizontalImages, verticalImages } = combineAndSortHorizontalVertical(
+    images,
+    thumbnailImages
+  );
+
+  const { newSortedImages: sortedImages, indexWithoutAppropriateProportion } =
+    sortImagesIntoGrid(horizontalImages, verticalImages, images.length);
+
+  const splitInt14AndMapImages = (sortedImages) => {
+    let doesNotFitCount = 0;
+    let temporaryFittingImagesArray = [];
+    let temporaryRemainingImagesArray = [];
+    let mappedImgs = [];
+    let mappedUnsortedImgs = [];
+
+    let sortedFittingImages = sortedImages;
+
+    if (indexWithoutAppropriateProportion !== undefined) {
+      const sliceIndex = Math.ceil(indexWithoutAppropriateProportion / 14) * 14;
+
+      sortedFittingImages = sortedImages.slice(0, sliceIndex);
+      const sortedRemainingImages = sortedImages.slice(sliceIndex);
+
+      sortedRemainingImages.forEach((item, index) => {
+        temporaryRemainingImagesArray.push(
+          <div
+            key={index}
+            className={
+              item.isHorizontal
+                ? classes["horizontal-image-proportions"]
+                : classes["vertical-image-proportions"]
+            }
+          >
+            <img
+              src={item.imgSrc}
+              alt={item.alt}
+              onClick={() => {
+                largeImageHandler();
+                setTempImgSrc(item.largeImage);
+                setCurrentIndex(item.id);
+                setModal(true);
+                preloadTwoImages(item.id);
+              }}
+              onLoad={() => {
+                setLoadedImages((prevCount) => prevCount + 1);
+              }}
+            />
+          </div>
+        );
+        if (
+          (index + 1) % 12 === 0 ||
+          index === sortedRemainingImages.length - 1
+        ) {
+          const isLastGrid = index === sortedRemainingImages.length - 1;
+          const numOfImgsInGrid = isLastGrid
+            ? temporaryRemainingImagesArray.length
+            : 12;
+
+          mappedUnsortedImgs.push(
+            <div
+              className={
+                item.isHorizontal
+                  ? classes["grid-horizontal"]
+                  : classes["grid-vertical"]
+              }
+              key={`grid-${index}`}
+            >
+              {temporaryRemainingImagesArray.slice(0, numOfImgsInGrid)}
+            </div>
+          );
+          temporaryRemainingImagesArray = [];
+        }
+      });
+    }
+
+    sortedFittingImages.forEach((item, index) => {
+      temporaryFittingImagesArray.push(
+        <div key={index} className={classes["horizontal-image-proportions"]}>
+          <img
+            src={item.imgSrc}
+            alt={item.alt}
+            onClick={() => {
+              largeImageHandler();
+              setTempImgSrc(item.largeImage);
+              setCurrentIndex(item.id);
+              setModal(true);
+              preloadTwoImages(item.id);
+            }}
+            onLoad={() => {
+              setLoadedImages((prevCount) => prevCount + 1);
+            }}
+          />
+        </div>
+      );
+
+      if (
+        ((index + 1) % 14 === 0 && doesNotFitCount === 0) ||
+        index === sortedImages.length - 1
+      ) {
+        const isLastGrid = index === sortedImages.length - 1;
+        const numOfImgsInGrid = isLastGrid
+          ? temporaryFittingImagesArray.length
+          : 14;
+
+        mappedImgs.push(
+          <div className={classes.grid} key={`grid-${index}`}>
+            {temporaryFittingImagesArray.slice(0, numOfImgsInGrid)}
+          </div>
+        );
+        temporaryFittingImagesArray = [];
+        doesNotFitCount = 0;
+      }
+    });
+    return { mappedImgs, mappedUnsortedImgs };
+  };
+
+  const { mappedImgs, mappedUnsortedImgs } =
+    splitInt14AndMapImages(sortedImages);
 
   const handlePrevClick = useCallback(() => {
     setLargeImgIsLoading(true);
@@ -89,196 +223,10 @@ function useGallery(category) {
   };
 
   useEffect(() => {
-    (async () => {
-      let images;
-      let thumbnailImages;
-
-      if (category === "animals") {
-        ({ images, thumbnailImages } = importAnimals());
-      }
-      if (category === "studio") {
-        ({ images, thumbnailImages } = importStudio());
-      }
-      if (category === "outdoors") {
-        ({ images, thumbnailImages } = importOutdoors());
-      }
-      if (category === "reportage") {
-        ({ images, thumbnailImages } = importReportage());
-      }
-      if (category === "wedding") {
-        ({ images, thumbnailImages } = importWedding());
-      }
-
-      const horizontalImages = [];
-      const verticalImages = [];
-      const data = await Promise.all(
-        thumbnailImages.map((img, index) => {
-          const imgObj = new Image();
-          imgObj.src = img;
-
-          const imgLoaded = new Promise((resolve) => {
-            imgObj.onload = () => {
-              resolve(imgObj);
-              setLoadedImages((prevCount) => prevCount + SERVER_COUNT);
-            };
-          });
-
-          const getImage = async () => {
-            await imgLoaded;
-
-            const isHorizontal = imgObj.width > imgObj.height;
-            const item = {
-              imgSrc: img,
-              isHorizontal: isHorizontal,
-              largeImage: images[index],
-              alt: img
-                .replace(/%20/g, " ")
-                .replace("/static/media/", "")
-                .replace(/\..*$/, ""),
-            };
-
-            if (isHorizontal) {
-              horizontalImages.push(item);
-            } else {
-              verticalImages.push(item);
-            }
-
-            return item;
-          };
-
-          return getImage();
-        })
-      );
-
-      horizontalImages.sort(() => Math.random() - 0.5);
-      verticalImages.sort(() => Math.random() - 0.5);
-
-      const { newSortedImages, iWAP } = sortImages(
-        horizontalImages,
-        verticalImages,
-        data
-      );
-      setIndexWithoutAppropriateProportion(iWAP);
-      setSortedImages(newSortedImages);
-    })().then(() => {
-      setLoader(true);
-    });
-  }, [category]);
-
-  useEffect(() => {
-    if (!loader) return;
-    let doesNotFitCount = 0;
-    let temporaryFittingImagesArray = [];
-    let temporaryRemainingImagesArray = [];
-    let mappedImgs = [];
-    let mappedUnsortedImgs = [];
-
-    let sortedFittingImages = sortedImages;
-
-    if (indexWithoutAppropriateProportion !== undefined) {
-      const sliceIndex = Math.ceil(indexWithoutAppropriateProportion / 14) * 14;
-
-      sortedFittingImages = sortedImages.slice(0, sliceIndex);
-      const sortedRemainingImages = sortedImages.slice(sliceIndex);
-
-      sortedRemainingImages.forEach((item, index) => {
-        temporaryRemainingImagesArray.push(
-          <div
-            key={index}
-            className={
-              item.isHorizontal
-                ? classes["horizontal-image-proportions"]
-                : classes["vertical-image-proportions"]
-            }
-          >
-            <img
-              src={item.imgSrc}
-              alt={item.alt}
-              onClick={() => {
-                largeImageHandler();
-                setTempImgSrc(item.largeImage);
-                setCurrentIndex(item.id);
-                setModal(true);
-                preloadTwoImages(item.id);
-              }}
-            />
-          </div>
-        );
-        if (
-          (index + 1) % 12 === 0 ||
-          index === sortedRemainingImages.length - 1
-        ) {
-          const isLastGrid = index === sortedRemainingImages.length - 1;
-          const numOfImgsInGrid = isLastGrid
-            ? temporaryRemainingImagesArray.length
-            : 12;
-
-          mappedUnsortedImgs.push(
-            <div
-              className={
-                item.isHorizontal
-                  ? classes["grid-horizontal"]
-                  : classes["grid-vertical"]
-              }
-              key={`grid-${index}`}
-            >
-              {temporaryRemainingImagesArray.slice(0, numOfImgsInGrid)}
-            </div>
-          );
-          temporaryRemainingImagesArray = [];
-        }
-      });
-    }
-
-    sortedFittingImages.forEach((item, index) => {
-      temporaryFittingImagesArray.push(
-        <div key={index} className={classes["horizontal-image-proportions"]}>
-          <img
-            src={item.imgSrc}
-            alt={item.alt}
-            onClick={() => {
-              largeImageHandler();
-              setTempImgSrc(item.largeImage);
-              setCurrentIndex(item.id);
-              setModal(true);
-              preloadTwoImages(item.id);
-            }}
-          />
-        </div>
-      );
-
-      if (
-        ((index + 1) % 14 === 0 && doesNotFitCount === 0) ||
-        index === sortedImages.length - 1
-      ) {
-        const isLastGrid = index === sortedImages.length - 1;
-        const numOfImgsInGrid = isLastGrid
-          ? temporaryFittingImagesArray.length
-          : 14;
-
-        mappedImgs.push(
-          <div className={classes.grid} key={`grid-${index}`}>
-            {temporaryFittingImagesArray.slice(0, numOfImgsInGrid)}
-          </div>
-        );
-        temporaryFittingImagesArray = [];
-        doesNotFitCount = 0;
-      }
-    });
-
-    if (loadedImages !== 0 && loadedImages === sortedImages.length) {
+    if (loadedImages !== 0 && loadedImages === images.length) {
       setIsLoading(false);
     }
-
-    setMappedUnsortedImgs(mappedUnsortedImgs);
-    setMappedImgs(mappedImgs);
-  }, [
-    loader,
-    indexWithoutAppropriateProportion,
-    loadedImages,
-    sortedImages,
-    preloadTwoImages,
-  ]);
+  }, [loadedImages, images.length]);
 
   return {
     modal,

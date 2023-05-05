@@ -1,6 +1,5 @@
 import { Fragment } from "react";
 import { Helmet } from "react-helmet";
-import { useState, useEffect } from "react";
 import Title from "../../components/Title";
 import classes from "./Offer.module.css";
 import webpSupported from "../../helpers/webpSupport";
@@ -13,56 +12,46 @@ const importAll = (r) => {
 };
 
 const Image = () => {
-  const [images, setImages] = useState([]);
-  const [thumbnailImages, setThumbnailImages] = useState([]);
-  const [mappedObjectImages, setMappedObjectsImages] = useState([]);
+  let images;
+  let thumbnailImages;
 
-  useEffect(() => {
-    let images;
-    let thumbnailImages;
+  if (webpSupported) {
+    images = importAll(
+      require.context(
+        `../../assets/webpimages/galleries/studio/image/`,
+        true,
+        /\.(webp)$/
+      )
+    );
+    thumbnailImages = importAll(
+      require.context(
+        `../../assets/webpimages/galleries/studio-thumbnails/image/`,
+        true,
+        /\.(webp)$/
+      )
+    );
+  } else {
+    images = importAll(
+      require.context(
+        `../../assets/images/galleries/studio/image/`,
+        true,
+        /\.(jpe?g)$/
+      )
+    );
+    thumbnailImages = importAll(
+      require.context(
+        `../../assets/images/galleries/studio-thumbnails/image/`,
+        true,
+        /\.(jpe?g)$/
+      )
+    );
+  }
 
-    if (webpSupported) {
-      images = importAll(
-        require.context(
-          `../../assets/webpimages/galleries/studio/image/`,
-          true,
-          /\.(webp)$/
-        )
-      );
-      thumbnailImages = importAll(
-        require.context(
-          `../../assets/webpimages/galleries/studio-thumbnails/image/`,
-          true,
-          /\.(webp)$/
-        )
-      );
-    } else {
-      images = importAll(
-        require.context(
-          `../../assets/images/galleries/studio/image/`,
-          true,
-          /\.(jpe?g)$/
-        )
-      );
-      thumbnailImages = importAll(
-        require.context(
-          `../../assets/images/galleries/studio-thumbnails/image/`,
-          true,
-          /\.(jpe?g)$/
-        )
-      );
-    }
-
-    setImages(images);
-    setThumbnailImages(thumbnailImages);
-  }, []);
-
-  useEffect(() => {
-    const mappedObjectImages = images.map((img, index) => {
+  const mappedObjectImages = images
+    .map((img, index) => {
       return { id: index + 1, src: thumbnailImages[index], largeImage: img };
-    });
-    setMappedObjectsImages(mappedObjectImages);
-  }, [images, thumbnailImages]);
+    })
+    .reverse();
 
   return (
     <Fragment>

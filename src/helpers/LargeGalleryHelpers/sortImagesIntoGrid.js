@@ -1,17 +1,21 @@
 const GRID_LAYOUT = [0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1];
 
-export const sortImages = (horizontalImages, verticalImages, data) => {
+export const sortImagesIntoGrid = (
+  horizontalImages,
+  verticalImages,
+  arrayLength
+) => {
   let horizontalIndex = 0;
   let verticalIndex = 0;
   let idCounter = 1;
   let newSortedImages = [];
   let isFirstUnfitImage = true;
-  let iWAP = undefined;
+  let indexWithoutAppropriateProportion = undefined;
 
-  while (newSortedImages.length < data.length) {
+  while (newSortedImages.length < arrayLength) {
     for (
       let i = 0;
-      i < GRID_LAYOUT.length && newSortedImages.length < data.length;
+      i < GRID_LAYOUT.length && newSortedImages.length < arrayLength;
       i++
     ) {
       const isHorizontal = GRID_LAYOUT[i] === 1;
@@ -34,8 +38,7 @@ export const sortImages = (horizontalImages, verticalImages, data) => {
 
       if (!imageAvailable && isFirstUnfitImage) {
         isFirstUnfitImage = false;
-        iWAP = newSortedImages.length;
-        // setIndexWithoutAppropriateProportion(newSortedImages.length);
+        indexWithoutAppropriateProportion = newSortedImages.length;
       }
 
       if (image) {
@@ -44,5 +47,5 @@ export const sortImages = (horizontalImages, verticalImages, data) => {
       }
     }
   }
-  return { newSortedImages, iWAP };
+  return { newSortedImages, indexWithoutAppropriateProportion };
 };

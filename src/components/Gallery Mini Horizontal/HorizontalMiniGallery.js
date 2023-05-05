@@ -1,11 +1,11 @@
-import { Fragment, useState, useRef, useEffect } from "react";
+import { Fragment, useState, useRef, useEffect, useMemo } from "react";
 import classes from "./HorizontalMiniGallery.module.css";
 import Modal from "../../components/Modal";
 import useModal from "../../hooks/use-modal";
 
 const HorizontalMiniGallery = (props) => {
+  const myDivRef = useRef(null);
   const [currentImage, setCurrentImage] = useState([]);
-  const [mappedImages, setMappedImages] = useState([]);
 
   const {
     modal,
@@ -20,46 +20,45 @@ const HorizontalMiniGallery = (props) => {
     handleNextClick,
   } = useModal(props.images);
 
-  useEffect(() => {
-    const mappedImages = props.images
-      .sort(() => Math.random() - 0.5)
-      .map((img, index) => {
-        return (
-          <img
-            onClick={() => {
-              setCurrentImage(
-                <img
-                  onClick={() => {
-                    setModal(true);
-                    setCurrentIndex(props.images[index].id);
-                    setTempImgSrc(props.images[index].largeImage);
-                  }}
-                  src={props.images[index].src}
-                  alt=""
-                />
-              );
-            }}
-            src={img.src}
-            alt={img.src
-              .replace(/%20/g, " ")
-              .replace("/static/media/", "")
-              .replace(/\..*$/, "")}
-            key={index}
-          />
-        );
-      });
-
-    setMappedImages(mappedImages);
-    setCurrentImage(mappedImages[0]);
+  const mappedImages = useMemo(() => {
+    return props.images.map((img, index) => {
+      return (
+        <img
+          onClick={() => {
+            setCurrentImage(
+              <img
+                onClick={() => {
+                  setModal(true);
+                  setCurrentIndex(props.images[index].id);
+                  setTempImgSrc(props.images[index].largeImage);
+                }}
+                src={props.images[index].src}
+                alt=""
+              />
+            );
+          }}
+          src={img.src}
+          alt={img.src
+            .replace(/%20/g, " ")
+            .replace("/static/media/", "")
+            .replace(/\..*$/, "")}
+          key={index}
+        />
+      );
+    });
   }, [props.images, setCurrentIndex, setModal, setTempImgSrc]);
 
   useEffect(() => {
-    if (mappedImages.length === 0) return;
+    setCurrentImage(mappedImages[0]);
     setCurrentIndex(props.images[0].id);
     setTempImgSrc(props.images[0].largeImage);
-  }, [mappedImages, props.images, setCurrentIndex, setTempImgSrc]);
-
-  const myDivRef = useRef(null);
+  }, [
+    setCurrentImage,
+    setCurrentIndex,
+    setTempImgSrc,
+    props.images,
+    mappedImages,
+  ]);
 
   function scroll(direction) {
     if (myDivRef.current) {

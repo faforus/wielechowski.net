@@ -1,6 +1,5 @@
 import { Fragment } from "react";
 import { Helmet } from "react-helmet";
-import { useState, useEffect } from "react";
 import Title from "../../components/Title";
 import classes from "./Offer.module.css";
 import webpSupported from "../../helpers/webpSupport";
@@ -13,56 +12,44 @@ const importAll = (r) => {
 };
 
 const NonCommercialReportage = () => {
-  const [images, setImages] = useState([]);
-  const [thumbnailImages, setThumbnailImages] = useState([]);
-  const [mappedObjectImages, setMappedObjectsImages] = useState([]);
+  let images;
+  let thumbnailImages;
 
-  useEffect(() => {
-    let images;
-    let thumbnailImages;
+  if (webpSupported) {
+    images = importAll(
+      require.context(
+        `../../assets/webpimages/galleries/reportage/noncorporate/`,
+        true,
+        /\.(webp)$/
+      )
+    );
+    thumbnailImages = importAll(
+      require.context(
+        `../../assets/webpimages/galleries/reportage-thumbnails/noncorporate/`,
+        true,
+        /\.(webp)$/
+      )
+    );
+  } else {
+    images = importAll(
+      require.context(
+        `../../assets/images/galleries/reportage/noncorporate/`,
+        true,
+        /\.(jpe?g)$/
+      )
+    );
+    thumbnailImages = importAll(
+      require.context(
+        `../../assets/images/galleries/reportage-thumbnails/noncorporate/`,
+        true,
+        /\.(jpe?g)$/
+      )
+    );
+  }
 
-    if (webpSupported) {
-      images = importAll(
-        require.context(
-          `../../assets/webpimages/galleries/reportage/noncorporate/`,
-          true,
-          /\.(webp)$/
-        )
-      );
-      thumbnailImages = importAll(
-        require.context(
-          `../../assets/webpimages/galleries/reportage-thumbnails/noncorporate/`,
-          true,
-          /\.(webp)$/
-        )
-      );
-    } else {
-      images = importAll(
-        require.context(
-          `../../assets/images/galleries/reportage/noncorporate/`,
-          true,
-          /\.(jpe?g)$/
-        )
-      );
-      thumbnailImages = importAll(
-        require.context(
-          `../../assets/images/galleries/reportage-thumbnails/noncorporate/`,
-          true,
-          /\.(jpe?g)$/
-        )
-      );
-    }
-
-    setImages(images);
-    setThumbnailImages(thumbnailImages);
-  }, []);
-
-  useEffect(() => {
-    const mappedObjectImages = images.map((img, index) => {
-      return { id: index + 1, src: thumbnailImages[index], largeImage: img };
-    });
-    setMappedObjectsImages(mappedObjectImages);
-  }, [images, thumbnailImages]);
+  const mappedObjectImages = images.map((img, index) => {
+    return { id: index + 1, src: thumbnailImages[index], largeImage: img };
+  });
 
   return (
     <Fragment>
