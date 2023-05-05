@@ -3,6 +3,7 @@ import React from "react";
 import classes from "./Modal.module.css";
 import Spinner from "./Spinner";
 import { useNavigate } from "react-router-dom";
+import classNames from "classnames";
 
 const ArrowButton = React.memo(({ direction, onClick }) => {
   return (
@@ -19,13 +20,23 @@ const ArrowButton = React.memo(({ direction, onClick }) => {
 
 const CloseButton = React.memo(({ onClick }) => {
   return (
-    <span onClick={onClick} className={`${classes["close-button"]}`}>
+    <span onClick={onClick} className={classes["close-button"]}>
       {"×"}
     </span>
   );
 });
 
 const Modal = (props) => {
+  const {
+    modal,
+    setModal,
+    tempImgSrc,
+    setTempImgSrc,
+    largeImgIsLoading,
+    handleLargeImageLoad,
+    handlePrevClick,
+    handleNextClick,
+  } = props;
   const navigate = useNavigate();
 
   const debounce = (func, wait) => {
@@ -40,8 +51,8 @@ const Modal = (props) => {
     };
   };
 
-  const debouncedHandlePrevClick = debounce(props.handlePrevClick, 150);
-  const debouncedHandleNextClick = debounce(props.handleNextClick, 150);
+  const debouncedHandlePrevClick = debounce(handlePrevClick, 150);
+  const debouncedHandleNextClick = debounce(handleNextClick, 150);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -60,8 +71,8 @@ const Modal = (props) => {
           debouncedHandleNextClick();
         }, 150);
       } else if (e.keyCode === 27) {
-        props.setModal(false);
-        props.setTempImgSrc("");
+        setModal(false);
+        setTempImgSrc("");
       }
     };
 
@@ -83,7 +94,7 @@ const Modal = (props) => {
     };
 
     if (!isMobile) {
-      if (props.modal) {
+      if (modal) {
         document.documentElement.style.overflowY = "hidden";
         document.body.style.width = "calc(100% - 6px)";
       } else {
@@ -92,7 +103,7 @@ const Modal = (props) => {
       }
     }
 
-    if (props.modal && isMobile) {
+    if (modal && isMobile) {
       document.addEventListener("touchmove", handleTouchMove, {
         passive: false,
       });
@@ -103,38 +114,37 @@ const Modal = (props) => {
       document.body.style.width = "100%";
       document.removeEventListener("touchmove", handleTouchMove);
     };
-  }, [props.modal]);
+  }, [modal]);
 
   return (
     <div
-      className={
-        props.modal
-          ? `${classes.modal} ${classes.open} ${classes["disable-select"]}`
-          : classes.modal
-      }
+      className={classNames(classes.modal, {
+        [classes.open]: modal,
+        [classes["disable-select"]]: modal,
+      })}
       onClick={() => {
-        props.setModal(false);
+        setModal(false);
         setTimeout(() => {
-          props.setTempImgSrc("");
+          setTempImgSrc("");
         }, 150);
       }}
     >
-      {props.largeImgIsLoading && (
+      {largeImgIsLoading && (
         <div className={classes.spinner}>
           <Spinner />
         </div>
       )}
       <img
         ref={imgRef}
-        key={props.tempImgSrc}
-        alt={props.tempImgSrc
+        key={tempImgSrc}
+        alt={tempImgSrc
           .replace(/%20/g, " ")
           .replace("/static/media/", "")
           .replace(/\..*$/, "")}
-        src={props.tempImgSrc}
+        src={tempImgSrc}
         onLoad={(e) => {
           e.target.style.opacity = "1";
-          props.handleLargeImageLoad();
+          handleLargeImageLoad();
         }}
         onClick={(e) => {
           e.stopPropagation();
@@ -142,9 +152,9 @@ const Modal = (props) => {
       />
       <CloseButton
         onClick={() => {
-          props.setModal(false);
+          setModal(false);
           setTimeout(() => {
-            props.setTempImgSrc("");
+            setTempImgSrc("");
           }, 150);
         }}
       />

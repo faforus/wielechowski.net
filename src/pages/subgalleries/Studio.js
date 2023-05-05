@@ -1,11 +1,12 @@
 import useGallery from "../../hooks/use-gallery";
-import Gallery from "../../components/Gallery Large/Gallery";
+import Gallery from "../../components/Gallery_Main/Gallery";
 import { Fragment } from "react";
 import { Helmet } from "react-helmet";
 
-const Animals = () => {
+const Studio = () => {
   const {
     modal,
+    closeModal,
     largeImgIsLoading,
     tempImgSrc,
     handleLargeImageLoad,
@@ -16,17 +17,18 @@ const Animals = () => {
     mappedUnsortedImgs,
     handlePrevClick,
     handleNextClick,
-  } = useGallery("animals");
+  } = useGallery("studio");
 
   return (
     <Fragment>
       <Helmet>
-        <title>FW Fotografia - Galeria Zwierzęta - Dzikie i Udomowione</title>
+        <title>Galeria Studio i Portret - Wizerunkowe i Biznesowe</title>
       </Helmet>
       <Gallery
-        category={"Zwierzęta"}
+        category={"Studio / Portret"}
         link="/galeria"
         modal={modal}
+        closeModal={closeModal}
         largeImgIsLoading={largeImgIsLoading}
         tempImgSrc={tempImgSrc}
         handleLargeImageLoad={handleLargeImageLoad}
@@ -42,4 +44,4 @@ const Animals = () => {
   );
 };
 
-export default Animals;
+export default Studio;

@@ -7,6 +7,7 @@ import { CUSTOM_MOTION_PROPS } from "../config/config";
 import { CUSTOM_MOTION_PROPS_MOBILE_MAIN_GALLERY } from "../config/config";
 import { preloadGalImages } from "../helpers/preloadGalleryImages";
 import { Fragment } from "react";
+import classNames from "classnames";
 
 const scrollHandler = () => {
   window.scrollTo(0, 0);
@@ -45,22 +46,22 @@ const MainGallery = () => {
       </Helmet>
       <motion.div {...motionProps} className={classes.gallery}>
         <Link onClick={scrollHandler} to="/galeria/studio-portret">
-          <div className={`${classes.tab1} ${classes.tabs}`}>
+          <div className={classNames(classes.tab1, classes.tabs)}>
             <button>STUDIO / PORTRET</button>
           </div>
         </Link>
         <Link onClick={scrollHandler} to="/galeria/reportaz">
-          <div className={`${classes.tab2} ${classes.tabs}`}>
+          <div className={classNames(classes.tab2, classes.tabs)}>
             <button>REPORTAŻ</button>
           </div>
         </Link>
         <Link onClick={scrollHandler} to="/galeria/zwierzeta">
-          <div className={`${classes.tab4} ${classes.tabs}`}>
+          <div className={classNames(classes.tab3, classes.tabs)}>
             <button>ZWIERZĘTA</button>
           </div>
         </Link>
         <Link onClick={scrollHandler} to="/galeria/travel">
-          <div className={`${classes.tab3} ${classes.tabs}`}>
+          <div className={classNames(classes.tab4, classes.tabs)}>
             <button>TRAVEL</button>
           </div>
         </Link>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import classes from "../components/Gallery Large/Gallery.module.css";
+import classes from "../components/Gallery_Main/Gallery.module.css";
 import {
   importAnimals,
   importStudio,

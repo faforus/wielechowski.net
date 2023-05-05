@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import Title from "../../components/Title";
 import classes from "./Offer.module.css";
 import webpSupported from "../../helpers/webpSupport";
-import VerticalMiniGallery from "../../components/Gallery Mini Vertical/VerticalMiniGallery";
+import VerticalMiniGallery from "../../components/Gallery_Mini_Vertical/VerticalMiniGallery";
 import { motion } from "framer-motion";
 import { CUSTOM_MOTION_PROPS } from "../../config/config";
 
@@ -18,14 +18,14 @@ const Image = () => {
   if (webpSupported) {
     images = importAll(
       require.context(
-        `../../assets/webpimages/galleries/studio/image/`,
+        "../../assets/webpimages/galleries/studio/image/",
         true,
         /\.(webp)$/
       )
     );
     thumbnailImages = importAll(
       require.context(
-        `../../assets/webpimages/galleries/studio-thumbnails/image/`,
+        "../../assets/webpimages/galleries/studio-thumbnails/image/",
         true,
         /\.(webp)$/
       )
@@ -33,14 +33,14 @@ const Image = () => {
   } else {
     images = importAll(
       require.context(
-        `../../assets/images/galleries/studio/image/`,
+        "../../assets/images/galleries/studio/image/",
         true,
         /\.(jpe?g)$/
       )
     );
     thumbnailImages = importAll(
       require.context(
-        `../../assets/images/galleries/studio-thumbnails/image/`,
+        "../../assets/images/galleries/studio-thumbnails/image/",
         true,
         /\.(jpe?g)$/
       )

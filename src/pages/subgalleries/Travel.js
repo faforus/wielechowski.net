@@ -1,9 +1,9 @@
 import useGallery from "../../hooks/use-gallery";
-import Gallery from "../../components/Gallery Large/Gallery";
+import Gallery from "../../components/Gallery_Main/Gallery";
 import { Fragment } from "react";
 import { Helmet } from "react-helmet";
 
-const Studio = () => {
+const Travel = () => {
   const {
     modal,
     closeModal,
@@ -17,15 +17,15 @@ const Studio = () => {
     mappedUnsortedImgs,
     handlePrevClick,
     handleNextClick,
-  } = useGallery("studio");
+  } = useGallery("outdoors");
 
   return (
     <Fragment>
       <Helmet>
-        <title>Galeria Studio i Portret - Wizerunkowe i Biznesowe</title>
+        <title>Galeria Travel - Podróże / Architektura / Przyroda</title>
       </Helmet>
       <Gallery
-        category={"Studio"}
+        category={"Travel"}
         link="/galeria"
         modal={modal}
         closeModal={closeModal}
@@ -44,4 +44,4 @@ const Studio = () => {
   );
 };
 
-export default Studio;
+export default Travel;

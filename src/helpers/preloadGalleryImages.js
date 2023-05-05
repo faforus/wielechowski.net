@@ -9,28 +9,28 @@ let set1, set2, set3, set4;
 if (webpSupported) {
   set1 = importAll(
     require.context(
-      `../assets/webpimages/galleries/studio-thumbnails/`,
+      "../assets/webpimages/galleries/studio-thumbnails/",
       true,
       /\.(webp)$/
     )
   );
   set2 = importAll(
     require.context(
-      `../assets/webpimages/galleries/reportage-thumbnails/`,
+      "../assets/webpimages/galleries/reportage-thumbnails/",
       true,
       /\.(webp)$/
     )
   );
   set3 = importAll(
     require.context(
-      `../assets/webpimages/galleries/animals-thumbnails/`,
+      "../assets/webpimages/galleries/animals-thumbnails/",
       true,
       /\.(webp)$/
     )
   );
   set4 = importAll(
     require.context(
-      `../assets/webpimages/galleries/travel-thumbnails/`,
+      "../assets/webpimages/galleries/travel-thumbnails/",
       true,
       /\.(webp)$/
     )
@@ -38,28 +38,28 @@ if (webpSupported) {
 } else {
   set1 = importAll(
     require.context(
-      `../assets/images/galleries/studio-thumbnails/`,
+      "../assets/images/galleries/studio-thumbnails/",
       true,
       /\.(jpe?g)$/
     )
   );
   set2 = importAll(
     require.context(
-      `../assets/images/galleries/reportage-thumbnails/`,
+      "../assets/images/galleries/reportage-thumbnails/",
       true,
       /\.(jpe?g)$/
     )
   );
   set3 = importAll(
     require.context(
-      `../assets/images/galleries/animals-thumbnails/`,
+      "../assets/images/galleries/animals-thumbnails/",
       true,
       /\.(jpe?g)$/
     )
   );
   set4 = importAll(
     require.context(
-      `../assets/images/galleries/travel-thumbnails/`,
+      "../assets/images/galleries/travel-thumbnails/",
       true,
       /\.(jpe?g)$/
     )

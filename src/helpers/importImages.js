@@ -10,25 +10,25 @@ export function importAnimals() {
   if (webpSupported) {
     images = importAll(
       require.context(
-        `../assets/webpimages/galleries/animals/`,
+        "../assets/webpimages/galleries/animals/",
         true,
         /\.(webp)$/
       )
     );
     thumbnailImages = importAll(
       require.context(
-        `../assets/webpimages/galleries/animals-thumbnails/`,
+        "../assets/webpimages/galleries/animals-thumbnails/",
         true,
         /\.(webp)$/
       )
     );
   } else {
     images = importAll(
-      require.context(`../assets/images/galleries/animals`, true, /\.(jpe?g)$/)
+      require.context("../assets/images/galleries/animals", true, /\.(jpe?g)$/)
     );
     thumbnailImages = importAll(
       require.context(
-        `../assets/images/galleries/animals-thumbnails`,
+        "../assets/images/galleries/animals-thumbnails",
         true,
         /\.(jpe?g)$/
       )
@@ -44,25 +44,25 @@ export function importStudio() {
   if (webpSupported) {
     images = importAll(
       require.context(
-        `../assets/webpimages/galleries/studio/`,
+        "../assets/webpimages/galleries/studio/",
         true,
         /\.(webp)$/
       )
     );
     thumbnailImages = importAll(
       require.context(
-        `../assets/webpimages/galleries/studio-thumbnails/`,
+        "../assets/webpimages/galleries/studio-thumbnails/",
         true,
         /\.(webp)$/
       )
     );
   } else {
     images = importAll(
-      require.context(`../assets/images/galleries/studio`, true, /\.(jpe?g)$/)
+      require.context("../assets/images/galleries/studio", true, /\.(jpe?g)$/)
     );
     thumbnailImages = importAll(
       require.context(
-        `../assets/images/galleries/studio-thumbnails`,
+        "../assets/images/galleries/studio-thumbnails",
         true,
         /\.(jpe?g)$/
       )
@@ -77,25 +77,25 @@ export function importOutdoors() {
   if (webpSupported) {
     images = importAll(
       require.context(
-        `../assets/webpimages/galleries/travel/`,
+        "../assets/webpimages/galleries/travel/",
         true,
         /\.(webp)$/
       )
     );
     thumbnailImages = importAll(
       require.context(
-        `../assets/webpimages/galleries/travel-thumbnails/`,
+        "../assets/webpimages/galleries/travel-thumbnails/",
         true,
         /\.(webp)$/
       )
     );
   } else {
     images = importAll(
-      require.context(`../assets/images/galleries/travel`, true, /\.(jpe?g)$/)
+      require.context("../assets/images/galleries/travel", true, /\.(jpe?g)$/)
     );
     thumbnailImages = importAll(
       require.context(
-        `../assets/images/galleries/travel-thumbnails`,
+        "../assets/images/galleries/travel-thumbnails",
         true,
         /\.(jpe?g)$/
       )
@@ -110,14 +110,14 @@ export function importReportage() {
   if (webpSupported) {
     images = importAll(
       require.context(
-        `../assets/webpimages/galleries/reportage/`,
+        "../assets/webpimages/galleries/reportage/",
         true,
         /\.(webp)$/
       )
     );
     thumbnailImages = importAll(
       require.context(
-        `../assets/webpimages/galleries/reportage-thumbnails/`,
+        "../assets/webpimages/galleries/reportage-thumbnails/",
         true,
         /\.(webp)$/
       )
@@ -125,14 +125,14 @@ export function importReportage() {
   } else {
     images = importAll(
       require.context(
-        `../assets/images/galleries/reportage`,
+        "../assets/images/galleries/reportage",
         true,
         /\.(jpe?g)$/
       )
     );
     thumbnailImages = importAll(
       require.context(
-        `../assets/images/galleries/reportage-thumbnails`,
+        "../assets/images/galleries/reportage-thumbnails",
         true,
         /\.(jpe?g)$/
       )
@@ -147,14 +147,14 @@ export function importWedding() {
   if (webpSupported) {
     images = importAll(
       require.context(
-        `../assets/webpimages/galleries/reportage/wedding/`,
+        "../assets/webpimages/galleries/reportage/wedding/",
         true,
         /\.(webp)$/
       )
     );
     thumbnailImages = importAll(
       require.context(
-        `../assets/webpimages/galleries/reportage-thumbnails/wedding/`,
+        "../assets/webpimages/galleries/reportage-thumbnails/wedding/",
         true,
         /\.(webp)$/
       )
@@ -162,14 +162,14 @@ export function importWedding() {
   } else {
     images = importAll(
       require.context(
-        `../assets/images/galleries/reportage/wedding`,
+        "../assets/images/galleries/reportage/wedding",
         true,
         /\.(jpe?g)$/
       )
     );
     thumbnailImages = importAll(
       require.context(
-        `../assets/images/galleries/reportage-thumbnails/wedding`,
+        "../assets/images/galleries/reportage-thumbnails/wedding",
         true,
         /\.(jpe?g)$/
       )

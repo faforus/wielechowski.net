@@ -21,28 +21,28 @@ let set1, set2, set3, set4;
 if (webpSupported) {
   set1 = importAll(
     require.context(
-      `../assets/webpimages/galleries/studio-thumbnails/business/`,
+      "../assets/webpimages/galleries/studio-thumbnails/business/",
       true,
       /\.(webp)$/
     )
   );
   set2 = importAll(
     require.context(
-      `../assets/webpimages/galleries/reportage-thumbnails/corporate/`,
+      "../assets/webpimages/galleries/reportage-thumbnails/corporate/",
       true,
       /\.(webp)$/
     )
   );
   set3 = importAll(
     require.context(
-      `../assets/webpimages/galleries/studio-thumbnails/image/`,
+      "../assets/webpimages/galleries/studio-thumbnails/image/",
       true,
       /\.(webp)$/
     )
   );
   set4 = importAll(
     require.context(
-      `../assets/webpimages/galleries/reportage-thumbnails/noncorporate/`,
+      "../assets/webpimages/galleries/reportage-thumbnails/noncorporate/",
       true,
       /\.(webp)$/
     )
@@ -50,28 +50,28 @@ if (webpSupported) {
 } else {
   set1 = importAll(
     require.context(
-      `../assets/images/galleries/studio-thumbnails/business/`,
+      "../assets/images/galleries/studio-thumbnails/business/",
       true,
       /\.(jpe?g)$/
     )
   );
   set2 = importAll(
     require.context(
-      `../assets/images/galleries/reportage-thumbnails/corporate/`,
+      "../assets/images/galleries/reportage-thumbnails/corporate/",
       true,
       /\.(jpe?g)$/
     )
   );
   set3 = importAll(
     require.context(
-      `../assets/images/galleries/studio-thumbnails/image/`,
+      "../assets/images/galleries/studio-thumbnails/image/",
       true,
       /\.(jpe?g)$/
     )
   );
   set4 = importAll(
     require.context(
-      `../assets/images/galleries/reportage-thumbnails/noncorporate/`,
+      "../assets/images/galleries/reportage-thumbnails/noncorporate/",
       true,
       /\.(jpe?g)$/
     )

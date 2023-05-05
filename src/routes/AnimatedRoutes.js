@@ -1,11 +1,11 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "../pages/Home";
-import MainGallery from "../pages/MainGallery";
+import Gallery from "../pages/Gallery";
 import Contact from "../pages/Contact";
-import Studio from "../pages/gallery/Studio";
-import Reportage from "../pages/gallery/Reportage";
-import Travel from "../pages/gallery/Travel";
-import Animals from "../pages/gallery/Animals";
+import Studio from "../pages/subgalleries/Studio";
+import Reportage from "../pages/subgalleries/Reportage";
+import Travel from "../pages/subgalleries/Travel";
+import Animals from "../pages/subgalleries/Animals";
 import Business from "../pages/offer/Business";
 import Image from "../pages/offer/Image";
 import Wedding from "../pages/offer/Wedding";
@@ -45,7 +45,7 @@ const AnimatedRoutes = () => {
             />
           </Route>
           <Route path="galeria">
-            <Route index element={<MainGallery />} />
+            <Route index element={<Gallery />} />
             <Route
               path="studio-portret"
               element={<Studio webpSupported={webpSupported} />}

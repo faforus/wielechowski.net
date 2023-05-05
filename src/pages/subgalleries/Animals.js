@@ -1,12 +1,11 @@
 import useGallery from "../../hooks/use-gallery";
-import Gallery from "../../components/Gallery Large/Gallery";
+import Gallery from "../../components/Gallery_Main/Gallery";
 import { Fragment } from "react";
 import { Helmet } from "react-helmet";
 
-const Travel = () => {
+const Animals = () => {
   const {
     modal,
-    closeModal,
     largeImgIsLoading,
     tempImgSrc,
     handleLargeImageLoad,
@@ -17,18 +16,17 @@ const Travel = () => {
     mappedUnsortedImgs,
     handlePrevClick,
     handleNextClick,
-  } = useGallery("outdoors");
+  } = useGallery("animals");
 
   return (
     <Fragment>
       <Helmet>
-        <title>Galeria Travel - Podróże / Architektura / Przyroda</title>
+        <title>FW Fotografia - Galeria Zwierzęta - Dzikie i Udomowione</title>
       </Helmet>
       <Gallery
-        category={"Travel"}
+        category={"Zwierzęta"}
         link="/galeria"
         modal={modal}
-        closeModal={closeModal}
         largeImgIsLoading={largeImgIsLoading}
         tempImgSrc={tempImgSrc}
         handleLargeImageLoad={handleLargeImageLoad}
@@ -44,4 +42,4 @@ const Travel = () => {
   );
 };
 
-export default Travel;
+export default Animals;

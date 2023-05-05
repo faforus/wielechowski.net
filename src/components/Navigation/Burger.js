@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./Burger.module.css";
 import { preloadNavImages } from "../../helpers/preloadNavigationImages";
+import { isMobileChecker } from "../../helpers/isMobile";
+import classNames from "classnames";
 
 const scrollToTop = () => {
   window.scrollTo(0, 0);
@@ -9,21 +11,13 @@ const scrollToTop = () => {
 
 const Burger = () => {
   const [toggleBurger, setToggleBurger] = useState(false);
+  const isMobile = isMobileChecker();
 
   useEffect(() => {
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
     const handleTouchMove = (e) => {
       e.preventDefault();
     };
 
-    if (toggleBurger && !isMobile) {
-      document.documentElement.style.overflowY = "hidden";
-      document.body.style.width = "calc(100% - 6px)";
-    } else {
-      document.documentElement.style.overflowY = "scroll";
-      document.body.style.width = "100%";
-    }
     if (toggleBurger && isMobile) {
       document.addEventListener("touchmove", handleTouchMove, {
         passive: false,
@@ -32,7 +26,7 @@ const Burger = () => {
     return () => {
       document.removeEventListener("touchmove", handleTouchMove);
     };
-  }, [toggleBurger]);
+  }, [toggleBurger, isMobile]);
 
   const toggleBurgerMenuHandler = () => {
     setToggleBurger((prev) => !prev);
@@ -54,20 +48,32 @@ const Burger = () => {
           toggleBurgerMenuHandler();
           preloadNavImages();
         }}
-        className={`${classes.button} ${toggleBurger ? classes.move : ""}`}
+        className={classNames(classes.button, {
+          [classes.move]: toggleBurger,
+        })}
       >
         <div className={classes["menu-icon"]}>
-          <span className={toggleBurger ? `${classes["top-line"]}` : ""}></span>
           <span
-            className={toggleBurger ? `${classes["middle-line"]}` : ""}
+            className={classNames({
+              [classes["top-line"]]: toggleBurger,
+            })}
           ></span>
           <span
-            className={toggleBurger ? `${classes["bottom-line"]}` : ""}
+            className={classNames({
+              [classes["middle-line"]]: toggleBurger,
+            })}
+          ></span>
+          <span
+            className={classNames({
+              [classes["bottom-line"]]: toggleBurger,
+            })}
           ></span>
         </div>
       </div>
       <div
-        className={`${classes.container} ${toggleBurger ? "" : classes.hidden}`}
+        className={classNames(classes.container, {
+          [classes.hidden]: !toggleBurger,
+        })}
       >
         <nav className={classes["burger-nav"]}>
           <ul className={classes["burger-ul"]}>

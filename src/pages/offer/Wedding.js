@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import classes from "./Offer.module.css";
 import Title from "../../components/Title";
 import useGallery from "../../hooks/use-gallery";
-import Gallery from "../../components/Gallery Large/Gallery";
+import Gallery from "../../components/Gallery_Main/Gallery";
 import { motion } from "framer-motion";
 import { CUSTOM_MOTION_PROPS } from "../../config/config";
 

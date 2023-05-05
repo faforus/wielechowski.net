@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import Title from "../../components/Title";
 import classes from "./Offer.module.css";
 import webpSupported from "../../helpers/webpSupport";
-import HorizontalMiniGallery from "../../components/Gallery Mini Horizontal/HorizontalMiniGallery";
+import HorizontalMiniGallery from "../../components/Gallery_Mini_Horizontal/HorizontalMiniGallery";
 import { motion } from "framer-motion";
 import { CUSTOM_MOTION_PROPS } from "../../config/config";
 
@@ -18,14 +18,14 @@ const NonCommercialReportage = () => {
   if (webpSupported) {
     images = importAll(
       require.context(
-        `../../assets/webpimages/galleries/reportage/noncorporate/`,
+        "../../assets/webpimages/galleries/reportage/noncorporate/",
         true,
         /\.(webp)$/
       )
     );
     thumbnailImages = importAll(
       require.context(
-        `../../assets/webpimages/galleries/reportage-thumbnails/noncorporate/`,
+        "../../assets/webpimages/galleries/reportage-thumbnails/noncorporate/",
         true,
         /\.(webp)$/
       )
@@ -33,14 +33,14 @@ const NonCommercialReportage = () => {
   } else {
     images = importAll(
       require.context(
-        `../../assets/images/galleries/reportage/noncorporate/`,
+        "../../assets/images/galleries/reportage/noncorporate/",
         true,
         /\.(jpe?g)$/
       )
     );
     thumbnailImages = importAll(
       require.context(
-        `../../assets/images/galleries/reportage-thumbnails/noncorporate/`,
+        "../../assets/images/galleries/reportage-thumbnails/noncorporate/",
         true,
         /\.(jpe?g)$/
       )

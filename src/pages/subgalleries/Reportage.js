@@ -1,5 +1,5 @@
 import useGallery from "../../hooks/use-gallery";
-import Gallery from "../../components/Gallery Large/Gallery";
+import Gallery from "../../components/Gallery_Main/Gallery";
 import { Fragment } from "react";
 import { Helmet } from "react-helmet";
 
