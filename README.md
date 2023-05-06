@@ -1,13 +1,22 @@
 [https://wielechowski.net/] - React
 
 
-[https://nextjs-e44af.web.app/] - Next.js demo also available (not yet fully optimised)
+[https://nextjs-e44af.web.app/] - Next.js demo also available (not optimised)
 
 2-in-1 Photography and React Portfolio
 
 As of April 27, 2023 - This website was created within a two-week span, leveraging the knowledge I gained during this period from a React course. I continue to learn more each day and am eager to implement new features.
 
 I built this website from scratch, and all the photographs used in the project were taken and edited by me.
+
+[IN-DEVELOPMENT]:
+
+-Tailwind implementation
+
+-PostCss implementation
+
+-TypeScript implementation
+
 
 [FEATURES]
 
