@@ -11,9 +11,11 @@ I built this website from scratch, and all the photographs used in the project w
 
 [FEATURES]
 
+Eslint and prettier integrated.
+
 Single Page Application with routing.
 
-Facebook-ready with Open Graph (OG) image integration.
+Facebook-ready with Open Graph (OG) image integration and descriptions. No server side rendering yet.
 
 Responsive design for large screens, regular screens, and mobile devices.
 
@@ -24,6 +26,7 @@ Preloading of crucial images.
 WEBP image support.
 
 Appropriate image types loaded for devices that either support or do not support .WEBP images, with the help of the ua-parser-js library.
+
 Smooth page transitions using the Framer Motion library.
 
 Functional contact form set up with Firebase functions, Fetch API, Express, and Nodemailer library.
@@ -48,7 +51,7 @@ Loading state management.
 
 Modal compatibility with Large, Horizontal, and Vertical Galleries.
 
-Keyboard navigation support.
+Keyboard navigation support. No touch implemented yet.
 
 Loading state and animation management.
 
