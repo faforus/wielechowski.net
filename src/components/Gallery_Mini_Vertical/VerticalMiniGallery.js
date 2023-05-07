@@ -34,12 +34,20 @@ const HorizontalMiniGallery = (props) => {
                   setTempImgSrc(props.images[index].largeImage);
                 }}
                 src={props.images[index].src}
-                alt=''
+                alt={props.images[index].src
+                  .replace(/%20/g, ' ')
+                  .replace('/static/media/', '')
+                  .replace(/\..*$/, '')
+                  .slice(1)}
               />,
             );
           }}
           src={img.src}
-          alt={img.src.replace(/%20/g, ' ').replace('/static/media/', '').replace(/\..*$/, '')}
+          alt={img.src
+            .replace(/%20/g, ' ')
+            .replace('/static/media/', '')
+            .replace(/\..*$/, '')
+            .slice(1)}
           key={index}
         />
       );

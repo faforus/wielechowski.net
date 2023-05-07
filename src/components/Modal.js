@@ -144,7 +144,11 @@ const Modal = (props) => {
       <img
         ref={imgRef}
         key={tempImgSrc}
-        alt={tempImgSrc.replace(/%20/g, ' ').replace('/static/media/', '').replace(/\..*$/, '')}
+        alt={tempImgSrc
+          .replace(/%20/g, ' ')
+          .replace('/static/media/', '')
+          .replace(/\..*$/, '')
+          .slice(1)}
         src={tempImgSrc}
         onLoad={(e) => {
           e.target.style.opacity = '1';
