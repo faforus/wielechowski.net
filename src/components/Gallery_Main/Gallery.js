@@ -14,7 +14,6 @@ function Gallery(props) {
       <Modal
         modal={props.modal}
         setModal={props.setModal}
-        closeModal={props.closeModal}
         tempImgSrc={props.tempImgSrc}
         setTempImgSrc={props.setTempImgSrc}
         largeImgIsLoading={props.largeImgIsLoading}
@@ -52,7 +51,6 @@ function Gallery(props) {
 Gallery.propTypes = {
   modal: PropTypes.bool.isRequired,
   setModal: PropTypes.func.isRequired,
-  closeModal: PropTypes.func.isRequired,
   tempImgSrc: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   setTempImgSrc: PropTypes.func,
   largeImgIsLoading: PropTypes.bool.isRequired,

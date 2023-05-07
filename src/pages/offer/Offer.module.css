@@ -1,3 +1,5 @@
+@import '../../css/vars';
+
 .wrapper {
   position: relative;
   display: flex;
@@ -21,7 +23,7 @@
 .main p,
 .square p,
 .additional-info p {
-  font-family: "Cinzel", serif;
+  font-family: $font-content;
   font-display: swap;
   font-weight: 500;
 }
@@ -89,6 +91,7 @@
 }
 
 .red-stripe p {
+  font-family: $font-red-stripe;
   font-size: 1.2rem;
   font-weight: 600;
 }
@@ -129,7 +132,7 @@
 }
 
 .price p {
-  font-family: "Cinzel", serif;
+  font-family: $font-price;
   font-display: swap;
   margin: 0;
 }

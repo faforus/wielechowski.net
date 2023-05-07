@@ -3,67 +3,62 @@
 		<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 	<loc>https://wielechowski.net/</loc>
-	<lastmod>2023-05-03T10:24:50+01:00</lastmod>
+	<lastmod>2023-05-07T15:00:13+01:00</lastmod>
 	<priority>0.6</priority>
 </url>
 <url>
-	<loc>https://wielechowski.net/oferta</loc>
-	<lastmod>2023-05-03T10:24:50+01:00</lastmod>
+	<loc>https://wielechowski.net/sesja-biznesowa</loc>
+	<lastmod>2023-05-07T15:00:13+01:00</lastmod>
 	<priority>1.0</priority>
 </url>
 <url>
-	<loc>https://wielechowski.net/oferta/sesja-biznesowa</loc>
-	<lastmod>2023-05-03T10:24:50+01:00</lastmod>
+	<loc>https://wielechowski.net/sesja-wizerunkowa</loc>
+	<lastmod>2023-05-07T15:00:13+01:00</lastmod>
 	<priority>1.0</priority>
 </url>
 <url>
-	<loc>https://wielechowski.net/oferta/sesja-wizerunkowa</loc>
-	<lastmod>2023-05-03T10:24:50+01:00</lastmod>
+	<loc>https://wielechowski.net/reportaz-slubny</loc>
+	<lastmod>2023-05-07T15:00:13+01:00</lastmod>
 	<priority>1.0</priority>
 </url>
 <url>
-	<loc>https://wielechowski.net/oferta/reportaz-slubny</loc>
-	<lastmod>2023-05-03T10:24:50+01:00</lastmod>
+	<loc>https://wielechowski.net/reportaz-okolicznosciowy</loc>
+	<lastmod>2023-05-07T15:00:13+01:00</lastmod>
 	<priority>1.0</priority>
 </url>
 <url>
-	<loc>https://wielechowski.net/oferta/reportaz-okolicznosciowy</loc>
-	<lastmod>2023-05-03T10:24:50+01:00</lastmod>
-	<priority>1.0</priority>
-</url>
-<url>
-	<loc>https://wielechowski.net/oferta/reportaz-firmowy</loc>
-	<lastmod>2023-05-03T10:24:50+01:00</lastmod>
+	<loc>https://wielechowski.net/reportaz-firmowy</loc>
+	<lastmod>2023-05-07T15:00:13+01:00</lastmod>
 	<priority>1.0</priority>
 </url>
 <url>
 	<loc>https://wielechowski.net/galeria</loc>
-	<lastmod>2023-05-03T10:24:50+01:00</lastmod>
+	<lastmod>2023-05-07T15:00:13+01:00</lastmod>
 	<priority>1.0</priority>
 </url>
 <url>
-	<loc>https://wielechowski.net/galeria/studio-portret</loc>
-	<lastmod>2023-05-03T10:24:50+01:00</lastmod>
+	<loc>https://wielechowski.net/studio-portret</loc>
+	<lastmod>2023-05-07T15:00:13+01:00</lastmod>
 	<priority>1.0</priority>
 </url>
 <url>
-	<loc>https://wielechowski.net/galeria/reportaz</loc>
-	<lastmod>2023-05-03T10:24:50+01:00</lastmod>
+	<loc>https://wielechowski.net/reportaz</loc>
+	<lastmod>2023-05-07T15:00:13+01:00</lastmod>
 	<priority>1.0</priority>
 </url>
 <url>
-	<loc>https://wielechowski.net/galeria/travel</loc>
-	<lastmod>2023-05-03T10:24:50+01:00</lastmod>
+	<loc>https://wielechowski.net/travel</loc>
+	<lastmod>2023-05-07T15:00:13+01:00</lastmod>
 	<priority>1.0</priority>
 </url>
 <url>
-	<loc>https://wielechowski.net/galeria/zwierzeta</loc>
-	<lastmod>2023-05-03T10:24:50+01:00</lastmod>
+	<loc>https://wielechowski.net/zwierzeta</loc>
+	<lastmod>2023-05-07T15:00:13+01:00</lastmod>
 	<priority>1.0</priority>
 </url>
 <url>
 	<loc>https://wielechowski.net/kontakt</loc>
-	<lastmod>2023-05-03T10:24:50+01:00</lastmod>
+	<lastmod>2023-05-07T15:00:13+01:00</lastmod>
 	<priority>1.0</priority>
 </url>
 </urlset>

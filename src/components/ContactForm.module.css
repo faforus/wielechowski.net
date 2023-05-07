@@ -1,3 +1,5 @@
+@import '../css/vars';
+
 .form-container {
   width: 100%;
   display: flex;
@@ -8,6 +10,8 @@
 
 .form,
 .sent {
+  font-family: $font-contact;
+  font-display: swap;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -28,8 +32,6 @@
 }
 
 .form label {
-  font-family: 'Cinzel', sans-serif;
-  font-display: swap;
   margin-bottom: 5px;
 }
 
@@ -37,7 +39,7 @@
   height: 30px;
   width: 200px;
   font-size: 1rem;
-  text-indent: 10px;
+  text-indent: 5px;
   padding: 6px;
   border: 1px solid #ccc;
   box-sizing: border-box;
@@ -71,7 +73,7 @@
   color: white;
   border-radius: 0px;
   cursor: pointer;
-  font-family: 'Cinzel', sans-serif;
+  font-family: $font-contact;
   font-display: swap;
   font-weight: 500;
 }
@@ -89,7 +91,7 @@
   color: white;
   border-radius: 0px;
   cursor: pointer;
-  font-family: 'Cinzel', sans-serif;
+  font-family: $font-contact;
   font-display: swap;
   font-weight: 500;
   margin-top: 10px;
@@ -101,7 +103,7 @@
 }
 
 .rodo-text {
-  font-family: 'Cinzel', sans-serif;
+  font-family: $font-contact;
   font-display: swap;
   width: 400px;
   margin-top: -5px;
@@ -112,7 +114,7 @@
 .form input,
 .form textarea,
 .sent p {
-  font-family: 'Cinzel', sans-serif;
+  font-family: $font-contact;
   font-display: swap;
   font-weight: 500;
 }
@@ -142,7 +144,7 @@
 }
 
 .error-message-container p {
-  font-family: 'Cinzel', sans-serif;
+  font-family: $font-contact;
   font-display: swap;
   margin: 5px;
   color: tomato;

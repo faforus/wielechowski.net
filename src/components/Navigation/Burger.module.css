@@ -1,3 +1,5 @@
+@import '../../css/vars.css';
+
 .burger-overflow-hidden {
   position: absolute;
   top: 0;
@@ -89,6 +91,7 @@
 }
 
 .burger-nav {
+  font-family: $font-menu;
   pointer-events: visible;
   display: flex;
   align-items: center;

@@ -1,19 +1,21 @@
-import React, { Route, Routes, useLocation } from 'react-router-dom';
-import Home from '../pages/Home';
-import Gallery from '../pages/Gallery';
-import Contact from '../pages/Contact';
-import Studio from '../pages/subgalleries/Studio';
-import Reportage from '../pages/subgalleries/Reportage';
-import Travel from '../pages/subgalleries/Travel';
-import Animals from '../pages/subgalleries/Animals';
-import Business from '../pages/offer/Business';
-import Image from '../pages/offer/Image';
-import Wedding from '../pages/offer/Wedding';
-import NonCommercialReportage from '../pages/offer/NonCommercialReportage';
-import CommercialReportage from '../pages/offer/CommercialReportage';
-import webpSupported from '../helpers/webpSupport';
+import React, { lazy, Suspense } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import ErrorPage from '../pages/ErrorPage';
+import Spinner from '../components/Spinner';
+
+const Home = lazy(() => import('../pages/Home'));
+const Gallery = lazy(() => import('../pages/Gallery'));
+const Contact = lazy(() => import('../pages/Contact'));
+const Studio = lazy(() => import('../pages/subgalleries/Studio'));
+const Reportage = lazy(() => import('../pages/subgalleries/Reportage'));
+const Travel = lazy(() => import('../pages/subgalleries/Travel'));
+const Animals = lazy(() => import('../pages/subgalleries/Animals'));
+const Business = lazy(() => import('../pages/offer/Business'));
+const Image = lazy(() => import('../pages/offer/Image'));
+const Wedding = lazy(() => import('../pages/offer/Wedding'));
+const NonCommercialReportage = lazy(() => import('../pages/offer/NonCommercialReportage'));
+const CommercialReportage = lazy(() => import('../pages/offer/CommercialReportage'));
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -21,72 +23,115 @@ const AnimatedRoutes = () => {
     <div className='page-container'>
       <AnimatePresence>
         <Routes location={location} key={location.pathname}>
-          <Route index element={<Home />} />
+          <Route
+            index
+            element={
+              <Suspense fallback={<Spinner />}>
+                <Home />
+              </Suspense>
+            }
+          />
           <Route path='oferta'>
-            <Route path='sesja-biznesowa' element={<Business webpSupported={webpSupported} />} />
-            <Route path='sesja-wizerunkowa' element={<Image webpSupported={webpSupported} />} />
-            <Route path='reportaz-slubny' element={<Wedding webpSupported={webpSupported} />} />
+            <Route
+              path='sesja-biznesowa'
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <Business />
+                </Suspense>
+              }
+            />
+            <Route
+              path='sesja-wizerunkowa'
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <Image />
+                </Suspense>
+              }
+            />
+            <Route
+              path='reportaz-slubny'
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <Wedding />
+                </Suspense>
+              }
+            />
             <Route
               path='reportaz-okolicznosciowy'
-              element={<NonCommercialReportage webpSupported={webpSupported} />}
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <NonCommercialReportage />
+                </Suspense>
+              }
             />
             <Route
               path='reportaz-firmowy'
-              element={<CommercialReportage webpSupported={webpSupported} />}
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <CommercialReportage />
+                </Suspense>
+              }
             />
           </Route>
           <Route path='galeria'>
-            <Route index element={<Gallery />} />
-            <Route path='studio-portret' element={<Studio webpSupported={webpSupported} />} />
-            <Route path='reportaz' element={<Reportage webpSupported={webpSupported} />} />
-            <Route path='travel' element={<Travel webpSupported={webpSupported} />} />
-            <Route path='zwierzeta' element={<Animals webpSupported={webpSupported} />} />
+            <Route
+              index
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <Gallery />
+                </Suspense>
+              }
+            />
+            <Route
+              path='studio-portret'
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <Studio />
+                </Suspense>
+              }
+            />
+            <Route
+              path='reportaz'
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <Reportage />
+                </Suspense>
+              }
+            />
+            <Route
+              path='travel'
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <Travel />
+                </Suspense>
+              }
+            />
+            <Route
+              path='zwierzeta'
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <Animals />
+                </Suspense>
+              }
+            />
           </Route>
-          <Route path='kontakt' element={<Contact />} />
-          <Route path='*' element={<ErrorPage />} />
+          <Route
+            path='kontakt'
+            element={
+              <Suspense fallback={<Spinner />}>
+                <Contact />
+              </Suspense>
+            }
+          />
+          <Route
+            path='*'
+            element={
+              <Suspense fallback={<Spinner />}>
+                <ErrorPage />
+              </Suspense>
+            }
+          />
         </Routes>
-        {/* <Routes location={location} key={location.pathname}>
-          <Route index element={<Home />} />
-          <Route path="galeria" element={<MainGallery />} />
-          <Route path="kontakt" element={<Contact />} />
-          <Route
-            path="studio-portret"
-            element={<Studio webpSupported={webpSupported} />}
-          />
-          <Route
-            path="reportaz"
-            element={<Reportage webpSupported={webpSupported} />}
-          />
-          <Route
-            path="travel"
-            element={<Travel webpSupported={webpSupported} />}
-          />
-          <Route
-            path="zwierzeta"
-            element={<Animals webpSupported={webpSupported} />}
-          />
-          <Route
-            path="sesja-biznesowa"
-            element={<Business webpSupported={webpSupported} />}
-          />
-          <Route
-            path="sesja-wizerunkowa"
-            element={<Image webpSupported={webpSupported} />}
-          />
-          <Route
-            path="reportaz-slubny"
-            element={<Wedding webpSupported={webpSupported} />}
-          />
-          <Route
-            path="reportaz-okolicznosciowy"
-            element={<NonCommercialReportage webpSupported={webpSupported} />}
-          />
-          <Route
-            path="reportaz-firmowy"
-            element={<CommercialReportage webpSupported={webpSupported} />}
-          />
-          <Route path="*" element={<ErrorPage />} />
-        </Routes> */}
       </AnimatePresence>
     </div>
   );

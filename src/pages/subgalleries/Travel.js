@@ -1,7 +1,7 @@
+import React from 'react';
 import useGallery from '../../hooks/use-gallery';
 import Gallery from '../../components/Gallery_Main/Gallery';
-import React, { Fragment } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const Travel = () => {
   const {
@@ -20,7 +20,7 @@ const Travel = () => {
   } = useGallery('outdoors');
 
   return (
-    <Fragment>
+    <HelmetProvider>
       <Helmet>
         <title>Galeria Travel - Podróże / Architektura / Przyroda</title>
       </Helmet>
@@ -40,7 +40,7 @@ const Travel = () => {
         handlePrevClick={handlePrevClick}
         handleNextClick={handleNextClick}
       />
-    </Fragment>
+    </HelmetProvider>
   );
 };
 

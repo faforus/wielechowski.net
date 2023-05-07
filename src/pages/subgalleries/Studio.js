@@ -1,7 +1,7 @@
+import React from 'react';
 import useGallery from '../../hooks/use-gallery';
 import Gallery from '../../components/Gallery_Main/Gallery';
-import React, { Fragment } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const Studio = () => {
   const {
@@ -20,7 +20,7 @@ const Studio = () => {
   } = useGallery('studio');
 
   return (
-    <Fragment>
+    <HelmetProvider>
       <Helmet>
         <title>Galeria Studio i Portret - Wizerunkowe i Biznesowe</title>
       </Helmet>
@@ -40,7 +40,7 @@ const Studio = () => {
         handlePrevClick={handlePrevClick}
         handleNextClick={handleNextClick}
       />
-    </Fragment>
+    </HelmetProvider>
   );
 };
 

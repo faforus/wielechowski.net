@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { Helmet } from 'react-helmet';
+import React from 'react';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useState, useEffect } from 'react';
 import classes from './Home.module.css';
 import webpSupported from '../helpers/webpSupport';
@@ -25,7 +25,7 @@ const Home = () => {
   }, []);
 
   return (
-    <Fragment>
+    <HelmetProvider>
       <Helmet>
         <meta
           property='description'
@@ -61,9 +61,7 @@ const Home = () => {
           }
         />
         <div className={classes.stripe}>
-          F<span className={classes.smaller}>ILIP&nbsp;</span> W
-          <span className={classes.smaller}>IELECHOWSKI&nbsp;</span>F
-          <span className={classes.smaller}>OTOGRAFIA</span>
+          <p>Filip Wielechowski Fotografia</p>
         </div>
         <img
           className={classes['img-bottom']}
@@ -79,7 +77,7 @@ const Home = () => {
           }
         />
       </motion.div>
-    </Fragment>
+    </HelmetProvider>
   );
 };
 

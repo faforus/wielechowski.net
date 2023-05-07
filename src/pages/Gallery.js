@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import classes from './MainGallery.module.css';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
+import classes from './Gallery.module.css';
 import { motion } from 'framer-motion';
 import { CUSTOM_MOTION_PROPS } from '../config/config';
 import { CUSTOM_MOTION_PROPS_MOBILE_MAIN_GALLERY } from '../config/config';
 import { preloadGalImages } from '../helpers/preloadGalleryImages';
-import { Fragment } from 'react';
 import classNames from 'classnames';
 
 const scrollHandler = () => {
@@ -32,7 +31,7 @@ const MainGallery = () => {
       : { ...CUSTOM_MOTION_PROPS_MOBILE_MAIN_GALLERY };
 
   return (
-    <Fragment>
+    <HelmetProvider>
       <Helmet>
         <meta
           property='description'
@@ -66,7 +65,7 @@ const MainGallery = () => {
           </div>
         </Link>
       </motion.div>
-    </Fragment>
+    </HelmetProvider>
   );
 };
 

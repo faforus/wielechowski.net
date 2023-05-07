@@ -1,4 +1,8 @@
+@import '../../css/vars.css';
+
 .navigation {
+  font-family: $font-menu;
+  font-weight: 500;
   margin-top: 3rem;
   margin-left: 30%;
   position: relative;

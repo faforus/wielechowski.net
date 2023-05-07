@@ -1,17 +1,16 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import classes from './Contact.module.css';
 import ContactForm from '../components/ContactForm';
 import { motion } from 'framer-motion';
 import { CUSTOM_MOTION_PROPS } from '../config/config';
-import { Fragment } from 'react';
 import webpSupported from '../helpers/webpSupport';
 import contactImage from '../assets/images/kontakt.jpg';
 import contactImageWEBP from '../assets/webpimages/kontakt.webp';
 
 const Contact = () => {
   return (
-    <Fragment>
+    <HelmetProvider>
       <Helmet>
         <meta property='description' content='Kontakt: +48 722 265 649 / info@wielechowski.net' />
         <meta
@@ -44,7 +43,7 @@ const Contact = () => {
           </div>
         </div>
       </motion.div>
-    </Fragment>
+    </HelmetProvider>
   );
 };
 

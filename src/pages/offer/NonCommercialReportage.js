@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { Helmet } from 'react-helmet';
+import React from 'react';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Title from '../../components/Title';
 import classes from './Offer.module.css';
 import webpSupported from '../../helpers/webpSupport';
@@ -48,7 +48,7 @@ const NonCommercialReportage = () => {
   });
 
   return (
-    <Fragment>
+    <HelmetProvider>
       <Helmet>
         <meta
           property='description'
@@ -90,7 +90,7 @@ const NonCommercialReportage = () => {
           </p>
         </div>
       </motion.div>
-    </Fragment>
+    </HelmetProvider>
   );
 };
 

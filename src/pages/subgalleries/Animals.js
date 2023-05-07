@@ -1,7 +1,7 @@
+import React from 'react';
 import useGallery from '../../hooks/use-gallery';
 import Gallery from '../../components/Gallery_Main/Gallery';
-import React, { Fragment } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const Animals = () => {
   const {
@@ -19,7 +19,7 @@ const Animals = () => {
   } = useGallery('animals');
 
   return (
-    <Fragment>
+    <HelmetProvider>
       <Helmet>
         <title>FW Fotografia - Galeria Zwierzęta - Dzikie i Udomowione</title>
       </Helmet>
@@ -38,7 +38,7 @@ const Animals = () => {
         handlePrevClick={handlePrevClick}
         handleNextClick={handleNextClick}
       />
-    </Fragment>
+    </HelmetProvider>
   );
 };
 

@@ -11,7 +11,7 @@ const Spinner = (props) => {
 };
 
 Spinner.propTypes = {
-  maxHeight: PropTypes.string.isRequired,
+  maxHeight: PropTypes.string,
 };
 
 export default Spinner;

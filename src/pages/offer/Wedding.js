@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { Helmet } from 'react-helmet';
+import React from 'react';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import classes from './Offer.module.css';
 import Title from '../../components/Title';
 import useGallery from '../../hooks/use-gallery';
@@ -23,7 +23,7 @@ const Wedding = () => {
   } = useGallery('wedding');
 
   return (
-    <Fragment>
+    <HelmetProvider>
       <Helmet>
         <meta
           property='description'
@@ -82,7 +82,7 @@ const Wedding = () => {
           </p>
         </div>
       </motion.div>
-    </Fragment>
+    </HelmetProvider>
   );
 };
 
