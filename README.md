@@ -1,3 +1,7 @@
+TYPESCRIPT VERSION NOW ADDED
+[https://github.com/faforus/wielechowski.ts]
+
+
 [https://wielechowski.net/] - React
 
 
