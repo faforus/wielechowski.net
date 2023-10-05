@@ -284,14 +284,12 @@ img,
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  width: 80%;
   max-width: 1040px;
   height: 2.3rem;
 }
 
 .button-container button {
   position: relative;
-  bottom: 0;
   font-family: $font-modal-buttons;
   font-size: 3rem;
   border: none;
@@ -310,11 +308,16 @@ img,
 }
 
 @media (max-width: 800px) {
-  .container {
+  .wrapper {
     width: 90%;
   }
+  .container {
+    width: 100%;
+  }
   .button-container {
-    width: 90%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
   }
   .grid {
     grid-gap: 3px;
