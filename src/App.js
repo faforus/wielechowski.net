@@ -2,19 +2,16 @@ import React, { useState, useEffect, Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import AnimatedRoutes from './routes/AnimatedRoutes';
-
 import classes from './components/WelcomeModal.module.css';
 import Header from './layout/Header';
 import WelcomeModal from './components/WelcomeModal';
 import Footer from './layout/Footer';
 import { preloadAppImages } from './helpers/preloadAppImages';
 
+preloadAppImages();
+
 function App() {
   const [loadedWelcome, setLoadedWelcome] = useState(false);
-
-  useEffect(() => {
-    preloadAppImages();
-  }, []);
 
   useEffect(() => {
     setTimeout(() => {

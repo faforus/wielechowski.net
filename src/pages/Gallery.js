@@ -8,16 +8,14 @@ import { CUSTOM_MOTION_PROPS_MOBILE_MAIN_GALLERY } from '../config/config';
 import { preloadGalImages } from '../helpers/preloadGalleryImages';
 import classNames from 'classnames';
 
+preloadGalImages();
+
 const scrollHandler = () => {
   window.scrollTo(0, 0);
 };
 
 const MainGallery = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    preloadGalImages();
-  }, []);
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);

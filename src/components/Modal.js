@@ -136,28 +136,6 @@ const Modal = (props) => {
         }, 150);
       }}
     >
-      {largeImgIsLoading && (
-        <div className={classes.spinner}>
-          <Spinner />
-        </div>
-      )}
-      <img
-        ref={imgRef}
-        key={tempImgSrc}
-        alt={tempImgSrc
-          .replace(/%20/g, ' ')
-          .replace('/static/media/', '')
-          .replace(/\..*$/, '')
-          .slice(1)}
-        src={tempImgSrc}
-        onLoad={(e) => {
-          e.target.style.opacity = '1';
-          handleLargeImageLoad();
-        }}
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
-      />
       <CloseButton
         onClick={() => {
           setModal(false);
@@ -184,6 +162,28 @@ const Modal = (props) => {
           setTimeout(() => {
             debouncedHandleNextClick();
           }, 150);
+        }}
+      />
+      {largeImgIsLoading && (
+        <div className={classes.spinner}>
+          <Spinner />
+        </div>
+      )}
+      <img
+        ref={imgRef}
+        key={tempImgSrc}
+        alt={tempImgSrc
+          .replace(/%20/g, ' ')
+          .replace('/static/media/', '')
+          .replace(/\..*$/, '')
+          .slice(1)}
+        src={tempImgSrc}
+        onLoad={(e) => {
+          e.target.style.opacity = '1';
+          handleLargeImageLoad();
+        }}
+        onClick={(e) => {
+          e.stopPropagation();
         }}
       />
     </div>
